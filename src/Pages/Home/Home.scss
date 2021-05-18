@@ -1,21 +1,24 @@
 @import "../../_var.scss";
 
 
-.top_list{
-  background-color: #FDFDFD ;
+.top_list {
+  background-color: #FDFDFD;
   margin-top: 3px;
   padding: 0;
   border: 1px solid #ECECEC;
-  ul{
+
+  ul {
     margin: 0;
     padding: 0;
     display: flex;
     justify-content: center;
-    li{
+
+    li {
       margin: 0;
       padding: 0;
       list-style: none;
-      a{
+
+      a {
         color: $light-grey;
         font-size: 14px;
         font-family: $font-weight-regular;
@@ -24,6 +27,7 @@
         padding: 15px 20px;
         text-decoration: none;
         border-bottom: 1px solid transparent;
+
         &:focus,
         &:hover,
         &.active {
@@ -33,35 +37,41 @@
     }
   }
 }
-.top_banner{
-  background: #fff;  
+
+.top_banner {
+  background: #fff;
 }
- .banner_row {
-    padding: 90px 0;
- 
-    .banner_content {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      height: 100%;
-      color: $black;
-      h1 {
-        font-size: 70px;
-        font-weight: $font-weight-extraBold;
-        line-height: 90px;
-      }
-      p {
-        font-size: 24px;
+
+.banner_row {
+  padding: 90px 0;
+
+  .banner_content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+    color: $black;
+
+    h1 {
+      font-size: 70px;
+      font-weight: $font-weight-extraBold;
+      line-height: 90px;
+    }
+
+    p {
+      font-size: 24px;
+      font-weight: $font-weight-regular;
+    }
+
+    .banner_btn {
+      margin-top: 7%;
+
+      button {
+        padding: 12px 33px;
+        font-size: 16px;
         font-weight: $font-weight-regular;
-      }
-      .banner_btn {
-        margin-top: 7%;
-        button {
-          padding: 12px 33px;
-          font-size: 16px;
-          font-weight: $font-weight-regular;
-          margin-right: 10px;
-        }
+        margin-right: 10px;
       }
     }
   }
+}
