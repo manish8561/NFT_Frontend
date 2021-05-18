@@ -17,6 +17,7 @@ function Footer() {
   return (
     <div className="footer">
       <Container fluid>
+      <Container className="ContMain">
         <Row className="footer_row">
           <Col xs={12} md={5} className="logo_col">
             <img src={FooterLogo} alt="footer logo" className="footer_logo" />
@@ -150,6 +151,7 @@ function Footer() {
             </ul>
           </Col>
         </Row>
+        </Container>
       </Container>
     </div>
   );

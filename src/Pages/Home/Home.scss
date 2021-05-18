@@ -1,36 +1,44 @@
 @import "../../_var.scss";
 
-.top_banner {
-  background-color: $white;
+
+.top_list{
+  background-color: #FDFDFD ;
   margin-top: 3px;
   padding: 0;
-
-  .nav {
+  border: 1px solid #ECECEC;
+  ul{
+    margin: 0;
+    padding: 0;
+    display: flex;
     justify-content: center;
-  }
-  .nav-tabs {
-    border-bottom: 1px solid $white-EC;
-    .nav-link {
-      color: $light-grey;
-      font-size: 14px;
-      font-family: $font-weight-regular;
-      border: 0;
-      padding: 15px 20px;
-      &:focus,
-      &:hover,
-      &.active {
-        border-bottom: 2px solid $light-blue;
+    li{
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      a{
+        color: $light-grey;
+        font-size: 14px;
+        font-family: $font-weight-regular;
+        border: 0;
+        display: block;
+        padding: 15px 20px;
+        text-decoration: none;
+        border-bottom: 1px solid transparent;
+        &:focus,
+        &:hover,
+        &.active {
+          border-bottom: 2px solid $light-blue;
+        }
       }
     }
   }
-
-  .col {
-    padding: 0;
-  }
-  .banner_row {
-    max-width: 1360px;
-    margin: auto;
+}
+.top_banner{
+  background: #fff;  
+}
+ .banner_row {
     padding: 90px 0;
+ 
     .banner_content {
       display: flex;
       flex-direction: column;
@@ -57,4 +65,3 @@
       }
     }
   }
-}

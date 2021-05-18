@@ -6,18 +6,22 @@ import "./Home.scss";
 function Home() {
   return (
     <div>
-      <Container fluid className="top_banner">
-        <Tabs defaultActiveKey="new" id="uncontrolled-tab-example">
-          <Tab eventKey="new" title="New"></Tab>
-          <Tab eventKey="Art" title="Art"></Tab>
-          <Tab eventKey="Domain Names" title="Domain Names"></Tab>
-          <Tab eventKey="Virtual Worlds" title="Virtual Worlds"></Tab>
-          <Tab eventKey="Trading Cards" title="Trading Cards"></Tab>
-          <Tab eventKey="Collectibles" title="Collectibles"></Tab>
-          <Tab eventKey="Sports" title="Sports"></Tab>
-          <Tab eventKey="Utility" title="Utility"></Tab>
-        </Tabs>
-
+      <Container fluid className="top_list">
+          <Container>
+            <ul>
+              <li><a href="#">New</a></li>
+              <li><a href="#">Art</a></li>
+              <li><a href="#">Domain Names</a></li>
+              <li><a href="#">Virtual Worlds</a></li>
+              <li><a href="#">Trading Cards</a></li>
+              <li><a href="#">Collectibles</a></li>
+              <li><a href="#">Sports</a></li>
+              <li><a href="#">Utility</a></li>
+            </ul>
+            </Container>
+        </Container>
+     <Container fluid className="top_banner">
+     <Container className="ContMain">
         <Row className="banner_row">
           <Col>
             <img src={BannerImg} />
@@ -33,6 +37,7 @@ function Home() {
             </div>
           </Col>
         </Row>
+        </Container>
       </Container>
     </div>
   );
