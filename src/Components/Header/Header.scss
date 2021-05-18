@@ -1,1 +1,30 @@
-@import '../../_var.scss';
+@import "../../_var.scss";
+
+.custom_nav {
+  background-color: $white;
+  box-shadow: 0px 2px 4px $white-1A;
+  .navbar {
+    padding: 17px 35px;
+  }
+  .navbar-light {
+    .navbar-brand {
+      margin-left: 5px;
+    }
+    .navbar-nav {
+      .nav-link {
+        color: $light-grey;
+        font-size: 16px;
+        font-weight: $font-weight-regular;
+        margin-right: 10px;
+        padding: 8px 20px;
+        border-radius: 30px;
+        transition: 0.3s;
+        &:hover,
+        &.active {
+          color: $white;
+          background-color: $light-blue;
+        }
+      }
+    }
+  }
+}

@@ -1,2 +1,60 @@
-@import '../../_var.scss';
+@import "../../_var.scss";
 
+.top_banner {
+  background-color: $white;
+  margin-top: 3px;
+  padding: 0;
+
+  .nav {
+    justify-content: center;
+  }
+  .nav-tabs {
+    border-bottom: 1px solid $white-EC;
+    .nav-link {
+      color: $light-grey;
+      font-size: 14px;
+      font-family: $font-weight-regular;
+      border: 0;
+      padding: 15px 20px;
+      &:focus,
+      &:hover,
+      &.active {
+        border-bottom: 2px solid $light-blue;
+      }
+    }
+  }
+
+  .col {
+    padding: 0;
+  }
+  .banner_row {
+    max-width: 1360px;
+    margin: auto;
+    padding: 90px 0;
+    .banner_content {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      height: 100%;
+      color: $black;
+      h1 {
+        font-size: 70px;
+        font-weight: $font-weight-extraBold;
+        line-height: 90px;
+      }
+      p {
+        font-size: 24px;
+        font-weight: $font-weight-regular;
+      }
+      .banner_btn {
+        margin-top: 7%;
+        button {
+          padding: 12px 33px;
+          font-size: 16px;
+          font-weight: $font-weight-regular;
+          margin-right: 10px;
+        }
+      }
+    }
+  }
+}

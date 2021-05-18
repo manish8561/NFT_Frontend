@@ -1,5 +1,4 @@
-
-@import './_var.scss';
+@import "./_var.scss";
 
 .App {
   text-align: center;
@@ -40,18 +39,48 @@
   }
 }
 
-body, html{ height: 100%;}
-#root{
+body,
+html {
+  height: 100%;
+}
+#root {
   display: flex;
   flex-direction: column;
   height: 100%;
 }
-.PublicArea__content{
+.PublicArea__content {
   flex: 1 0 auto;
   padding: 0px;
 }
-.Footer {
-    flex-shrink: 0;
-    text-align: center;
-    color: white;
+// .Footer {
+//   flex-shrink: 0;
+//   text-align: center;
+//   color: white;
+// }
+
+// common button design
+.dark_btn,
+.light_btn {
+  border-radius: 30px;
+  color: #fff;
+  transition: 0.3s;
+}
+.dark_btn {
+  background: $dark-blue;
+  border: 1px solid $dark-blue;
+  &:hover {
+    background: transparent;
+    border: 1px solid $dark-blue;
+    color: $dark-blue;
+  }
+}
+
+.light_btn {
+  background: $light-blue;
+  border: 1px solid $light-blue;
+  &:hover {
+    background: transparent;
+    border: 1px solid $light-blue;
+    color: $light-blue;
+  }
 }
