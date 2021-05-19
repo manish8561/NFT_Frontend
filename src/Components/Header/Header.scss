@@ -1,7 +1,7 @@
 @import "../../_var.scss";
 
 .custom_nav {
-  background-color: $white;
+  background-color: $white-bg;
   box-shadow: 0px 2px 4px $white-1A;
   .navbar {
     padding: 17px 35px;
@@ -22,7 +22,7 @@
         &:hover,
         &.active {
           color: $white;
-          background-color: $light-blue;
+          background-color: $light-blue-bg;
         }
       }
     }
