@@ -1,26 +1,28 @@
-import React, { Component } from "react";
+import React from "react";
 import { Card } from "react-bootstrap";
-import Img_1 from '../../../../Assets/Images/img_1.png'
 
-export class ListTwo extends Component {
-  render() {
-    return (
-      <>
-        <Card>
-          <Card.Img variant="top" src={Img_1} />
-          <Card.Body>
-            <Card.Title>William Leo </Card.Title>
-            <Card.Subtitle className="mb-2 ">Art World</Card.Subtitle>
-            <Card.Text className="description">
-              Quisque rhoncus orci vitae nisl retrum reuturm lesuada laoreet
-              umrna sed
-            </Card.Text>
-            <Card.Text className="price">$ 155.99</Card.Text>
-          </Card.Body>
-        </Card>
-      </>
-    );
-  }
+function ListTwo(props) {
+  return (
+    <>
+      <Card>
+        <Card.Img variant="top" src={props.imgsrc} className="hover_img" />
+        {/* <div className="hover_btn">
+            <a href="#" className="dark_btn">
+              Read more
+            </a>
+            <a href="#" className="light_btn">
+              Buy Now
+            </a>
+          </div> */}
+        <Card.Body>
+          <Card.Title>{props.name}</Card.Title>
+          <Card.Subtitle className="mb-2 "> {props.stitle}</Card.Subtitle>
+          <Card.Text className="description"> {props.desc}</Card.Text>
+          <Card.Text className="price"> {props.price}</Card.Text>
+        </Card.Body>
+      </Card>
+    </>
+  );
 }
 
 export default ListTwo;
