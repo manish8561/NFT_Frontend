@@ -1,19 +1,18 @@
 import React, { Component } from "react";
 import { Container, Row, Col, Carousel, Card } from "react-bootstrap";
-import Img_3 from "../../../../Assets/Images/img_3.png";
 
-export class TopList extends Component {
-  render() {
+
+function TopList(props) {
     return (
       <div>
         <Card>
-          <Card.Img variant="top" src={Img_3} />
+          <Card.Img variant="top" src={props.avtar} />
           <Card.Body>
-            <Card.Title>Jacks Oscar </Card.Title>
+            <Card.Title>{props.title}  </Card.Title>
             <Card.Subtitle className="mb-2 ">
-              Lesuada laoreet umrna sed
+              {props.subtitle}
             </Card.Subtitle>
-            <Card.Text className="price">$ 69.59</Card.Text>
+            <Card.Text className="price">$ {props.price}</Card.Text>
           </Card.Body>
         </Card>
         {/* <div className="view_all">
@@ -21,7 +20,6 @@ export class TopList extends Component {
         </div> */}
       </div>
     );
-  }
 }
 
 export default TopList;
