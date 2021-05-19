@@ -1,5 +1,4 @@
-import React, { Component } from "react";
-import PaintTextures from "../../../../Assets/Images/paint-textures.png";
+import React from "react";
 
 function TrendingList(props) {
   return (
@@ -11,9 +10,9 @@ function TrendingList(props) {
         </div>
         <div className="div_right">
           <h2>{props.heading}</h2>
-          <p> {props.sheading}</p>
+          <p>{props.desc}</p>
           <h4>
-            Over <span>150</span> Art Design
+            Over <span>{props.count}</span> {props.category}
           </h4>
         </div>
       </div>

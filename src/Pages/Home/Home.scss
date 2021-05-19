@@ -59,16 +59,18 @@
 
   .carousel-control-prev-icon {
     background-image: url(../../Assets/Images/arrow.png);
+    background-size: 18px 12px;
   }
   .carousel-control-next-icon {
     background-image: url(../../Assets/Images/arrow.png);
     transform: rotate(180deg);
+    background-size: 18px 12px;
   }
   .carousel-control-prev {
-    left: -25%;
+    left: -20%;
   }
   .carousel-control-next {
-    right: -25%;
+    right: -20%;
   }
   .banner_row {
     padding: 90px 0;
@@ -319,6 +321,7 @@
     .view_all {
       text-align: right;
       margin-top: 10px;
+      padding-right: 18px;
       a {
         text-align: right;
         text-transform: uppercase;

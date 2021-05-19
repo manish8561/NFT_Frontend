@@ -1,5 +1,5 @@
-import React, { Component } from "react";
-import { Container, Row, Col, Carousel, Card } from "react-bootstrap";
+import React from "react";
+import { Card } from "react-bootstrap";
 
 
 function TopList(props) {

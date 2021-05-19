@@ -1,8 +1,7 @@
 import React from "react";
-import { Container, Row, Col, Carousel, Card } from "react-bootstrap";
+import { Container, Row, Col, Carousel} from "react-bootstrap";
 import BannerImg from "../../Assets/Images/banner_img.png";
 import CatalogSection from '../../Components/HomePage/CatalogSection/CatalogSection'
-
 import "./Home.scss";
 
 function Home() {

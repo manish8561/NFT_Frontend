@@ -1,5 +1,5 @@
-import React, { Component } from "react";
-import { Container, Row, Col, Carousel, Card } from "react-bootstrap";
+import React from "react";
+import { Row, Col } from "react-bootstrap";
 import TopList from './TopList'
 import hotsale1 from "../../../../Assets/Images/hotsale1.png";
 import hotsale2 from "../../../../Assets/Images/hotsale2.png";
