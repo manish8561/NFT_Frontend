@@ -46,14 +46,12 @@ function CreateCollectionpopup() {
 
                             </Col>
                         </Form.Group>
+                        <Button variant="primary" className=" read-btn" onClick={handleClose}>
+                            Create
+          </Button>
                     </Form>
                 </Modal.Body>
-                <Modal.Footer>
 
-                    <Button variant="primary" className=" read-btn" onClick={handleClose}>
-                        Create
-          </Button>
-                </Modal.Footer>
             </Modal>
         </div>
     )

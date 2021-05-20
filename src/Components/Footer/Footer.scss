@@ -1,7 +1,7 @@
 @import "../../_var.scss";
 
 .footer {
-  background: $dark-blue;
+  background: $dark-blue-bg;
   text-align: left;
   color: $light-grey;
   font-size: 15px;
@@ -68,9 +68,9 @@
         justify-content: space-between;
         align-items: center;
         li {
-          $white: rgba(255, 255, 255, 0.1);
+          $white-bg: rgba(255, 255, 255, 0.1);
           $light-blue: #0c9eda;
-          background-color: $white;
+          background-color: $white-bg;
           width: 37px;
           height: 37px;
           border-radius: 100%;
@@ -80,7 +80,7 @@
           transition: 0.3s;
           margin-bottom: 0;
           &:hover {
-            background-color: $light-blue;
+            background-color: $light-blue-bg;
           }
         }
       }

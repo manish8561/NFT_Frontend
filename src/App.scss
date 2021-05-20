@@ -70,21 +70,21 @@ html {
   transition: 0.3s;
 }
 .dark_btn {
-  background: $dark-blue;
-  border: 1px solid $dark-blue;
+  background: $dark-blue-bg;
+  border: 1px solid $dark-blue-bg;
   &:hover {
     background: transparent;
-    border: 1px solid $dark-blue;
-    color: $dark-blue;
+    border: 1px solid $dark-blue-bg;
+    color: $dark-blue-bg;
   }
 }
 
 .light_btn {
-  background: $light-blue;
-  border: 1px solid $light-blue;
+  background: $light-blue-bg;
+  border: 1px solid $light-blue-bg;
   &:hover {
     background: transparent;
-    border: 1px solid $light-blue;
-    color: $light-blue;
+    border: 1px solid $light-blue-bg;
+    color: $light-blue-bg;
   }
 }

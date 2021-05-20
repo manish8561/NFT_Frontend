@@ -1,5 +1,7 @@
 import React from "react";
-import { Container, Row, Col, Button } from "react-bootstrap";
+import { Container, Row, Col, Carousel} from "react-bootstrap";
+import BannerImg from "../../Assets/Images/banner_img.png";
+import CatalogSection from '../../Components/HomePage/CatalogSection/CatalogSection'
 import "./Home.scss";
 
 function Home() {
@@ -35,8 +37,47 @@ function Home() {
           </ul>
         </Container>
       </Container>
-
-
+      <Container fluid className="top_banner">
+        <Container className="ContMain">
+          <Carousel>
+            <Carousel.Item>
+              <Row className="banner_row">
+                <Col>
+                  <img src={BannerImg} />
+                </Col>
+                <Col>
+                  <div className="banner_content">
+                    <h1>The largest NFT marketplace</h1>
+                    <p>Buy, sell, and discover rare digital items</p>
+                    <div className="banner_btn">
+                      <button className="dark_btn">Explore</button>
+                      <button className="light_btn">Create</button>
+                    </div>
+                  </div>
+                </Col>
+              </Row>
+            </Carousel.Item>
+            <Carousel.Item>
+              <Row className="banner_row">
+                <Col>
+                  <img src={BannerImg} />
+                </Col>
+                <Col>
+                  <div className="banner_content">
+                    <h1>The largest NFT marketplace</h1>
+                    <p>Buy, sell, and discover rare digital items</p>
+                    <div className="banner_btn">
+                      <button className="dark_btn">Explore</button>
+                      <button className="light_btn">Create</button>
+                    </div>
+                  </div>
+                </Col>
+              </Row>
+            </Carousel.Item>
+          </Carousel>
+        </Container>
+      </Container>
+      <CatalogSection/>
     </div>
   );
 }
