@@ -1,6 +1,9 @@
 import React, { Component, useState } from 'react'
 import { Modal, Button, Form, Col, Row } from "react-bootstrap";
 import './style.scss'
+import plus_icon from '../../Assets/Images/plus_icon.svg'
+import add_circle from '../../Assets/Images/add_circle_plus.svg'
+
 function CreateCollectionpopup() {
     const [show, setShow] = useState(false);
 
@@ -9,7 +12,7 @@ function CreateCollectionpopup() {
     return (
         <div>
 
-            <Button href="#" className="create-btn" onClick={handleShow}>Create <i className="fa fa-plus"></i></Button>
+            <Button href="#" className="create-btn" onClick={handleShow}>Create <img src={add_circle} /></Button>
 
 
             <Modal show={show} onHide={handleClose} className="collection-modal">
@@ -21,7 +24,7 @@ function CreateCollectionpopup() {
                     <Form>
 
                         <Form.Group className="upload-doc">
-                            <div className="add-icon"><i className="fa fa-plus"></i></div>
+                            <div className="add-icon"><img src={plus_icon} /></div>
                             <Form.File id="exampleFormControlFile1" />
                             <p>Logo/ Image (350 x 350 recommended)</p>
                         </Form.Group>

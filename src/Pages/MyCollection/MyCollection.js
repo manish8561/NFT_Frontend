@@ -3,7 +3,15 @@ import { Container, Row, Col, Button } from "react-bootstrap";
 import thumb from '../../Assets/Images/women.png'
 import CreateCollectionpopup from "../../Components/Popup/CreateCollectionpopup";
 import CollectionItems from './CollectionItems';
-import './MyCollection.scss'
+import './MyCollection.scss';
+import my_collections1 from '../../Assets/Images/my_collections1.png'
+import my_collections2 from '../../Assets/Images/my_collections2.png'
+import my_collections3 from '../../Assets/Images/my_collections3.png'
+import collections_items1 from '../../Assets/Images/collections_items1.png'
+import collections_items2 from '../../Assets/Images/collections_items2.png'
+import collections_items3 from '../../Assets/Images/collections_items3.png'
+import collections_items4 from '../../Assets/Images/collections_items4.png'
+
 function MyCollection() {
     return (
         <div>
@@ -59,19 +67,19 @@ function MyCollection() {
                     </Col>
                     <Col lg={3}>
                         <div className="col-thumb">
-                            <img src={thumb} />
+                            <img src={my_collections1} />
                             <h3>Design Monitor</h3>
                         </div>
                     </Col>
                     <Col lg={3}>
                         <div className="col-thumb">
-                            <img src={thumb} />
+                            <img src={my_collections2} />
                             <h3>DV Artworks</h3>
                         </div>
                     </Col>
                     <Col lg={3}>
                         <div className="col-thumb">
-                            <img src={thumb} />
+                            <img src={my_collections3} />
                             <h3>Creative People</h3>
                         </div>
                     </Col>
@@ -85,18 +93,18 @@ function MyCollection() {
                         <div className="coll-box">
                             <div className=" item-col">
                                 <Row>
-                                    <Col lg={3} className="p-0"> <CollectionItems thumb={thumb} title="William Leo " text="Art World" price="$ 155.99" ></CollectionItems></Col>
-                                    <Col lg={3} className="p-0"> <CollectionItems thumb={thumb} title="William Leo " text="Art World" price="$ 155.99" ></CollectionItems></Col>
-                                    <Col lg={3} className="p-0"> <CollectionItems thumb={thumb} title="William Leo " text="Art World" price="$ 155.99" ></CollectionItems></Col>
-                                    <Col lg={3} className="p-0"> <CollectionItems thumb={thumb} title="William Leo " text="Art World" price="$ 155.99" ></CollectionItems></Col>
-                                    <Col lg={3} className="p-0"> <CollectionItems thumb={thumb} title="William Leo " text="Art World" price="$ 155.99" ></CollectionItems></Col>
-                                    <Col lg={3} className="p-0"> <CollectionItems thumb={thumb} title="William Leo " text="Art World" price="$ 155.99" ></CollectionItems></Col>
-                                    <Col lg={3} className="p-0"> <CollectionItems thumb={thumb} title="William Leo " text="Art World" price="$ 155.99" ></CollectionItems></Col>
-                                    <Col lg={3} className="p-0"> <CollectionItems thumb={thumb} title="William Leo " text="Art World" price="$ 155.99" ></CollectionItems></Col>
-                                    <Col lg={3} className="p-0"> <CollectionItems thumb={thumb} title="William Leo " text="Art World" price="$ 155.99" ></CollectionItems></Col>
-                                    <Col lg={3} className="p-0"> <CollectionItems thumb={thumb} title="William Leo " text="Art World" price="$ 155.99" ></CollectionItems></Col>
-                                    <Col lg={3} className="p-0"> <CollectionItems thumb={thumb} title="William Leo " text="Art World" price="$ 155.99" ></CollectionItems></Col>
-                                    <Col lg={3} className="p-0"> <CollectionItems thumb={thumb} title="William Leo " text="Art World" price="$ 155.99" ></CollectionItems></Col>
+                                    <Col lg={3} className="p-0"> <CollectionItems thumb={collections_items1} title="William Leo " text="Art World" price="$ 155.99" ></CollectionItems></Col>
+                                    <Col lg={3} className="p-0"> <CollectionItems thumb={collections_items2} title="Jacks Oscar " text="Art World" price="$ 155.99" ></CollectionItems></Col>
+                                    <Col lg={3} className="p-0"> <CollectionItems thumb={collections_items3} title="William Leo " text="Art World" price="$ 155.99" ></CollectionItems></Col>
+                                    <Col lg={3} className="p-0"> <CollectionItems thumb={collections_items4} title="Jacks Oscar " text="Art World" price="$ 155.99" ></CollectionItems></Col>
+                                    <Col lg={3} className="p-0"> <CollectionItems thumb={collections_items3} title="William Leo " text="Art World" price="$ 155.99" ></CollectionItems></Col>
+                                    <Col lg={3} className="p-0"> <CollectionItems thumb={collections_items4} title="Jacks Oscar " text="Art World" price="$ 155.99" ></CollectionItems></Col>
+                                    <Col lg={3} className="p-0"> <CollectionItems thumb={collections_items1} title="William Leo " text="Art World" price="$ 155.99" ></CollectionItems></Col>
+                                    <Col lg={3} className="p-0"> <CollectionItems thumb={collections_items2} title="Jacks Oscar " text="Art World" price="$ 155.99" ></CollectionItems></Col>
+                                    <Col lg={3} className="p-0"> <CollectionItems thumb={collections_items1} title="William Leo " text="Art World" price="$ 155.99" ></CollectionItems></Col>
+                                    <Col lg={3} className="p-0"> <CollectionItems thumb={collections_items2} title="Jacks Oscar " text="Art World" price="$ 155.99" ></CollectionItems></Col>
+                                    <Col lg={3} className="p-0"> <CollectionItems thumb={collections_items3} title="William Leo " text="Art World" price="$ 155.99" ></CollectionItems></Col>
+                                    <Col lg={3} className="p-0"> <CollectionItems thumb={collections_items4} title="Jacks Oscar " text="Art World" price="$ 155.99" ></CollectionItems></Col>
 
                                 </Row>
                             </div>
