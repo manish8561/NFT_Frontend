@@ -5,7 +5,7 @@
   background-color: #FDFDFD;
   margin-top: 3px;
   padding: 0;
-  border: 1px solid #ECECEC;
+  border-bottom: 1px solid #ECECEC;
 
   ul {
     margin: 0;
@@ -21,7 +21,7 @@
       a {
         color: $light-grey;
         font-size: 14px;
-        font-family: $font-weight-regular;
+        font-weight: $font-weight-regular;
         border: 0;
         display: block;
         padding: 15px 20px;
@@ -43,7 +43,7 @@
 }
 
 .banner_row {
-  padding: 90px 0;
+  padding: 90px 0 70px;
 
   .banner_content {
     display: flex;
@@ -51,18 +51,30 @@
     justify-content: center;
     height: 100%;
     color: $black;
-
-    h1 {
-      font-size: 70px;
-      font-weight: $font-weight-extraBold;
+  }
+  .collection_col{
+    .main-heading {
+      font-size: 40px;
+      font-weight: $font-weight-Bold;
       line-height: 90px;
+      color: $black;
+      position: relative;
+      &:before{
+        content: " ";
+    background: #0C9EDA;
+    width: 70px;
+    height: 1px;
+    position: absolute;
+    bottom: 3px;
+      }
     }
 
     p {
-      font-size: 24px;
+      font-size: 15px;
       font-weight: $font-weight-regular;
+      color:$light-grey;
     }
-
+  }
     .banner_btn {
       margin-top: 7%;
 
@@ -74,4 +86,183 @@
       }
     }
   }
+
+  .col-new {
+    border: 1px solid #BCBCBC;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    text-align: center;
+    padding-top: 45px;
+    padding-bottom: 27px;
+    height: 253px;
+
+    h3{
+      font-size: 24px;
+      color: #000000;
+      line-height: 29px;
+    }
+    a.create-btn {
+      background: $light-blue;
+      border-radius: 30px;
+      font-size: 14px;
+      line-height: 19px;
+      height: 50px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 26px;
+      transition: all 0.5s ease-in-out;
+      border: none;
+      margin: 25px 0;
+      &:hover{
+        background: #000;
+      }
+      i{
+        border: 2px solid #fff;
+        padding: 3px 4px;
+        border-radius: 50px;
+        font-size: 10px;
+        margin-left: 20px;
+    }
+  }
+  p{
+    color: #0C9EDA;
+    font-size: 16px;
+    line-height: 19px;
+  }
 }
+.col-thumb{
+ border-radius: 15px;
+ h3{
+  font-size: 24px;
+  color: #000000;
+  line-height: 29px;
+  text-align: center;
+  margin-top: 10px;
+ }
+  img{
+    width: 100%;
+    border-radius: 15px;
+    height: 253px;
+    object-fit: cover;
+    object-position: center;
+  }
+}
+
+.custom-cont.container {
+  max-width: 1114px;
+  .white-bg{
+    background-color: $white;
+    padding: 40px;
+    margin: 0 0 2px 2px;
+  }
+//   .item-col {
+//     display: flex;
+//     justify-content: center;
+//     align-items: center;
+// }
+}
+.collection {
+  margin-top: 150px;
+  background: $white-F7;
+  padding-top: 93px;
+  padding-bottom: 100px;
+  .main-heading{
+    font-size: 18px;
+    color: #000000;
+    line-height: 29px;
+    margin-bottom: 30px;
+  }
+  .coll-box {
+    display: flex;
+    width: 100%;
+    justify-content: start;
+    align-items: center;
+}
+}
+  .business-list
+  {
+    position: relative;
+    &:hover .overlay{
+      opacity: 1;
+    }
+    img.list-img {
+      width: 100%;
+  }
+  .overlay {
+    position: absolute;
+    top: 0;
+    height: 190px;
+    left: 50%;
+    transform: translate(-50%, 0);
+    width: 175px;
+    padding: 0 15px;
+    opacity: 0;
+    transition: all 0.5s ease-in-out;
+    &:before{
+      background: rgba(255, 255, 255, 0.9);
+      position: absolute;
+      height: 191px;
+      width: 100%;
+      top: 0;
+      filter: blur(5px);
+      left: 0;
+      content: " ";
+}
+.overlay-btns{
+  position: relative;
+  top: 29%;
+  .btn{
+    font-size: 14px;
+    line-height: 17px;
+    color:$white;
+    text-transform: uppercase;
+    border-radius: 30px;
+    height: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .read-btn {
+    background: $dark-blue;
+    border: none;
+    margin-bottom: 20px;
+}
+.buy-btn{
+  background:$light-blue;
+  border: none;
+}
+
+}
+  }
+  .business-info {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 30px;
+    h3{
+      font-size: 14px;
+      color: #0C9EDA;
+      line-height: 24px;
+      font-weight: $font-weight-semiBold;
+      margin-bottom: 0;
+    }
+    p{
+      font-size: 16px;
+      color:$black;
+      line-height: 24px;
+      font-weight: $font-weight-semiBold;
+      margin-bottom: 0;
+      text-transform: uppercase;
+    }
+    .price{
+      color: $red;
+    }
+}
+}
+
+

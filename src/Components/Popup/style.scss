@@ -1,0 +1,35 @@
+.collection-modal{
+    .modal-content{
+        border: none;
+        padding-top: 55px;
+    }
+    .modal-header{
+        flex-direction: column;
+        border-bottom: none;
+         align-items: center;
+         justify-content: center;
+         .modal-title.h4 {
+            color: #000;
+            font-size: 24px;
+            line-height: 29px;
+            margin-bottom: 23px;
+        }
+        p{
+            color:#707070;
+            font-size: 15px;
+            line-height: 20px;
+            text-align: center;
+        }
+    }
+    .modal-dialog {
+        @media (min-width: 576px){
+     
+        max-width: 1088px;
+        }
+    }
+    form.upload-doc {
+
+        display: flex;
+        justify-content: center;
+    }
+}

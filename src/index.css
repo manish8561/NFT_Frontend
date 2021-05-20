@@ -1,18 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap');
 body {
   margin: 0;
  font-family: 'Montserrat', sans-serif !important;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: #efefef !important;
+  background: #fff !important;
 }
 h1, h2, h3, h4 ,h5 ,h6, p, span, a{
  font-family: 'Montserrat', sans-serif !important;
 }
 
-code {
+/* code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
-}
+} */
 .form-control:focus{
       box-shadow: 0 0 0 .2rem rgba(71,165,77,.25) !important;
 }
