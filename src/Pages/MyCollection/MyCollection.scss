@@ -121,13 +121,9 @@
       &:hover{
         background: #000;
       }
-      i{
-        border: 2px solid #fff;
-        padding: 3px 4px;
-        border-radius: 50px;
-        font-size: 10px;
+      img{
         margin-left: 20px;
-    }
+      }
   }
   p{
     color: #0C9EDA;
@@ -190,9 +186,6 @@
     &:hover .overlay{
       opacity: 1;
     }
-    img.list-img {
-      width: 100%;
-  }
   .overlay {
     position: absolute;
     top: 0;
@@ -267,3 +260,11 @@
 }
 }
 
+.business-img{
+    max-height: 180px;
+    margin-bottom: 25px;
+    text-align: center;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+}

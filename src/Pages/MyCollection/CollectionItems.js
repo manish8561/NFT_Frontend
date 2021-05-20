@@ -6,7 +6,7 @@ export class CollectionItems extends Component {
         const { thumb, title, text, price } = this.props
         return (
             <div className="business-list white-bg">
-                <img className="list-img" src={thumb} />
+                <div className="business-img"> <img className="list-img" src={thumb} /></div>
                 <div className="business-info">
                     <div className="title-info">
                         <h3>{title}</h3>
