@@ -78,7 +78,7 @@ function MyCollection() {
             </Container>
 
             <Container fluid className="collection">
-                <Container className="custom-cont">
+                <Container className="custom-cont ContMain">
                     <Row>
                         <h4 className="main-heading">Collection items</h4>
                         <div className="coll-box">
