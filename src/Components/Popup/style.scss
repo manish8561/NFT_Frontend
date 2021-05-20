@@ -32,4 +32,10 @@
         display: flex;
         justify-content: center;
     }
+    .modal-header .close {
+   
+        position: absolute;
+        right: 20px;
+        top: 15px;
+    }
 }
