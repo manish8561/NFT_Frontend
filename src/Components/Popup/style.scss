@@ -1,0 +1,121 @@
+@import "../../_var.scss";
+
+.collection-modal{
+    .modal-content{
+        border: none;
+        padding-top: 55px;
+    }
+    .modal-header{
+        flex-direction: column;
+        border-bottom: none;
+         align-items: center;
+         justify-content: center;
+         .modal-title.h4 {
+            color: #000;
+            font-size: 24px;
+            line-height: 29px;
+            margin-bottom: 23px;
+        }
+        p{
+            color:#707070;
+            font-size: 15px;
+            line-height: 20px;
+            text-align: center;
+        }
+    }
+    .modal-dialog {
+        @media (min-width: 576px){
+     
+        max-width: 1088px;
+        }
+    }
+    .upload-doc {
+
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        input[type="file"] {
+            position: absolute;
+            left: 0;
+            opacity: 0;
+            top: 0;
+          height: 63%;
+            width: 100%;
+          }
+          .add-icon {
+     
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px dashed #BCBCBC;
+                border-radius: 15px;
+                width: 350px;
+                height: 350px;
+       
+                i {
+                    font-size: 50px;
+                    color: #BCBCBC;
+                    font-weight: 300;
+                }
+          }
+          p{
+              font-size: 15px;
+              color: #707070;
+              line-height: 20px;
+              margin-top: 15px;
+          }
+    }
+    .modal-header .close {
+   
+        position: absolute;
+        right: 20px;
+        top: 15px;
+    }
+    .info-form{
+        padding: 0 90px;
+        label{
+            color: #000;
+            font-size: 18px;
+            font-weight: 600;
+            line-height: 29px;
+        }
+        .form-control {
+            border-radius: 30px;
+            border:1px solid #BCBCBC;
+            height: 50px;
+            color:#707070;
+            font-size: 15px;
+            padding: 0 30px;
+            &:focus{
+                box-shadow: unset!important;
+                border-color: #000;
+            }
+            }
+            textarea {
+                border-radius: 15px !important;
+                resize: auto!important;
+                height: auto!important;
+                padding: 20px!important;
+            
+            }
+    }
+    .read-btn {
+        background: $dark-blue;
+        border: none;
+        font-size: 14px;
+        line-height: 17px;
+        color:$white;
+        text-transform: uppercase;
+        border-radius: 30px;
+        height: 50px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        margin-bottom: 20px;
+        padding: 0 47px;
+      }
+      .modal-footer{
+          border-top:none
+      }
+}

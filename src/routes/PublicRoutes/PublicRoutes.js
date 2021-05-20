@@ -5,6 +5,7 @@ import Home from "../../Pages/Home/Home";
 import { rootName } from "../../constant";
 import Header from "../../Components/Header/Header";
 import Footer from "../../Components/Footer/Footer";
+import MyCollection from "../../Pages/MyCollection/MyCollection";
 
 
 class PublicRoutes extends Component {
@@ -12,15 +13,20 @@ class PublicRoutes extends Component {
   render() {
     return (
       <React.Fragment>
-      <div className="PublicArea__content">
-       <Header />
-        <Route
-          path={`${rootName}/`}
-          component={Home}
-          exact={true}
-        />
-      </div>
-      <Footer />
+        <div className="PublicArea__content">
+          <Header />
+          <Route
+            path={`${rootName}/`}
+            component={Home}
+            exact={true}
+          />
+          <Route
+            path={`/MyCollection`}
+            component={MyCollection}
+            exact={true}
+          />
+        </div>
+        <Footer />
       </React.Fragment>
     );
   }
