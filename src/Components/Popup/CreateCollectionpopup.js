@@ -19,7 +19,9 @@ function CreateCollectionpopup() {
                 </Modal.Header>
                 <Modal.Body>
                     <Form className="upload-doc">
+
                         <Form.Group>
+                            <div className="add-icon"><i className="fa fa-plus"></i></div>
                             <Form.File id="exampleFormControlFile1" />
                         </Form.Group>
                     </Form>
