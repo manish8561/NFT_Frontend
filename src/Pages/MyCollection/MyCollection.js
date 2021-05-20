@@ -3,6 +3,7 @@ import { Container, Row, Col, Button } from "react-bootstrap";
 import thumb from '../../Assets/Images/women.png'
 import CreateCollectionpopup from "../../Components/Popup/CreateCollectionpopup";
 import CollectionItems from './CollectionItems';
+import './MyCollection.scss'
 function MyCollection() {
     return (
         <div>
