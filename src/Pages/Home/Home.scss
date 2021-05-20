@@ -227,17 +227,19 @@
     flex-direction: column;
     justify-content: center;
   }
-  .read-btn {
-    background: $dark-blue;
-    border: none;
-    margin-bottom: 20px;
-}
+
 .buy-btn{
   background:$light-blue;
   border: none;
 }
 
+.read-btn {
+  background: $dark-blue;
+  border: none;
+  margin-bottom: 20px;
 }
+}
+
   }
   .business-info {
     display: flex;
@@ -264,5 +266,4 @@
     }
 }
 }
-
 
