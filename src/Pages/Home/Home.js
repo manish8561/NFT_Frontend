@@ -22,8 +22,8 @@ function Home() {
                     <h1>The largest NFT marketplace</h1>
                     <p>Buy, sell, and discover rare digital items</p>
                     <div className="banner_btn">
-                      <button className="dark_btn">Explore</button>
-                      <button className="light_btn">Create</button>
+                      <a href="#" className="dark_btn">Explore</a>
+                      <a href="/MyCollection" className="light_btn">Create</a>
                     </div>
                   </div>
                 </Col>
