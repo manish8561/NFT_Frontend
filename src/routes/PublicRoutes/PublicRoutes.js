@@ -6,6 +6,7 @@ import { rootName } from "../../constant";
 import Header from "../../Components/Header/Header";
 import Footer from "../../Components/Footer/Footer";
 import MyCollection from "../../Pages/MyCollection/MyCollection";
+import CreateItem from "../../Pages/CreateItem/CreateItem";
 
 
 class PublicRoutes extends Component {
@@ -25,6 +26,7 @@ class PublicRoutes extends Component {
             component={MyCollection}
             exact={true}
           />
+          <CreateItem></CreateItem>
         </div>
         <Footer />
       </React.Fragment>
