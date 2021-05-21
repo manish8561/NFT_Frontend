@@ -19,7 +19,7 @@ function Footer() {
       <Container fluid>
         <Container className="ContMain">
           <Row className="footer_row">
-            <Col xs={12} md={5} className="logo_col">
+            <Col xs={12} md={6} lg={5} className="logo_col">
               <img src={FooterLogo} alt="footer logo" className="footer_logo" />
               <p>
                 Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
@@ -42,7 +42,7 @@ function Footer() {
                 </li>
               </ul>
             </Col>
-            <Col xs={12} md={2} className="account_col">
+            <Col xs={12} md={6} lg={2} className="account_col">
               <h3>My Account</h3>
               <ul>
                 <li>
@@ -62,7 +62,7 @@ function Footer() {
                 </li>
               </ul>
             </Col>
-            <Col xs={12} md={3} className="marketplace_col">
+            <Col xs={12} md={6}  lg={3} className="marketplace_col">
               <h3>MarketPlace</h3>
               <ul>
                 <li>
@@ -85,7 +85,7 @@ function Footer() {
                 </li>
               </ul>
             </Col>
-            <Col xs={12} md={2} className="company_col">
+            <Col xs={12} md={6} lg={2} className="company_col">
               <h3>Company</h3>
               <ul>
                 <li>
