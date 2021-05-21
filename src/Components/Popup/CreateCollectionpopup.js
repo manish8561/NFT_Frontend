@@ -53,7 +53,9 @@ function CreateCollectionpopup() {
                         <div className="topTile">
                             <h2>Your collection has been created!</h2>
                         <Row> <Col className="mask_img"><img src={mask} />
-                            <Button variant="primary" className=" read-btn fl-0" >Add</Button></Col></Row> 
+                        <a className="read-btn fl-0" href="#">Add</a>
+                            {/* <Button variant="primary" className=" read-btn fl-0" >Add</Button> */}
+                            </Col></Row> 
                         </div>
                     </div>
                 </Modal.Body>
