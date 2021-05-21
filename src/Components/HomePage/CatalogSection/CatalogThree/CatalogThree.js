@@ -19,7 +19,7 @@ function CatalogThree() {
     return (
       <>
         <Row className="catalog_three">
-          <Col>
+          <Col xl={4} md={6} className="cat_three_col">
             <h2>Hot Sale</h2>
             <TopList avtar={hotsale1} title="William Leo" subtitle="Lesuada laoreet umrna sed" price="155.59" />
             <TopList avtar={hotsale2} title="William Leo" subtitle="Lesuada laoreet umrna sed" price="155.59" />
@@ -29,7 +29,7 @@ function CatalogThree() {
               <a href="#">View all</a>
             </div>
           </Col>
-          <Col>
+          <Col xl={4} md={6} className="cat_three_col">
             <h2>Top Rated</h2>
             <TopList avtar={rated1} title="William Leo" subtitle="Lesuada laoreet umrna sed" price="155.59" />
             <TopList avtar={rated2} title="William Leo" subtitle="Lesuada laoreet umrna sed" price="155.59" />
@@ -39,7 +39,7 @@ function CatalogThree() {
               <a href="#">View all</a>
             </div>
           </Col>
-          <Col>
+          <Col xl={4} md={12} className="cat_three_col">
             <h2>Popular</h2>
             <TopList avtar={popular1} title="William Leo" subtitle="Lesuada laoreet umrna sed" price="155.59" />
             <TopList avtar={popular2} title="William Leo" subtitle="Lesuada laoreet umrna sed" price="155.59" />

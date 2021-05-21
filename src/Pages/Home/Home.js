@@ -42,10 +42,10 @@ function Home() {
           <Carousel>
             <Carousel.Item>
               <Row className="banner_row">
-                <Col>
+                <Col className="banner_left">
                   <img src={BannerImg} />
                 </Col>
-                <Col>
+                <Col className="banner_right">
                   <div className="banner_content">
                     <h1>The largest NFT marketplace</h1>
                     <p>Buy, sell, and discover rare digital items</p>
@@ -59,10 +59,10 @@ function Home() {
             </Carousel.Item>
             <Carousel.Item>
               <Row className="banner_row">
-                <Col>
+                <Col className="banner_left">
                   <img src={BannerImg} />
                 </Col>
-                <Col>
+                <Col className="banner_right">
                   <div className="banner_content">
                     <h1>The largest NFT marketplace</h1>
                     <p>Buy, sell, and discover rare digital items</p>
