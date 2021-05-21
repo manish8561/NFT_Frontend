@@ -8,9 +8,6 @@ import {
 import PublicRoutes from "./routes/PublicRoutes/PublicRoutes";
 import LoaderComponent from "./Components/LoaderCompoent/LoaderCompoent";
 import { rootName } from "./constant";
-import MyCollection from "./Pages/MyCollection/MyCollection";
-import Categories from "./Pages/Categories/Categories";
-import Activities from "./Pages/Activities/Activities";
 
 class Application extends Component {
   render() {

@@ -11,41 +11,12 @@ import collections_items1 from '../../Assets/Images/collections_items1.png'
 import collections_items2 from '../../Assets/Images/collections_items2.png'
 import collections_items3 from '../../Assets/Images/collections_items3.png'
 import collections_items4 from '../../Assets/Images/collections_items4.png'
+import TopLinks from '../../Components/TopLinks/TopLinks';
 
 function MyCollection() {
     return (
         <div>
-            <Container fluid className="top_list">
-                <Container>
-                    <ul>
-                        <li>
-                            <a href="#">New</a>
-                        </li>
-                        <li>
-                            <a href="#">Art</a>
-                        </li>
-                        <li>
-                            <a href="#">Domain Names</a>
-                        </li>
-                        <li>
-                            <a href="#">Virtual Worlds</a>
-                        </li>
-                        <li>
-                            <a href="#">Trading Cards</a>
-                        </li>
-                        <li>
-                            <a href="#">Collectibles</a>
-                        </li>
-                        <li>
-                            <a href="#">Sports</a>
-                        </li>
-                        <li>
-                            <a href="#">Utility</a>
-                        </li>
-                    </ul>
-                </Container>
-            </Container>
-
+            <TopLinks />
             <Container className="ContMain">
                 <Row className="banner_row">
                     <Col lg={9}>
@@ -113,7 +84,6 @@ function MyCollection() {
 
                 </Container>
             </Container>
-
         </div>
     );
 }

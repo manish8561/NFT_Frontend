@@ -9,9 +9,6 @@
   @media (max-width: 1220px) {
     font-size: 14px;
   }
-  @media (max-width: 992px) {
-    font-size: 12px;
-  }
   h3 {
     font-size: 15px;
     color: $white;
@@ -21,11 +18,8 @@
       font-size: 13px;
       margin-bottom: 10px;
     }
-    @media (max-width: 992px) {
-      font-size: 12px;
-    }
     @media (max-width: 467px) {
-      font-size: 11px;
+      font-size: 12px;
     }
   }
   ul {
@@ -59,6 +53,10 @@
       }
       .footer_logo {
         margin-bottom: 25px;
+        @media (max-width: 992px) {
+          width: 40px;
+          margin-bottom: 15px;
+        }
       }
       ul {
         li {
@@ -80,10 +78,8 @@
     .marketplace_col {
       padding-left: 67px;
       @media (max-width: 992px) {
-        padding-left: 45px;
-      }
-      @media (max-width: 767px) {
-        padding: 0;
+        padding-left: 0px;
+        margin-top: 15px;
       }
     }
     .company_col, .account_col  {
@@ -143,6 +139,23 @@
             background-color: $light-blue-bg;
           }
         }
+      }
+    }
+  }
+}
+.account_col, .marketplace_col, .company_col{
+  ul{
+    @media (max-width: 992px) {
+      display: flex;
+      flex-wrap: wrap;
+    }
+    li{
+      @media (max-width: 992px) {
+        width: 50%;
+        display: block;
+      }
+      @media (max-width: 450px) {
+        width: 100%;
       }
     }
   }
