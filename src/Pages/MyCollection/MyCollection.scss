@@ -135,21 +135,24 @@
   .business-list
   {
     position: relative;
+    transition: all 0.3s;
+    cursor: pointer;
+
     &:hover .overlay{
       opacity: 1;
     }
   .overlay {
     position: absolute;
-    top: 0;
-    height: 100%;
+    top: 40%;
+    height: 222px;
     left: 50%;
-    transform: translate(-50%, 0);
     width: 230px;
     padding: 0 15px;
     opacity: 0;
     transition: all 0.5s ease-in-out;
+    transform: translate(-50%, -50%);
     &:before{
-      background: rgba(255, 255, 255, 0.9);
+      background: rgba(255, 255, 255, 0.7);
       position: absolute;
       height: 100%;
       width: 100%;
@@ -160,7 +163,12 @@
 }
 .overlay-btns{
   position: relative;
-  top: 29%;
+  top: 40%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
   .btn{
     font-size: 14px;
     line-height: 17px;
@@ -171,17 +179,31 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+    max-width: 150px;
+    max-width: 150px;
+    align-items: center;
+    width: 100%;
   }
 
 .buy-btn{
   background:$light-blue;
   border: none;
+  &:hover{
+    background: transparent;
+    color:$light-blue;
+    border:1px solid $light-blue;
+  }
 }
 
 .read-btn {
   background: $dark-blue;
   border: none;
   margin-bottom: 20px;
+  &:hover{
+    background: transparent;
+    color:$dark-blue;
+    border:1px solid $dark-blue;
+  }
 }
 }
 
@@ -213,10 +235,15 @@
 }
 
 .business-img{
-    max-height: 180px;
+
     margin-bottom: 25px;
     text-align: center;
    display: flex;
    align-items: center;
    justify-content: center;
+   img.list-img {
+   height: 220px;
+    object-fit: contain;
+    transition: all 0.3s ease;
+}
 }

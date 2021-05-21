@@ -6,17 +6,36 @@
   color: $light-grey;
   font-size: 15px;
   font-weight: $font-weight-regular;
+  @media (max-width: 1220px) {
+    font-size: 14px;
+  }
+  @media (max-width: 992px) {
+    font-size: 12px;
+  }
   h3 {
     font-size: 15px;
     color: $white;
     text-transform: uppercase;
     margin-bottom: 15px;
+    @media (max-width: 1220px) {
+      font-size: 13px;
+      margin-bottom: 10px;
+    }
+    @media (max-width: 992px) {
+      font-size: 12px;
+    }
+    @media (max-width: 467px) {
+      font-size: 11px;
+    }
   }
   ul {
     list-style: none;
     padding: 0;
     li {
       margin-bottom: 12px;
+      @media (max-width: 1220px) {
+        margin-bottom: 8px;
+      }
       a {
         color: $light-grey;
         transition: 0.2s;
@@ -30,8 +49,14 @@
   .footer_row {
     padding: 60px 0 15px 0;
     margin: auto;
+    @media (max-width: 992px) {
+      padding: 40px 0 15px 0;
+    }
     .logo_col {
       padding-right: 62px;
+      @media (max-width: 767px) {
+        padding: 0;
+      }
       .footer_logo {
         margin-bottom: 25px;
       }
@@ -39,15 +64,32 @@
         li {
           img {
             margin-right: 18px;
+            @media (max-width: 767px) {
+              margin-right: 10px;
+            }
           }
           span {
             margin-left: 42px;
+            @media (max-width: 767px) {
+              margin-left: 34px;
+            }
           }
         }
       }
     }
     .marketplace_col {
       padding-left: 67px;
+      @media (max-width: 992px) {
+        padding-left: 45px;
+      }
+      @media (max-width: 767px) {
+        padding: 0;
+      }
+    }
+    .company_col, .account_col  {
+      @media (max-width: 767px) {
+        padding: 0;
+      }
     }
     .copyright_col {
       $light-blue: rgba(12, 158, 218, 0.3);
@@ -56,10 +98,24 @@
       border-top: 1px solid $light-blue;
       padding: 30px 0 0;
       margin: 15px 15px 0;
+      @media (max-width: 767px) {
+        flex-direction: column;
+        padding: 15px 0 0;
+        margin: 0;
+      }
       p {
         font-size: 13px;
         margin-right: 17%;
         padding: 0;
+        @media (max-width: 1220px) {
+          font-size: 12px;
+        }
+        @media (max-width: 992px) {
+          font-size: 11px;
+        }
+        @media (max-width: 767px) {
+          margin-right: 0;
+        }
       }
       ul {
         display: flex;
@@ -79,6 +135,10 @@
           align-items: center;
           transition: 0.3s;
           margin-bottom: 0;
+          @media (max-width: 467px) {
+            width: 30px;
+            height: 30px;
+          }
           &:hover {
             background-color: $light-blue-bg;
           }

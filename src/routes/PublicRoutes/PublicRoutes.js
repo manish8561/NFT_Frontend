@@ -7,6 +7,10 @@ import Header from "../../Components/Header/Header";
 import Footer from "../../Components/Footer/Footer";
 import MyCollection from "../../Pages/MyCollection/MyCollection";
 import CreateItem from "../../Pages/CreateItem/CreateItem";
+import Categories from "../../Pages/Categories/Categories";
+import Activities from "../../Pages/Activities/Activities";
+
+
 
 
 class PublicRoutes extends Component {
@@ -22,14 +26,24 @@ class PublicRoutes extends Component {
             exact={true}
           />
           <Route
-            path={`/MyCollection`}
+            path={`${rootName}/MyCollection`}
             component={MyCollection}
             exact={true}
           />
           <CreateItem></CreateItem>
+          <Route
+            path={`${rootName}/Categories`}
+            component={Categories}
+            exact={true}
+          />
+          <Route
+            path={`${rootName}/Activities`}
+            component={Activities}
+            exact={true}
+          />
         </div>
         <Footer />
-      </React.Fragment>
+      </React.Fragment >
     );
   }
 }
