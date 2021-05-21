@@ -4,6 +4,7 @@ import CatalogTwo from "./CatalogTwo/CatalogTwo";
 import CatalogOne from "./CatalogOne/CatalogOne";
 import CatalogThree from "./CatalogThree/CatalogThree";
 
+
 function CatalogSection() {
   return (
     <>

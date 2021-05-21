@@ -39,7 +39,7 @@
   }
 }
 
-.ContMain{
+.ContMain {
   max-width: 1366px !important;
 }
 body,
@@ -87,4 +87,50 @@ html {
     border: 1px solid $light-blue-bg;
     color: $light-blue-bg;
   }
+}
+.custom_dropdown {
+  margin: 12px 0 30px;
+  .drop_btn {
+    width: 100%;
+    height: 50px;
+    border-radius: 30px;
+    border: 1px solid $white-bg-BC;
+    font-size: 16px;
+    color: $black;
+    font-weight: $font-weight-regular;
+    background-color: $white-bg;
+    padding: 10px 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    &:focus,
+    &:active,
+    &:active {
+      box-shadow: unset !important;
+      background-color: $light-blue-bg;
+    }
+  }
+  .drop_menu {
+    width: 100%;
+  }
+}
+/* Works on Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #bcbcbc #fff;
+}
+
+/* Works on Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+  width: 14px;
+}
+
+*::-webkit-scrollbar-track {
+  background: #fff;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #bcbcbc;
+  border-radius: 20px;
+  border: 3px solid #fff;
 }
