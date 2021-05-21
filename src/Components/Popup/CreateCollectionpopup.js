@@ -3,6 +3,7 @@ import { Modal, Button, Form, Col, Row } from "react-bootstrap";
 import './style.scss'
 import plus_icon from '../../Assets/Images/plus_icon.svg'
 import add_circle from '../../Assets/Images/add_circle_plus.svg'
+import CreatePopup from './CreatePopup';
 
 function CreateCollectionpopup() {
     const [show, setShow] = useState(false);
@@ -49,9 +50,7 @@ function CreateCollectionpopup() {
 
                             </Col>
                         </Form.Group>
-                        <Button variant="primary" className=" read-btn" onClick={handleClose}>
-                            Create
-          </Button>
+                        <CreatePopup></CreatePopup>
                     </Form>
                 </Modal.Body>
 
