@@ -9,6 +9,7 @@ import MyCollection from "../../Pages/MyCollection/MyCollection";
 import CreateItem from "../../Pages/CreateItem/CreateItem";
 import Categories from "../../Pages/Categories/Categories";
 import Activities from "../../Pages/Activities/Activities";
+import Profile from "../../Pages/Profile/Profile";
 
 
 
@@ -30,7 +31,11 @@ class PublicRoutes extends Component {
             component={MyCollection}
             exact={true}
           />
-          <CreateItem></CreateItem>
+          <Route
+            path={`${rootName}/CreateItem`}
+            component={CreateItem}
+            exact={true}
+          />
           <Route
             path={`${rootName}/Categories`}
             component={Categories}
@@ -39,6 +44,11 @@ class PublicRoutes extends Component {
           <Route
             path={`${rootName}/Activities`}
             component={Activities}
+            exact={true}
+          />
+          <Route
+            path={`${rootName}/Profile`}
+            component={Profile}
             exact={true}
           />
         </div>
