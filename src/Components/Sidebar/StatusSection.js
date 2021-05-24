@@ -1,27 +1,29 @@
 import React from "react";
 
-function StatusSection() {
+function StatusSection(props) {
   return (
     <>
-    <h3>Status</h3>
+      <h3> {props.heading}</h3>
       <ul className="status_sec">
         <li>
-          <a href="#">On Sale</a>
+          <a href="#"> {props.tag1}</a>
         </li>
         <li>
-          <a href="#" className="active">Now</a>
+          <a href="#" className="active">
+            {props.tag2}
+          </a>
         </li>
         <li>
-          <a href="#">Magna</a>
+          <a href="#"> {props.tag3}</a>
         </li>
         <li>
-          <a href="#">Has Offer</a>
+          <a href="#">{props.tag4}</a>
         </li>
         <li>
-          <a href="#">Dolor</a>
+          <a href="#"> {props.tag5}</a>
         </li>
         <li>
-          <a href="#">Upcoming</a>
+          <a href="#"> {props.tag6}</a>
         </li>
       </ul>
     </>
