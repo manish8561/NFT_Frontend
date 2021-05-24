@@ -46,12 +46,27 @@
         max-width: 1088px;
         }
     }
+    .upload-file
+    {
+        margin-bottom: 95px!important;
+    p{
+        font-size: 16px;
+    }
+}
+    span.blue-text {
+        color: #0C9EDA;
+        font-size: 15px;
+    }
     .upload-doc {
 
         display: flex;
         justify-content: center;
         flex-direction: column;
         align-items: center;
+        position: relative;
+        width: 350px;
+        margin: 0 auto;
+        height: 350px;
         input[type="file"] {
             position: absolute;
             left: 0;
@@ -69,7 +84,8 @@
                 border-radius: 15px;
                 width: 350px;
                 height: 350px;
-       
+                flex-direction: column;
+                text-align: center;
                 i {
                     font-size: 50px;
                     color: #BCBCBC;
@@ -119,7 +135,6 @@
     }
     .read-btn {
         background: $dark-blue;
-        border: none;
         font-size: 14px;
         line-height: 17px;
         color:$white;
@@ -133,6 +148,12 @@
         padding: 0 47px;
         text-decoration: none;
         float: right;
+        border:1px solid transparent;
+        &:hover{
+            background: transparent;
+            border:1px solid $dark-blue;
+            color:$dark-blue;
+        }
       }
       .modal-footer{
           border-top:none
@@ -147,4 +168,38 @@
                 float: none;
             }
       }
+      .property-footer{
+        justify-content: center;
+        padding-bottom: 60px;
+
+    }
+    .type-form{
+        position: relative;
+        .delete-icon {
+            position: absolute;
+            right: -50px;
+            top: 0px;
+            border: 2px solid #0C9EDA;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 100%;
+        }
+    }
+    .plus-icon{
+        border: 2px solid #0C9EDA;
+        width: 50px;
+        height: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 100%;
+        margin-top: 30px;
+    }
+}
+.modal-backdrop.show{
+    background: #000!important;
+    opacity: .5 !important;
 }

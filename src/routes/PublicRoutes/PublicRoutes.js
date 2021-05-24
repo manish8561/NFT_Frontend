@@ -6,8 +6,10 @@ import { rootName } from "../../constant";
 import Header from "../../Components/Header/Header";
 import Footer from "../../Components/Footer/Footer";
 import MyCollection from "../../Pages/MyCollection/MyCollection";
+import CreateItem from "../../Pages/CreateItem/CreateItem";
 import Categories from "../../Pages/Categories/Categories";
 import Activities from "../../Pages/Activities/Activities";
+import Profile from "../../Pages/Profile/Profile";
 
 
 
@@ -30,6 +32,11 @@ class PublicRoutes extends Component {
             exact={true}
           />
           <Route
+            path={`${rootName}/CreateItem`}
+            component={CreateItem}
+            exact={true}
+          />
+          <Route
             path={`${rootName}/Categories`}
             component={Categories}
             exact={true}
@@ -39,9 +46,14 @@ class PublicRoutes extends Component {
             component={Activities}
             exact={true}
           />
+          <Route
+            path={`${rootName}/Profile`}
+            component={Profile}
+            exact={true}
+          />
         </div>
         <Footer />
-      </React.Fragment>
+      </React.Fragment >
     );
   }
 }
