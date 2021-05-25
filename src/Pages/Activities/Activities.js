@@ -18,7 +18,7 @@ function Activities() {
       <Container fluid className="activity_sec">
         <div className="activity_row">
           <div className={isActive ? "sidebar_col" : "sidebar_col open"}>
-           <span className="sidebtn" onClick={handleToggle} ></span>
+            <span className="sidebtn" onClick={handleToggle} ></span>
             <h3>Categories</h3>
             <Sidebar />
             <div>
