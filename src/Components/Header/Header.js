@@ -1,10 +1,16 @@
-import React from "react";
+import React, {useState } from 'react'
 import { Navbar, Nav } from "react-bootstrap";
 import Logo from "../../Assets/Images/logo.png";
 import Search from "../../Assets/Images/search.png";
 import "./Header.scss";
 
 function Header() {
+
+  const [isActive, setActive] = useState("false");
+
+  const handleToggle = () => {
+    setActive(!isActive);
+  };
   return (
     <div className="custom_nav">
       <Navbar expand="lg">
@@ -24,9 +30,13 @@ function Header() {
             <Nav.Link href="#link">About us</Nav.Link>
             <Nav.Link href="#link">Contact</Nav.Link>
           </Nav>
-          <img src={Search} alt="search" />
         </Navbar.Collapse>
       </Navbar>
+      <img src={Search} alt="search" className="search" onClick={handleToggle} />
+      <div  className={isActive ? "hide" : "Swap_Tab"}>
+
+        asdfasdf adfadfadfasf
+      </div>
     </div>
   );
 }
