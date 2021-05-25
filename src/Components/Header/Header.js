@@ -7,10 +7,8 @@ import "./Header.scss";
 function Header() {
 
   const [isActive, setActive] = useState("false");
-
-  const handleToggle = () => {
-    setActive(!isActive);
-  };
+  const handleToggle = () => { setActive(!isActive);};
+  
   return (
     <div className="custom_nav">
       <Navbar expand="lg">

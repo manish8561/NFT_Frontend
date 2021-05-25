@@ -7,10 +7,14 @@
   .activity_row {
     display: flex;
     .activityRight {
-      width: calc(100% - 280px);
+      width: calc(100% - 350px);
       margin: 0 auto 42px;
-      @media (max-width: 1700px) {
+      @media (max-width: 1500px) {
         padding: 0 20px;
+        width: calc(100% - 280px);
+      }
+      @media (max-width: 991px) {
+        width: 100%;
       }
       .activity_top {
         display: flex;

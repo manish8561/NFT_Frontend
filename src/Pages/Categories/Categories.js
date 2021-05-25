@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import { Container, Dropdown, Form } from "react-bootstrap";
 import TopLinks from "../../Components/TopLinks/TopLinks";
 import CategorieRight from "./CategorieRight";
@@ -7,12 +7,17 @@ import "../Home/Home.scss";
 import Sidebar from "../../Components/Sidebar/Sidebar";
 
 function Categories() {
+
+  const [isActive, setActive] = useState("false");
+  const handleToggle = () => { setActive(!isActive);};
+
   return (
     <>
       <TopLinks />
       <Container fluid className="categorie_sec">
         <div className="categorie_row">
-          <div className="sidebar_col">
+           <div className={isActive ? "sidebar_col" : "sidebar_col open"}>
+          <span className="sidebtn" onClick={handleToggle} ></span>
           <h3>Collections</h3>
             <Sidebar />
             <div>

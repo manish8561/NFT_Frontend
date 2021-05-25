@@ -8,10 +8,14 @@
     margin: 0;
     display: flex;
     .right_sec {
-      max-width: 1360px;
-      margin: 0 auto;
-      @media (max-width: 1220px) {
+      width: calc(100% - 350px);
+      margin: 0 auto 42px;
+      @media (max-width: 1500px) {
         padding: 0 20px;
+        width: calc(100% - 280px);
+      }
+      @media (max-width: 991px) {
+        width: 100%;
       }
       .collection {
         margin-top: 0;

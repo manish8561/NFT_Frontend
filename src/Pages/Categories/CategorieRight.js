@@ -28,7 +28,7 @@ function CategorieRight() {
               <div className="coll-box">
                 <div className=" item-col">
                   <Row>
-                    <Col lg={3} className="p-0">
+                    <Col sm={6} lg={3} className="p-0">
                       {" "}
                       <CollectionItems
                         thumb={collections_items1}
@@ -37,7 +37,7 @@ function CategorieRight() {
                         price="$ 155.99"
                       ></CollectionItems>
                     </Col>
-                    <Col lg={3} className="p-0">
+                    <Col sm={6} lg={3} className="p-0">
                       {" "}
                       <CollectionItems
                         thumb={collections_items2}
@@ -46,7 +46,7 @@ function CategorieRight() {
                         price="$ 155.99"
                       ></CollectionItems>
                     </Col>
-                    <Col lg={3} className="p-0">
+                    <Col sm={6} lg={3} className="p-0">
                       {" "}
                       <CollectionItems
                         thumb={collections_items3}
@@ -55,7 +55,7 @@ function CategorieRight() {
                         price="$ 155.99"
                       ></CollectionItems>
                     </Col>
-                    <Col lg={3} className="p-0">
+                    <Col sm={6} lg={3} className="p-0">
                       {" "}
                       <CollectionItems
                         thumb={collections_items4}
@@ -64,7 +64,7 @@ function CategorieRight() {
                         price="$ 155.99"
                       ></CollectionItems>
                     </Col>
-                    <Col lg={3} className="p-0">
+                    <Col sm={6} lg={3} className="p-0">
                       {" "}
                       <CollectionItems
                         thumb={collections_items3}
@@ -73,7 +73,7 @@ function CategorieRight() {
                         price="$ 155.99"
                       ></CollectionItems>
                     </Col>
-                    <Col lg={3} className="p-0">
+                    <Col sm={6} lg={3} className="p-0">
                       {" "}
                       <CollectionItems
                         thumb={collections_items4}
@@ -82,7 +82,7 @@ function CategorieRight() {
                         price="$ 155.99"
                       ></CollectionItems>
                     </Col>
-                    <Col lg={3} className="p-0">
+                    <Col sm={6} lg={3} className="p-0">
                       {" "}
                       <CollectionItems
                         thumb={collections_items1}
@@ -91,7 +91,7 @@ function CategorieRight() {
                         price="$ 155.99"
                       ></CollectionItems>
                     </Col>
-                    <Col lg={3} className="p-0">
+                    <Col sm={6} lg={3} className="p-0">
                       {" "}
                       <CollectionItems
                         thumb={collections_items2}
@@ -100,7 +100,7 @@ function CategorieRight() {
                         price="$ 155.99"
                       ></CollectionItems>
                     </Col>
-                    <Col lg={3} className="p-0">
+                    <Col sm={6} lg={3} className="p-0">
                       {" "}
                       <CollectionItems
                         thumb={collections_items1}
@@ -109,7 +109,7 @@ function CategorieRight() {
                         price="$ 155.99"
                       ></CollectionItems>
                     </Col>
-                    <Col lg={3} className="p-0">
+                    <Col sm={6} lg={3} className="p-0">
                       {" "}
                       <CollectionItems
                         thumb={collections_items2}
@@ -118,7 +118,7 @@ function CategorieRight() {
                         price="$ 155.99"
                       ></CollectionItems>
                     </Col>
-                    <Col lg={3} className="p-0">
+                    <Col sm={6} lg={3} className="p-0">
                       {" "}
                       <CollectionItems
                         thumb={collections_items3}
@@ -127,7 +127,7 @@ function CategorieRight() {
                         price="$ 155.99"
                       ></CollectionItems>
                     </Col>
-                    <Col lg={3} className="p-0">
+                    <Col sm={6} lg={3} className="p-0">
                       {" "}
                       <CollectionItems
                         thumb={collections_items4}
@@ -136,7 +136,7 @@ function CategorieRight() {
                         price="$ 155.99"
                       ></CollectionItems>
                     </Col>
-                    <Col lg={3} className="p-0">
+                    <Col sm={6} lg={3} className="p-0">
                       {" "}
                       <CollectionItems
                         thumb={collections_items1}
@@ -145,7 +145,7 @@ function CategorieRight() {
                         price="$ 155.99"
                       ></CollectionItems>
                     </Col>
-                    <Col lg={3} className="p-0">
+                    <Col sm={6} lg={3} className="p-0">
                       {" "}
                       <CollectionItems
                         thumb={collections_items2}
@@ -154,7 +154,7 @@ function CategorieRight() {
                         price="$ 155.99"
                       ></CollectionItems>
                     </Col>
-                    <Col lg={3} className="p-0">
+                    <Col sm={6} lg={3} className="p-0">
                       {" "}
                       <CollectionItems
                         thumb={collections_items3}
@@ -163,7 +163,7 @@ function CategorieRight() {
                         price="$ 155.99"
                       ></CollectionItems>
                     </Col>
-                    <Col lg={3} className="p-0">
+                    <Col sm={6} lg={3} className="p-0">
                       {" "}
                       <CollectionItems
                         thumb={collections_items4}
