@@ -24,7 +24,7 @@ function Profile() {
             <Container className="ContMain">
                 <Row className="banner_row">
                     <div className="bg-cover">
-                        <img src={cover} />
+                        <img src={cover} className="cover-img" />
                         <Form>
 
                             <Form.Group className="upload-img">

@@ -4,6 +4,10 @@
     .modal-content{
         border: none;
         padding-top: 55px;
+        @media (max-width:767px) 
+        {
+            padding-top: 15px;
+        }
     }
     .hide{display: none;}
     .mask_img{
@@ -13,6 +17,10 @@
         margin: 25px 0;
         img{
             margin-bottom: 25px;
+            @media (max-width:991px) 
+            {
+                width: 100%;
+            }
         }
     }
     .topTile{
@@ -26,6 +34,12 @@
             text-align: center;
             line-height: 29px;
             margin-bottom: 23px;
+            @media (max-width:767px) 
+            {
+                font-size: 18px;
+                line-height: 22px;
+                margin-bottom: 5px;
+            }
         }
         p{
             color:#707070;
@@ -33,6 +47,17 @@
             line-height: 20px;
             text-align: center;
             margin-bottom: 30px;
+            @media (max-width:767px)
+            {
+                font-size: 13px;
+                margin-bottom: 10px;
+            }
+            br{
+                @media (max-width:767px)
+                {
+                    display: none;
+                } 
+            }
         }
     }
     .close-btn{
@@ -49,6 +74,9 @@
     .upload-file
     {
         margin-bottom: 95px!important;
+        @media (max-width: 991px){
+            margin-bottom: 15px!important;
+        }
     p{
         font-size: 16px;
     }
@@ -67,6 +95,12 @@
         width: 350px;
         margin: 0 auto;
         height: 350px;
+        @media (max-width:767px) 
+        {
+            width: 100%;
+            height: auto;
+        
+        }
         input[type="file"] {
             position: absolute;
             left: 0;
@@ -86,6 +120,19 @@
                 height: 350px;
                 flex-direction: column;
                 text-align: center;
+                @media (max-width:767px) 
+                {
+                    width: 100%;
+                    height: auto;
+                
+                }
+                img{
+                    @media (max-width:767px) 
+                {
+                    width: 60px;
+                
+                }
+                }
                 i {
                     font-size: 50px;
                     color: #BCBCBC;
@@ -97,6 +144,12 @@
               color: #707070;
               line-height: 20px;
               margin-top: 15px;
+              @media (max-width:767px) 
+              {
+                font-size: 11px;
+             
+                margin-top: 7px;
+              }
           }
     }
     .modal-header .close {
@@ -107,11 +160,19 @@
     }
     .info-form{
         padding: 0 90px;
+        @media (max-width:991px) 
+        {
+            padding: 0 10px;
+        }
         label{
             color: #000;
             font-size: 18px;
             font-weight: 600;
             line-height: 29px;
+            @media (max-width:767px){
+                font-size: 14px;
+                line-height: 19px;
+            }
         }
         .form-control {
             border-radius: 30px;
@@ -120,6 +181,11 @@
             color:#707070;
             font-size: 15px;
             padding: 0 30px;
+            @media (max-width:767px){
+                height: 41px;
+                font-size: 12px;
+                padding: 0 13px;
+            }
             &:focus{
                 box-shadow: unset!important;
                 border-color: #000;
@@ -149,6 +215,12 @@
         text-decoration: none;
         float: right;
         border:1px solid transparent;
+        @media (max-width:767px){
+            padding: 9px 35px;
+            font-size: 12px;
+            line-height: 17px ;
+            height: auto;
+        }
         &:hover{
             background: transparent;
             border:1px solid $dark-blue;
@@ -186,6 +258,12 @@
             justify-content: center;
             align-items: center;
             border-radius: 100%;
+            @media (max-width:767px){
+                width: 30px;
+                height: 30px;
+                margin-top: 10px;
+                position: static;
+            }
         }
     }
     .plus-icon{
@@ -197,6 +275,18 @@
         align-items: center;
         border-radius: 100%;
         margin-top: 30px;
+        @media (max-width:767px){
+            width: 30px;
+            height: 30px;
+            margin-top: 10px;
+        }
+        img{
+            @media (max-width:767px) 
+            {
+               max-width: 16px;
+            
+                }
+        }
     }
 }
 .modal-backdrop.show{
