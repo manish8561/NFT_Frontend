@@ -249,7 +249,7 @@
         position: relative;
         .delete-icon {
             position: absolute;
-            right: -50px;
+            right: 0px;
             top: 0px;
             border: 2px solid #0C9EDA;
             width: 50px;
@@ -261,8 +261,12 @@
             @media (max-width:767px){
                 width: 30px;
                 height: 30px;
-                margin-top: 10px;
+                margin-top: 5px;
+                // position: static;
+            }
+            @media (max-width:767px){
                 position: static;
+                margin-top: 10px;
             }
         }
     }
@@ -292,4 +296,10 @@
 .modal-backdrop.show{
     background: #000!important;
     opacity: .5 !important;
+}
+.collectionForm_new input{
+    width: calc(100% - 50px) !important;
+    @media (max-width:575px) {
+        width: 100% !important;
+    }
 }

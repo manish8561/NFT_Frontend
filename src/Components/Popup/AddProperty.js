@@ -15,50 +15,45 @@ function AddProperty() {
 
                 <Modal.Body>
                     <div className="collectionForm">
-
-
-                        <div className="topTile text-center">
+                       <div className="topTile text-center">
                             <Modal.Title>Add Properties</Modal.Title>
                             <p>Properties show up underneath your item, are clickable, and can be filtered in your collection's sidebar.</p>
                         </div>
-                        <Form className="info-form" as={Row}>
-                            <Col lg={6}>
+                        <Form className="info-form collectionForm_new" as={Row}>
+                            <Col lg={12}>
                                 <Form.Group as={Row} controlId="formPlaintextEmail">
-                                    <Form.Label column sm="2">
+                                    <Form.Label column sm="1">
                                         Type
                                       </Form.Label>
-                                    <Col sm="10">
+                                    <Col sm="5">
                                         <Form.Control type="text" placeholder="Thomas George" />
                                     </Col>
+                                 <Form.Label column sm="1">
+                                        Type</Form.Label>
+                                    <Col sm="5" className="type-form">
+                                        <Form.Control type="text" placeholder="Thomas George" />
+                                        <div className="delete-icon"><img src={deleteicon}></img></div>
+                                    </Col>
                                 </Form.Group>
-                                <Form.Group as={Row} controlId="formPlaintextEmail">
-                                    <Form.Label column sm="2">
+                            </Col>
+                            <Col lg={12}>
+                                 <Form.Group as={Row} controlId="formPlaintextEmail">
+                                    <Form.Label column sm="1">
                                         Type
                                      </Form.Label>
-                                    <Col sm="10">
+                                    <Col sm="5">
                                         <Form.Control type="text" placeholder="Thomas George" />
-                                        <div className="plus-icon"><img src={plusicon} /></div>
+                                    </Col>
+                                   <Form.Label column sm="1">
+                                        Type</Form.Label>
+                                    <Col sm="5" className="type-form">
+                                        <Form.Control type="text" placeholder="Thomas George" />
+                                        <div className="delete-icon"><img src={deleteicon}></img></div>
                                     </Col>
                                 </Form.Group>
-
                             </Col>
-                            <Col lg={6}>
-                                <Form.Group as={Row} controlId="formPlaintextPassword">
-                                    <Form.Label column sm="2">
-                                        Type</Form.Label>
-                                    <Col sm="10" className="type-form">
-                                        <Form.Control type="text" placeholder="Thomas George" />
-                                        <div className="delete-icon"><img src={deleteicon}></img></div>
-                                    </Col>
-                                </Form.Group>
-                                <Form.Group as={Row} controlId="">
-                                    <Form.Label column sm="2">
-                                        Type</Form.Label>
-                                    <Col sm="10" className="type-form">
-                                        <Form.Control type="text" placeholder="Thomas George" />
-                                        <div className="delete-icon"><img src={deleteicon}></img></div>
-                                    </Col>
-                                </Form.Group>
+                            <Col lg={12}>
+                                <div className="plus-icon"><img src={plusicon} /></div>
                             </Col>
                         </Form>
                     </div>
