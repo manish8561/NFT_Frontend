@@ -5,7 +5,6 @@ import "../../Components/Sidebar/Sidebar.scss";
 import "./Activities.scss";
 import ActivitieRight from "./ActivitieRight";
 import Sidebar from "../../Components/Sidebar/Sidebar";
-import Search from "../../Assets/Images/search.png";
 
 function Activities() {
 
@@ -44,7 +43,6 @@ function Activities() {
               </ul>
             </div>
           </div>
-
           <ActivitieRight />
         </div>
       </Container>
