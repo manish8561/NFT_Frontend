@@ -1,5 +1,5 @@
 import axios from "axios";
-import { toast } from "../Components/Toast/Toast";
+import { toast } from "../components/Toast/Toast";
 
 export { _fetch as fetch };
 

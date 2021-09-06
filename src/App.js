@@ -1,27 +1,32 @@
-import React from "react";
-// import logo from "./logo.svg";
+import React, { useEffect } from "react";
 import "./App.scss";
-import { Provider } from "react-redux";
-import configureStore from "./redux/store";
-import { ConnectedRouter } from "connected-react-router";
-import { history } from "./redux/reducers/history";
-import Application from "./Application";
+import "./services/web3.service";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import "./services/ipfs.service";
+import Application from "./Application";
+import { useDispatch } from "react-redux";
+import { PersistActions } from "./redux/actions/persist.action";
 
-import { PersistGate } from "redux-persist/lib/integration/react";
-let { store, persistor } = configureStore();
 
-function App() {
-  // const store = configureStore();
+const App = () => {
+
+  const dispatch = useDispatch();
+
+  const connectMetamask = async () => {
+    const { ethereum } = window;
+    const { callSaveWalletAddress } = PersistActions;
+   
+    let address = await ethereum.request({ method: 'eth_requestAccounts' });
+    address = address[0];
+    dispatch(callSaveWalletAddress({ address }));
+  }
+
+  useEffect(() => {
+    connectMetamask();
+  }, []);
 
   return (
-    <Provider store={store}>
-      <PersistGate loading={null} persistor={persistor}>
-        <ConnectedRouter history={history}>
-          <Application></Application>
-        </ConnectedRouter>
-      </PersistGate>
-    </Provider>
+      <Application />
   );
 }
 
