@@ -8,8 +8,7 @@ import mask from '../../assets/Images/mask.png'
 import { useDispatch } from 'react-redux';
 import CreateNftForm from './CreateNftForm';
 
-const CreateCollectionpopup = ({ showCreateModal, setShowCreateModal, mintNewToken }) => {
-    const dispatch = useDispatch();
+const CreateCollectionpopup = ({ showCreateModal, setShowCreateModal, mintNewToken, setIcon }) => {
     const [showText, setShowText] = useState(false);
 
     const onSubmitForm = (values) => {
@@ -31,7 +30,7 @@ const CreateCollectionpopup = ({ showCreateModal, setShowCreateModal, mintNewTok
                         </div>
 
                     
-                        <CreateNftForm onSubmit={onSubmitForm} setShowText={setShowText} />
+                        <CreateNftForm setIcon={setIcon} onSubmit={onSubmitForm} setShowText={setShowText} />
 
                     </div>
                     <div className={showText ? "created" : "hide"}>

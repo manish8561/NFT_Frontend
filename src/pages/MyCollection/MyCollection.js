@@ -19,12 +19,13 @@ import { ApiActions } from '../../redux/actions/api.action';
 function MyCollection() {
     const dispatch = useDispatch();
     const address = useSelector(state => state.persist.address);
-    const mintedLogs = useSelector(state => state.api.mintedLogs)
+    const mintedLogs = useSelector(state => state.api.mintedLogs);
+    const [icon, setIcon] = useState("");
     const [showCreateModal, setShowCreateModal] = useState(false);
 
     const mintNewToken = (values) => {
         const { callMintTokens } = ContractActions;
-        dispatch(callMintTokens({ ...values, address }));
+        dispatch(callMintTokens({ icon, amount: values.amount, title: values.title, description: values.description, address }));
     };
 
     const callMintedtokens = () => {
@@ -59,6 +60,7 @@ function MyCollection() {
                                 showCreateModal={showCreateModal}
                                 setShowCreateModal={setShowCreateModal}
                                 mintNewToken={mintNewToken}
+                                setIcon={setIcon}
                             />
                             {/* -- Create NFT Modal -- */}
                             <p>or add an existing contract</p>
@@ -70,8 +72,8 @@ function MyCollection() {
                             mintedLogs.map(row => (
                                 <Col sm={6} lg={3}>
                                     <div className="col-thumb">
-                                        <img src={my_collections1} />
-                                        <h3>Design Monitor</h3>
+                                        <img src={row['icon']} />
+                                        <h3> {row['title']} </h3>
                                     </div>
                                 </Col>
                             )) : "No Records Found."

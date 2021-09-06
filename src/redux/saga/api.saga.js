@@ -12,12 +12,12 @@ function* callGetMintedTokens(data) {
     if (res) {
       const { savegetMintedTokens } = ApiActions;
       let { data: { data: { logs } } } = res;
-      console.clear();
       logs = logs.map( async (row) => {
-        const data = await getIpfsDataWithhash(row['tokenUri']);
-        console.log(data); 
-      })
-      // yield put(savegetMintedTokens({ logs }))
+        const { data } = await getIpfsDataWithhash(row['tokenUri']);
+        return { ...data };
+      });
+      logs = yield Promise.all(logs);
+      yield put(savegetMintedTokens({ logs }));
     }
   } catch (error) {
     console.log({ CALL_GET_MINTED_ERROR: error });

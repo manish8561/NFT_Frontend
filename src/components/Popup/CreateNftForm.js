@@ -7,7 +7,7 @@ import { Field, reduxForm } from 'redux-form';
 import { required } from 'redux-form-validators';
 import { toast } from "../Toast/Toast";
 
-const CreateNftForm = ({ handleSubmit }) => {
+const CreateNftForm = ({ setIcon, handleSubmit }) => {
     const [image, setImage] = useState("");
 
     const onChangeImage = async (event) => {
@@ -22,6 +22,7 @@ const CreateNftForm = ({ handleSubmit }) => {
         if (fileSize > 3000) return toast.info('Image should be less than or equal to 3MB');
         const blob = URL.createObjectURL(file)
         setImage(blob);
+        setIcon(blob);
     }
 
     const onSubmitForm = (event) => {

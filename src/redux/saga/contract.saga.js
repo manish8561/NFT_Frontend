@@ -8,21 +8,18 @@ function* callMintTokens(data) {
   try {
     const { uploadToIpfsAndGenerateHash } = IpfsService;
     const { payload: { icon, title, amount, description, address } } = data;
-    const uploadImageToIpfs = yield call(uploadToIpfsAndGenerateHash, JSON.stringify(icon));
-    
-    if (uploadImageToIpfs) {
-      const ipfsData = Object.create({});
-      ipfsData.icon = `https://ipfs.io/ipfs/${uploadImageToIpfs.path}`;
-      ipfsData.iconHash = uploadImageToIpfs.path;
-      ipfsData.title = title;
-      ipfsData.description = description;
 
-      const uploadedToIpfs = yield call(uploadToIpfsAndGenerateHash, JSON.stringify(ipfsData));
-      if (uploadedToIpfs) {
-        const { mintTokens } = ContractService;
-        const _mint = yield call(mintTokens, address, 0, amount, uploadedToIpfs.path);
-        if (_mint) window.location.reload();
-      }
+    const ipfsData = Object.create({});
+    ipfsData.icon = icon;
+    ipfsData.title = title;
+    ipfsData.description = description;
+    ipfsData.user = address;
+
+    const uploadedToIpfs = yield call(uploadToIpfsAndGenerateHash, JSON.stringify(ipfsData));
+    if (uploadedToIpfs) {
+      const { mintTokens } = ContractService;
+      const _mint = yield call(mintTokens, address, 0, amount, uploadedToIpfs.path);
+      if (_mint) window.location.reload();
     }
   } catch (error) {
     toast.error(`Error: ${error}`);
