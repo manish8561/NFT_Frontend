@@ -7,7 +7,7 @@ import { Field, reduxForm } from 'redux-form';
 import { required } from 'redux-form-validators';
 import { toast } from "../Toast/Toast";
 
-const CreateNftForm = ({ setIcon, handleSubmit }) => {
+const CreateNftForm = ({ handleSubmit }) => {
     const [image, setImage] = useState("");
 
     const onChangeImage = async (event) => {
@@ -22,7 +22,6 @@ const CreateNftForm = ({ setIcon, handleSubmit }) => {
         if (fileSize > 3000) return toast.info('Image should be less than or equal to 3MB');
         const blob = URL.createObjectURL(file)
         setImage(blob);
-        setIcon(blob);
     }
 
     const onSubmitForm = (event) => {
@@ -38,7 +37,7 @@ const CreateNftForm = ({ setIcon, handleSubmit }) => {
                         <div className="add-icon"><img src={plus_icon} /></div> :
                         <img src={image} alt="image" style={{ height: "600px", width: "100%" }} />
                 }
-                <Field component={FormField} onChangeImage={onChangeImage} name="icon" type="file" validate={[required()]} />
+                <Field component={FormField} onChangeImage={onChangeImage} name="image" type="file" validate={[required()]} />
                 <p>Logo/ Image (350 x 350 recommended)</p>
             </Form.Group>
 

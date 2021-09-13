@@ -3,23 +3,41 @@ import types from "../types";
 import IpfsService from '../../services/ipfs.service';
 import { toast } from "../../components/Toast/Toast";
 import ContractService from "../../services/contract.service";
+import { ApiService } from "../../services/api.service";
+
+function* callUploadFile(image) {
+  const { uploadFile } = ApiService;
+
+  const formdata = new FormData();
+  formdata.append("file", image);
+  return yield call(uploadFile, formdata, {});
+}
+
+function* callGetIpfsData(file, title, description, address) {
+  const ipfsData = Object.create({});
+  ipfsData.image = file;
+  ipfsData.title = title;
+  ipfsData.description = description;
+  ipfsData.user = address;
+  return ipfsData;
+}
+
 
 function* callMintTokens(data) {
   try {
     const { uploadToIpfsAndGenerateHash } = IpfsService;
-    const { payload: { icon, title, amount, description, address } } = data;
+    const { payload: { image, title, amount, description, address } } = data;
 
-    const ipfsData = Object.create({});
-    ipfsData.icon = icon;
-    ipfsData.title = title;
-    ipfsData.description = description;
-    ipfsData.user = address;
-
-    const uploadedToIpfs = yield call(uploadToIpfsAndGenerateHash, JSON.stringify(ipfsData));
-    if (uploadedToIpfs) {
-      const { mintTokens } = ContractService;
-      const _mint = yield call(mintTokens, address, 0, amount, uploadedToIpfs.path);
-      if (_mint) window.location.reload();
+    const uploadedFile = yield call(callUploadFile, image);
+    if (uploadedFile) {
+      const { data: { data: { file } } } = uploadedFile;
+      const ipfsData = yield call(callGetIpfsData, file, title, description, address);
+      const uploadedToIpfs = yield call(uploadToIpfsAndGenerateHash, JSON.stringify(ipfsData));
+      if (uploadedToIpfs) {
+        const { mintTokens } = ContractService;
+        const _mint = yield call(mintTokens, address, 0, amount, uploadedToIpfs.path);
+        if (_mint) window.location.reload();
+      }
     }
   } catch (error) {
     toast.error(`Error: ${error}`);
