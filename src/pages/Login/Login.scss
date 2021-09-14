@@ -1,0 +1,134 @@
+@import "../../_var.scss";
+
+.signWallet {
+  padding: 20px 0;
+  text-align: center;
+  h1 {
+    margin: 20px 0 30px;
+    font-size: 20px;
+  }
+  p {
+    font-size: 16px;
+    font-weight: 400;
+    margin-top: 35px;
+    margin-bottom: 35px;
+    position: relative;
+    padding-left: 30px;
+    &:before {
+      content: "";
+      position: absolute;
+      width: 25px;
+      margin-left: -40px;
+      height: 25px;
+      background: url(../../assets/Images/down-arrow.png);
+      background-size: 100%;
+    }
+    &.open {
+      &::before {
+        transform: rotate(-180deg);
+      }
+    }
+  }
+  a {
+    padding: 12px 33px;
+    font-size: 16px;
+    font-weight: $font-weight-regular;
+    margin-right: 10px;
+    border-radius: 30px;
+    color: #fff;
+    transition: 0.3s;
+    display: inline-block;
+    margin-top: 30px;
+  }
+  ul {
+    display: flex;
+    flex-wrap: wrap;
+    -webkit-box-pack: start;
+    justify-content: flex-start;
+    width: 100%;
+    margin-bottom: 10px;
+    margin: 0 auto;
+    li {
+      cursor: pointer;
+      user-select: none;
+      display: flex;
+      -webkit-box-align: start;
+      align-items: flex-start;
+      -webkit-box-pack: start;
+      justify-content: flex-start;
+      border: none;
+      border-radius: 9px;
+      width: 335px;
+      margin: 25px 25px 0px 0;
+      padding: 25px 20px;
+      box-shadow: 0px 0px 9px #00000029;
+      &:hover {
+        border: none;
+        box-shadow: rgba(0, 0, 0, 25%) 0px 0px 10px;
+      }
+      .Walletimage {
+        width: 65px;
+        height: 65px;
+        display: flex;
+        -webkit-box-align: start;
+        align-items: flex-start;
+        -webkit-box-pack: start;
+        justify-content: flex-start;
+        padding-top: 9px;
+        img {
+          max-width: 100%;
+          max-height: 42px;
+        }
+      }
+      .Walletcaption {
+        // width: 145px;
+        // height: 100%;
+        display: flex;
+        -webkit-box-align: center;
+        align-items: flex-start;
+        -webkit-box-pack: start;
+        justify-content: flex-start;
+        flex-direction: column;
+        padding-left: 16px;
+        h4 {
+          font-size: 22px;
+          color: #000;
+          margin: 0;
+          line-height: 20px;
+        }
+        p {
+          opacity: 0.6;
+          font-size: 14px;
+          margin: 0px;
+          padding: 5px 0 0;
+          text-align: start;
+          line-height: 20px;
+          color: #999999;
+          &:before {
+            display: none;
+          }
+        }
+      }
+    }
+  }
+}
+.select-wallet {
+  .form-control {
+    width: 250px;
+    height: 50px;
+    border: 2px solid #002245;
+    margin: 30px auto 20px;
+    border-radius: 30px;
+    padding: 5px 20px;
+    &:focus {
+      box-shadow: unset !important;
+    }
+  }
+  select {
+    appearance: none;
+    -webkit-appearance: none;
+    background: url(../../assets/Images/dropdown.svg);
+    background-position: center right 20px;
+    background-repeat: no-repeat;
+  }
+}

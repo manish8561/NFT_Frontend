@@ -1,6 +1,6 @@
-import React, { Component } from "react";
-import { Route } from "react-router-dom";
-import { withRouter } from "react-router";
+import React, {Component} from "react";
+import {Route} from "react-router-dom";
+import {withRouter} from "react-router";
 import Home from "../../pages/Home/Home";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
@@ -9,6 +9,8 @@ import CreateItem from "../../pages/CreateItem/CreateItem";
 import Categories from "../../pages/Categories/Categories";
 import Activities from "../../pages/Activities/Activities";
 import Profile from "../../pages/Profile/Profile";
+import Login from "../../pages/Login/Login";
+import Createcollection from "../../pages/Createcollection/Createcollection";
 
 
 
@@ -26,6 +28,8 @@ class PublicRoutes extends Component {
           <Route path="/Categories" component={Categories} exact={true} />
           <Route path="/Activities" component={Activities} exact={true} />
           <Route path="/Profile" component={Profile} exact={true} />
+          <Route path="/Login" component={Login} exact={true} />
+          <Route path="/Createcollection" component={Createcollection} exact={true} />
         </div>
         <Footer />
       </React.Fragment >

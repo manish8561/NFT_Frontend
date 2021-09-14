@@ -1,0 +1,228 @@
+.category-labl {
+  .token-cols {
+    display: flex;
+    align-items: center;
+    @media (max-width: 767px) {
+      flex-direction: column;
+    }
+  }
+  .eth-token {
+    display: flex;
+    align-items: center;
+  }
+  .curr-text {
+    padding: 0 10px;
+  }
+  .label {
+    border: 1px solid #bcbcbc;
+    border-radius: 30px;
+    background: #fff;
+    font-size: 15px;
+    line-height: 20px;
+    min-height: 19px;
+    padding: 10px 20px;
+    margin-right: 20px;
+    display: flex;
+    height: 50px;
+    cursor: pointer;
+    align-items: center;
+    @media (max-width: 767px) {
+      margin: 10px 0;
+      width: 100%;
+      max-width: 100%;
+    }
+    &:hover {
+      box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+    }
+  }
+  .label.non-active {
+    color: #bcbcbc;
+  }
+  .label.active {
+    color: #000;
+    border-color: #000;
+    img {
+      padding-left: 10px;
+    }
+  }
+  small {
+    color: #0c9eda;
+    font-size: 12px;
+    line-height: 18px;
+  }
+  p {
+    font-size: 15px;
+    line-height: 26px;
+  }
+  .blue-text {
+    color: #0c9eda;
+  }
+}
+.sociallink-box {
+  border-radius: 30px;
+  border: 1px solid #bcbcbc;
+  height: 50px;
+  color: #707070;
+  font-size: 15px;
+  padding: 0 15px;
+  .form-control {
+    border-radius: 0;
+    border: none !important;
+    height: 48px !important;
+    padding: 0 15px !important;
+  }
+  .input-group-text {
+    background-color: transparent;
+    border: none;
+    border-radius: 30px;
+    border-right: none;
+    position: relative;
+    &:before {
+      content: " ";
+      background: #bcbcbc;
+      height: 33px;
+      width: 1px;
+      position: absolute;
+      right: 1px;
+    }
+  }
+  .instaicon {
+    width: 16px;
+  }
+}
+
+img.optionIcon {
+  padding-right: 10px;
+}
+
+.info-black {
+  filter: grayscale(1);
+}
+.theme-col {
+  display: flex;
+  @media (max-width: 767px) {
+    flex-direction: column;
+  }
+  .active-theme {
+    border: 2px solid #002245;
+  }
+}
+
+.display-theme {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 229px;
+  border: 1px solid #bcbcbc;
+  border-radius: 5px;
+  padding: 15px 10px;
+  margin-right: 10px;
+  cursor: pointer;
+  transition: all 0.5s ease-in-out;
+  @media (max-width: 767px) {
+    width: 100%;
+    margin-right: 0;
+    margin-bottom: 10px;
+  }
+  &:hover {
+    border: 1px solid #002245;
+  }
+  h5 {
+    font-size: 15px;
+    line-height: 20px;
+    color: #000;
+    font-weight: 600;
+    margin-top: 10px;
+  }
+  p {
+    color: #707070;
+    font-size: 12px;
+    line-height: 16px;
+    margin: 0;
+    text-align: center;
+  }
+}
+.form-group {
+  margin-bottom: 2rem;
+  @media (max-width: 767px) {
+    margin-bottom: 1rem;
+  }
+}
+
+.payment-token {
+  .label {
+    font-size: 12px;
+    max-width: 130px;
+    width: 100%;
+    justify-content: center;
+    @media (max-width: 767px) {
+      max-width: 100%;
+    }
+  }
+  small.black-text {
+    color: #000;
+    font-weight: 600;
+  }
+}
+
+.switch-toggle {
+  margin-top: 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  h6 {
+    margin: 0;
+    color: #000;
+    font-size: 15px;
+    line-height: 20px;
+  }
+  p {
+    font-size: 13px;
+    color: #707070;
+    margin: 0;
+  }
+}
+.custom-switch .custom-control-label::before {
+  left: -2.25rem;
+  width: 3.2rem;
+  pointer-events: all;
+  border-radius: 50px;
+}
+.custom-control-label::before {
+  position: absolute;
+  top: 0.25rem;
+  left: -1.5rem;
+  display: block;
+  width: 1rem;
+  height: 1.7rem;
+  pointer-events: none;
+  content: "";
+  background-color: #bcbcbc;
+  border: none;
+}
+.custom-switch .custom-control-label::after {
+  top: calc(0.4rem + 2px);
+  left: calc(-2.25rem + 2px);
+  width: calc(1.4rem - 4px);
+  height: calc(1.4rem - 4px);
+  background-color: #fff;
+  border-radius: 0.8rem;
+}
+.custom-switch .custom-control-input:checked ~ .custom-control-label::after {
+  transform: translateX(1.8rem);
+}
+.custom-control-input:checked ~ .custom-control-label::before {
+  color: #fff;
+  border-color: #002245;
+  background-color: #002245;
+}
+.form-label {
+  br {
+    @media (max-width: 767px) {
+      display: none;
+    }
+  }
+}
+span.optional {
+  color: #707070;
+}

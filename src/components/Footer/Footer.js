@@ -1,12 +1,12 @@
 import React from "react";
-import { Container, Row, Col } from "react-bootstrap";
+import {Container, Row, Col} from "react-bootstrap";
 import FooterLogo from "../../assets/Images/footer_logo.png";
 import Call from "../../assets/Images/call.png";
 import Location from "../../assets/Images/location.png";
 import Mail from "../../assets/Images/mail.png";
 import Facebook from "../../assets/Images/facebook.png";
 import Twitter from "../../assets/Images/twitter.png";
-import Instagram from "../../assets/Images/instagram.png";
+import Instagram from "../../assets/Images/instagram.svg";
 import Bitcoin from "../../assets/Images/bitcoin.png";
 import Pinterest from "../../assets/Images/pinterest.png";
 import Telegram from "../../assets/Images/telegram.png";
@@ -62,7 +62,7 @@ function Footer() {
                 </li>
               </ul>
             </Col>
-            <Col xs={12} md={6}  lg={3} className="marketplace_col">
+            <Col xs={12} md={6} lg={3} className="marketplace_col">
               <h3>MarketPlace</h3>
               <ul>
                 <li>

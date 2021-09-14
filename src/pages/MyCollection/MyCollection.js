@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react'
-import { Container, Row, Col, Button } from "react-bootstrap";
+import React, {useEffect, useState} from 'react'
+import {Container, Row, Col, Button} from "react-bootstrap";
 import thumb from '../../assets/Images/women.png'
 import CreateCollectionpopup from "../../components/Popup/CreateCollectionpopup";
 import CollectionItems from './CollectionItems';
@@ -12,29 +12,29 @@ import collections_items2 from '../../assets/Images/collections_items2.png'
 import collections_items3 from '../../assets/Images/collections_items3.png'
 import collections_items4 from '../../assets/Images/collections_items4.png'
 import TopLinks from '../../components/TopLinks/TopLinks';
-import { ContractActions } from '../../redux/actions/contract.action';
-import { useDispatch, useSelector } from 'react-redux';
-import { ApiActions } from '../../redux/actions/api.action';
+import {ContractActions} from '../../redux/actions/contract.action';
+import {useDispatch, useSelector} from 'react-redux';
+import {ApiActions} from '../../redux/actions/api.action';
 
 function MyCollection() {
     const dispatch = useDispatch();
     const address = useSelector(state => state.persist.address);
     const mintedLogs = useSelector(state => state.api.mintedLogs);
-    const [showCreateModal, setShowCreateModal] = useState(false);
+    const [ showCreateModal, setShowCreateModal ] = useState(false);
 
     const mintNewToken = (values) => {
-        const { callMintTokens } = ContractActions;
-        dispatch(callMintTokens({ ...values, address }));
+        const {callMintTokens} = ContractActions;
+        dispatch(callMintTokens({...values, address}));
     };
 
     const callMintedtokens = () => {
-        const { callGetMintedTokens } = ApiActions;
-        dispatch(callGetMintedTokens({ page: 0, limit: 10, user: address }));
+        const {callGetMintedTokens} = ApiActions;
+        dispatch(callGetMintedTokens({page: 0, limit: 10, user: address}));
     }
 
     useEffect(() => {
         if (address.trim().length > 0) callMintedtokens();
-    }, [address]);
+    }, [ address ]);
 
     return (
         <div>
@@ -45,7 +45,7 @@ function MyCollection() {
                     <Col lg={9}>
                         <div className="collection_col">
                             <h2 className="main-heading">My Collections </h2>
-                            <p>Create collections (your own storefronts), upload digital creations, configure your commission, and sell NFTs to your fans - all for free! You can also manage smart contracts that you created outside of NFT. Learn more</p>
+                            <p>Create, curate, and manage collections of unique NFTs to share and sell.</p>
                         </div>
                     </Col>
                 </Row>
@@ -60,22 +60,21 @@ function MyCollection() {
                                 setShowCreateModal={setShowCreateModal}
                                 mintNewToken={mintNewToken}
                             />
-                            {/* -- Create NFT Modal -- */}
-                            <p>or add an existing contract</p>
+
                         </div>
                     </Col>
 
-                    {
+                    {/* {
                         mintedLogs.length > 0 ?
                             mintedLogs.map(row => (
                                 <Col sm={6} lg={3}>
                                     <div className="col-thumb">
                                         <img src={row?.image} />
-                                        <h3> {row['title']} </h3>
+                                        <h3> {row[ 'title' ]} </h3>
                                     </div>
                                 </Col>
                             )) : "No Records Found."
-                    }
+                    } */}
 
 
 
