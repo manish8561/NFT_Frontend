@@ -11,6 +11,7 @@ import Activities from "../../pages/Activities/Activities";
 import Profile from "../../pages/Profile/Profile";
 import Login from "../../pages/Login/Login";
 import Createcollection from "../../pages/Createcollection/Createcollection";
+import Creatednft from "../../pages/Profile/Creatednft/Creatednft";
 
 
 
@@ -30,6 +31,8 @@ class PublicRoutes extends Component {
           <Route path="/Profile" component={Profile} exact={true} />
           <Route path="/Login" component={Login} exact={true} />
           <Route path="/Createcollection" component={Createcollection} exact={true} />
+          <Route path="/Creatednft" component={Creatednft} exact={true} />
+
         </div>
         <Footer />
       </React.Fragment >

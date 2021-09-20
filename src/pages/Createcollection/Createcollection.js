@@ -1,5 +1,5 @@
-import React from 'react'
-import {Container, Row, Col, Button, Form, InputGroup} from "react-bootstrap";
+import React, {useState} from 'react'
+import {Container, Row, Col, Button, Form, InputGroup, Modal} from "react-bootstrap";
 import './Createcollection.scss'
 import close from '../../assets/Images/close.svg'
 import Uploadcard from '../../components/Uploadcard/Uploadcard';
@@ -16,7 +16,13 @@ import padded from '../../assets/Images/card-display-padded.svg'
 import contained from '../../assets/Images/card-display-contain.svg'
 import covered from '../../assets/Images/card-display-cover.svg'
 import Reactselect from '../../components/Reactselect/Reactselect';
+import displayimg from '../../assets/Images/jelly-fish.png'
+import Breadcrumbs from '../../components/Breadcrumbs/Breadcrumbs';
 function Createcollection() {
+    const [ show, setShow ] = useState(false);
+
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
 
     const tokenoptions = [
         {
@@ -31,13 +37,13 @@ function Createcollection() {
     ]
     return (
         <React.Fragment>
+            <Breadcrumbs text="My collections" active="Create collections" />
             <Container fluid >
                 <Container className="ContMain custom_content">
                     <Row>
                         <div className="collection-modal item-card">
                             <Uploadcard heading="Createcollection" subheading="Logo image *" text="This image will also be used for navigation. 350 x 350 recommended." />
-                            <Uploadcard subheading="Featured image " optional=" (optional)" text="This image will be used for featuring your collection on the homepage, category pages, or other promotional areas of NFT. 600 x 400 recommended" />
-                            <Uploadcard subheading=" Banner image" optional=" (optional)" text="This image will appear at the top of your collection page. Avoid including too much text in this banner image, as the dimensions change on different devices. 1400 x 400 recommended." />
+                            <Uploadcard subheading="Featured image " optional=" (optional)" text="This image will be used for featuring your collection on the homepage, cate<b much text in this banner image, as the dimensions change on different devices. 1400 x 400 recommended." />
                             <div className="create-item-form">
                                 <Form className="info-form ">
                                     <Form.Group as={Row} controlId="formPlaintextEmail">
@@ -246,7 +252,7 @@ function Createcollection() {
 
                                 <Form className="info-form ">
 
-                                    <Button href="#" className="read-btn" >Create</Button>
+                                    <Button href="#" className="read-btn" onClick={handleShow}>Create</Button>
                                 </Form>
 
                             </div>
@@ -255,6 +261,24 @@ function Createcollection() {
 
                 </Container>
             </Container>
+
+            <Modal show={show} onHide={handleClose} className="create-modal collection-modal isBlank">
+                <Modal.Header closeButton className="b-0"> <Modal.Title >Your collection has been created!</Modal.Title> </Modal.Header>
+                <Modal.Body>
+
+                    <div className="item-body">
+                        <img className="w-100 item-img" src={displayimg} />
+
+                    </div>
+                </Modal.Body >
+
+                <Modal.Footer className="property-footer">
+
+                    <Button variant="primary" className=" read-btn fl-0">
+                        Add item
+                    </Button>
+                </Modal.Footer>
+            </Modal >
         </React.Fragment >
     )
 }

@@ -1,21 +1,16 @@
 import React, {useEffect, useState} from 'react'
 import {Container, Row, Col, Button} from "react-bootstrap";
-import thumb from '../../assets/Images/women.png'
 import CreateCollectionpopup from "../../components/Popup/CreateCollectionpopup";
 import CollectionItems from './CollectionItems';
 import './MyCollection.scss';
-import my_collections1 from '../../assets/Images/my_collections1.png'
-import my_collections2 from '../../assets/Images/my_collections2.png'
-import my_collections3 from '../../assets/Images/my_collections3.png'
-import collections_items1 from '../../assets/Images/collections_items1.png'
-import collections_items2 from '../../assets/Images/collections_items2.png'
-import collections_items3 from '../../assets/Images/collections_items3.png'
-import collections_items4 from '../../assets/Images/collections_items4.png'
+import toggle from '../../assets/Images/line.svg'
+import add_circle from '../../assets/Images/add_circle_plus.svg'
 import TopLinks from '../../components/TopLinks/TopLinks';
 import {ContractActions} from '../../redux/actions/contract.action';
 import {useDispatch, useSelector} from 'react-redux';
 import {ApiActions} from '../../redux/actions/api.action';
-
+import collectionsitem1 from '../../assets/Images/my_collections2.png';
+import collectionsitem2 from '../../assets/Images/my_collections1.png'
 function MyCollection() {
     const dispatch = useDispatch();
     const address = useSelector(state => state.persist.address);
@@ -41,7 +36,7 @@ function MyCollection() {
             <TopLinks />
             <Container className="ContMain">
 
-                <Row className="banner_row">
+                <Row className="banner_row ">
                     <Col lg={9}>
                         <div className="collection_col">
                             <h2 className="main-heading">My Collections </h2>
@@ -50,20 +45,37 @@ function MyCollection() {
                     </Col>
                 </Row>
 
-                <Row className="">
+                <Row className="mb-5">
                     <Col sm={6} lg={3}>
-                        <div className="col-new">
+                        <div className="col-new mb-3">
                             <h3>Create new collection</h3>
-                            {/* -- Create NFT Modal -- */}
-                            <CreateCollectionpopup
-                                showCreateModal={showCreateModal}
-                                setShowCreateModal={setShowCreateModal}
-                                mintNewToken={mintNewToken}
-                            />
-
+                            <div className="d-flex">
+                                {/* -- Create NFT Modal -- */}
+                                {/* <CreateCollectionpopup
+                                    showCreateModal={showCreateModal}
+                                    setShowCreateModal={setShowCreateModal}
+                                    mintNewToken={mintNewToken}
+                                /> */}
+                                <Button className="create-btn" href="Createcollection">Create <img src={add_circle} /></Button>
+                                <img src={toggle} className="toggle" />
+                            </div>
                         </div>
                     </Col>
 
+                    <Col sm={6} lg={3}>
+                        <div className="coll-new mb-3">
+                            <img src={collectionsitem1} />
+                            <p>Explore the My NFT Collection #2728089 collection <br /> <b>0 Item</b> </p>
+                        </div>
+
+                    </Col>
+                    <Col sm={6} lg={3}>
+                        <div className="coll-new mb-3">
+                            <img src={collectionsitem2} />
+                            <p>Explore the Untitled Collection #2728089 collection<br /> <b> 1 Item </b> </p>
+                        </div>
+
+                    </Col>
                     {/* {
                         mintedLogs.length > 0 ?
                             mintedLogs.map(row => (
@@ -81,7 +93,7 @@ function MyCollection() {
                 </Row>
             </Container>
 
-            <Container fluid className="collection">
+            {/* <Container fluid className="collection">
                 <Container className="custom-cont ContMain">
                     <h4 className="main-heading">Collection items</h4>
                     <div className="coll-box">
@@ -105,7 +117,7 @@ function MyCollection() {
                     </div>
 
                 </Container>
-            </Container>
+            </Container> */}
         </div>
     );
 }

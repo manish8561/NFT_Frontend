@@ -1,0 +1,27 @@
+.breadcrumbs-col {
+  .breadcrumb {
+    background: transparent;
+    margin-bottom: 0;
+    .breadcrumb-item {
+      font-size: 14px;
+      padding-left: 30px;
+    }
+    .active {
+      color: #000;
+      position: relative;
+      &:before {
+        content: " ";
+        background: url(../../assets/Images/left-arrow.svg);
+        width: 4px;
+        height: 7px;
+        background-repeat: no-repeat;
+        top: 6px;
+        position: absolute;
+        left: 12px;
+      }
+    }
+    a {
+      color: #707070;
+    }
+  }
+}

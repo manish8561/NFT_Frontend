@@ -4,7 +4,7 @@
   background-color: $white-bg-FD;
   margin-top: 3px;
   padding: 0;
-  border: 1px solid $white-bg-EC;
+  border-bottom: 1px solid $white-bg-EC;
   .container {
     @media (max-width: 576px) {
       overflow-x: scroll;
