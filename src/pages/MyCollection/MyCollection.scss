@@ -302,3 +302,24 @@
     transition: all 0.3s ease;
   }
 }
+button.create-btn {
+  height: 50px;
+  background: #0c9eda;
+  border-color: #0c9eda;
+  border-radius: 30px;
+  font-size: 16px;
+  padding: 0 29px;
+  line-height: 50px;
+}
+.toggle {
+  margin-left: 50px;
+}
+.coll-new {
+  text-align: center;
+  p {
+    font-size: 18px;
+    color: #000;
+    line-height: 26px;
+    margin-top: 5px;
+  }
+}
