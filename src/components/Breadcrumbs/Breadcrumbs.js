@@ -5,16 +5,15 @@ import './Breadcrumbs.scss'
 function Breadcrumbs(props) {
     return (
         <Container fluid className="top_list">
-            {props.Breadcrumbs ?
-                <div className="breadcrumbs-col">
-                    <Breadcrumb>
-                        <Breadcrumb.Item href="#">{props.text}</Breadcrumb.Item>
 
-                        <Breadcrumb.Item active>{props.active}</Breadcrumb.Item>
-                    </Breadcrumb>
-                </div>
-                : null}
-            test
+            <div className="breadcrumbs-col">
+                <Breadcrumb>
+                    <Breadcrumb.Item href="#">{props.text}</Breadcrumb.Item>
+
+                    <Breadcrumb.Item active>{props.active}</Breadcrumb.Item>
+                </Breadcrumb>
+            </div>
+
         </Container>
     )
 }
