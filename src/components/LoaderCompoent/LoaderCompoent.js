@@ -18,7 +18,7 @@ class LoaderComponent extends Component {
 
 const mapStateToProps = state => {
   return {
-    loading: state.loading.loading
+    loading: (state && state.loading && state.loading.loading) || false
   };
 };
 

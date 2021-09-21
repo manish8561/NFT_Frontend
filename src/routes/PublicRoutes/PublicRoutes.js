@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import {Route} from "react-router-dom";
+import {Route, Redirect} from "react-router-dom";
 import {withRouter} from "react-router";
 import Home from "../../pages/Home/Home";
 import Header from "../../components/Header/Header";
@@ -12,8 +12,8 @@ import Profile from "../../pages/Profile/Profile";
 import Login from "../../pages/Login/Login";
 import Createcollection from "../../pages/Createcollection/Createcollection";
 import Creatednft from "../../pages/Profile/Creatednft/Creatednft";
-
-
+import AuthGuard from "../Guards/AuthGuard";
+import UnAuthGuard from "../Guards/UnAuthGuard";
 
 
 class PublicRoutes extends Component {
@@ -24,15 +24,10 @@ class PublicRoutes extends Component {
         <div className="PublicArea__content">
           <Header />
           <Route path="/" component={Home} exact={true} />
-          <Route path="/MyCollection" component={MyCollection} exact={true} />
-          <Route path="/CreateItem" component={CreateItem} exact={true} />
-          <Route path="/Categories" component={Categories} exact={true} />
-          <Route path="/Activities" component={Activities} exact={true} />
-          <Route path="/Profile" component={Profile} exact={true} />
-          <Route path="/Login" component={Login} exact={true} />
-          <Route path="/Createcollection" component={Createcollection} exact={true} />
-          <Route path="/Creatednft" component={Creatednft} exact={true} />
-
+          <Route path="/categories" component={Categories} exact={true} />
+          <Route path="/activities" component={Activities} exact={true} />
+          <UnAuthGuard path="/login" component={Login} exact={true} />
+          <Redirect to="/" component={Home} />
         </div>
         <Footer />
       </React.Fragment >

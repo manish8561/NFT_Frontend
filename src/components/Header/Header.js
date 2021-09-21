@@ -1,18 +1,43 @@
 import React, { useState } from 'react'
 import { Navbar, Nav, Form } from "react-bootstrap";
+import { useSelector, useDispatch } from 'react-redux';
+import { withRouter } from 'react-router';
+import { NavLink } from 'react-router-dom';
 import Logo from "../../assets/Images/logo.png";
 import Search from "../../assets/Images/search.png";
+import { PersistActions } from '../../redux/actions/persist.action';
 import "./Header.scss";
 
-function Header() {
+function Header(props) {
 
   const [isActive, setActive] = useState("false");
   const handleToggle = () => { setActive(!isActive); };
 
+  const persistData = useSelector((state) => state.persist);
+  const dispatch = useDispatch();
+  const onCreate = () => {
+    const { history } = props;
+    if(persistData && persistData.isLoggedIn) {
+      history.push('/marketplace/my-collection')
+    } else {
+      history.push('/login');
+    }
+  }
+
+  const onLogout = () => {
+    const { history } = props;
+    const { resetStore } = PersistActions;
+    dispatch(resetStore());
+    history.push('/login');
+  }
+
   return (
     <div className="custom_nav">
       <Navbar expand="lg">
-        <Navbar.Brand href="/">
+        <Navbar.Brand onClick={() => {
+          const { history } = props;
+          history.push('/');
+        }}>
           <img src={Logo} alt="logo" />
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -21,12 +46,14 @@ function Header() {
             <Nav.Link href="/" className="">
               Home
             </Nav.Link>
-            <Nav.Link href="/Categories">Categories</Nav.Link>
-            <Nav.Link href="/Activities">Activities</Nav.Link>
+            <Nav.Link href="/categories">Categories</Nav.Link>
+            <Nav.Link href="/activities">Activities</Nav.Link>
             <Nav.Link href="#link">Trending</Nav.Link>
-            <Nav.Link href="/MyCollection">Create</Nav.Link>
+            <Nav.Link onClick={() => onCreate()}>Create</Nav.Link>    
             <Nav.Link href="#link">About us</Nav.Link>
             <Nav.Link href="#link">Contact</Nav.Link>
+            {persistData && persistData.isLoggedIn && <Nav.Link onClick={() => onLogout()}>Logout</Nav.Link>}
+
           </Nav>
         </Navbar.Collapse>
       </Navbar>
@@ -52,4 +79,4 @@ function Header() {
   );
 }
 
-export default Header;
+export default withRouter(Header);

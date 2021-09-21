@@ -1,7 +1,7 @@
 import React from 'react';
 import './Login.scss';
-import {Container, Form} from 'react-bootstrap';
-import {Link} from "react-router-dom";
+import { Container, Form } from 'react-bootstrap';
+import { Link } from "react-router-dom";
 import meta from '../../assets/Images/meta-mask.png';
 import metaicon from '../../assets/Images/metamask-alternative.webp';
 import bitski from '../../assets/Images/bitski.png'
@@ -14,18 +14,39 @@ import dapper from '../../assets/Images/dapper.png'
 import torus from '../../assets/Images/torus.png'
 import portis from '../../assets/Images/portis.png'
 import kaikas from '../../assets/Images/kaikas.png'
+import { withRouter } from 'react-router';
+import { useDispatch } from 'react-redux';
+import { PersistActions } from '../../redux/actions/persist.action';
+import { ApiActions } from '../../redux/actions/api.action';
+import web3Service from '../../services/web3.service';
 
-// import {useDispatch} from 'react-redux';
-// import {saveWalletAddress} from '../../redux/action/persist.action';
+const Login = (props) => {
 
-const Login = () => {
+    const dispatch = useDispatch();
+    
+    const onLogin = () => {
+        connectMetamask();
+    }
 
+    const connectMetamask = async () => {
+        const { history } = props;
+        const { ethereum } = window;
+        const { getNetworkId } = web3Service;
+        const { callSaveWalletAddress } = PersistActions;
+        const { callCheckLoginOrRegister } = ApiActions;
+        let address = await ethereum.request({ method: 'eth_requestAccounts' });
+        if(address && address.length > 0) {
+            address = address[0];
+            const networkId = await getNetworkId();
+            dispatch(callCheckLoginOrRegister({wallet: 'METAMASK', walletAddress: address, networkId }, history));
+        }
+    }
 
     return (
         <Container className="signWallet">
             <h1>Sign in to your wallet.</h1>
             <img src={metaicon} width="150" /> <br />
-            <Link className="light_btn" to="/">Sign In</Link>
+            <Link className="light_btn" onClick={() => onLogin()}>Sign In</Link>
             <Form className="select-wallet">
                 <Form.Control as="select">
                     <option> Use a different wallet</option>
@@ -115,6 +136,4 @@ const Login = () => {
    );
 }
 
-export default Login
-
-
+export default withRouter(Login);

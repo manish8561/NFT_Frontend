@@ -4,8 +4,23 @@ import { Container, Row, Col, Carousel, Toast} from "react-bootstrap";
 import BannerImg from "../../assets/Images/banner_img.png";
 import CatalogSection from '../../components/HomePage/CatalogSection/CatalogSection'
 import TopLinks from "../../components/TopLinks/TopLinks";
+import { Link, withRouter } from "react-router-dom";
+import { useSelector } from "react-redux";
 
-const Home = () => {
+
+const Home = (props) => {
+
+  const persistData = useSelector((state) => state.persist);
+
+  const onCreate = () => {
+    const { history } = props;
+    if(persistData && persistData.isLoggedIn) {
+      history.push('/marketplace/my-collection')
+    } else {
+      history.push('/login');
+    }
+  }
+
   return (
     <div>
       <TopLinks />
@@ -22,8 +37,8 @@ const Home = () => {
                     <h1>The largest NFT marketplace</h1>
                     <p>Buy, sell, and discover rare digital items</p>
                     <div className="banner_btn">
-                      <a href="#" className="dark_btn">Explore</a>
-                      <a href="/MyCollection" className="light_btn">Create</a>
+                      <a className="dark_btn">Explore</a>
+                      <Link onClick={()=>onCreate()} className="light_btn">Create</Link>
                     </div>
                   </div>
                 </Col>
@@ -54,4 +69,4 @@ const Home = () => {
   );
 }
 
-export default Home;
+export default withRouter(Home);

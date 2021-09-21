@@ -3,19 +3,18 @@ import { Route, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 
 const AuthGuard = ({ component: Component, ...rest }) => {
-  const { token } = rest;
-  const isAuthenticated = true;
+  const { isLoggedIn } = rest;
 
   return (
     <Route
       {...rest}
       render={props =>
-        isAuthenticated ? (
+        isLoggedIn ? (
           <Component {...props} />
         ) : (
           <Redirect
             to={{
-              pathname: "/",
+              pathname: "/login",
               state: {
                 from: props.location
               }
@@ -29,7 +28,7 @@ const AuthGuard = ({ component: Component, ...rest }) => {
 
 const mapStateToProps = state => {
   return {
-    token: true
+    isLoggedIn: (state && state.persist && state.persist.isLoggedIn) || false
   };
 };
 

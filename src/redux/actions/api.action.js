@@ -10,7 +10,14 @@ const callGetMintedTokens = (data) => ({
     payload: data
 })
 
+const callCheckLoginOrRegister = (data, history) => ({
+    type: types.saga.api.CALL_CHECK_LOGIN_OR_REGISTER,
+    payload: data,
+    history
+})
+
 export const ApiActions = {
     callGetMintedTokens,
-    savegetMintedTokens
+    savegetMintedTokens,
+    callCheckLoginOrRegister
 }

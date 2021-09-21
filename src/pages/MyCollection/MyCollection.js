@@ -10,7 +10,8 @@ import {ContractActions} from '../../redux/actions/contract.action';
 import {useDispatch, useSelector} from 'react-redux';
 import {ApiActions} from '../../redux/actions/api.action';
 import collectionsitem1 from '../../assets/Images/my_collections2.png';
-import collectionsitem2 from '../../assets/Images/my_collections1.png'
+import collectionsitem2 from '../../assets/Images/my_collections1.png';
+
 function MyCollection() {
     const dispatch = useDispatch();
     const address = useSelector(state => state.persist.address);
@@ -28,7 +29,7 @@ function MyCollection() {
     }
 
     useEffect(() => {
-        if (address.trim().length > 0) callMintedtokens();
+        if (address && address.trim().length > 0) callMintedtokens();
     }, [ address ]);
 
     return (
@@ -56,7 +57,7 @@ function MyCollection() {
                                     setShowCreateModal={setShowCreateModal}
                                     mintNewToken={mintNewToken}
                                 /> */}
-                                <Button className="create-btn" href="Createcollection">Create <img src={add_circle} /></Button>
+                                <Button className="create-btn" href="/marketplace/create-collection">Create <img src={add_circle} /></Button>
                                 <img src={toggle} className="toggle" />
                             </div>
                         </div>

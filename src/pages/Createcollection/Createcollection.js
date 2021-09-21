@@ -1,5 +1,7 @@
 import React, {useState} from 'react'
-import {Container, Row, Col, Button, Form, InputGroup, Modal} from "react-bootstrap";
+import {Container, Row, Col, Button, Form, InputGroup, Modal, FormControl} from "react-bootstrap";
+import {Field, reduxForm} from 'redux-form';
+import {required} from 'redux-form-validators';
 import './Createcollection.scss'
 import close from '../../assets/Images/close.svg'
 import Uploadcard from '../../components/Uploadcard/Uploadcard';
@@ -18,22 +20,26 @@ import covered from '../../assets/Images/card-display-cover.svg'
 import Reactselect from '../../components/Reactselect/Reactselect';
 import displayimg from '../../assets/Images/jelly-fish.png'
 import Breadcrumbs from '../../components/Breadcrumbs/Breadcrumbs';
-function Createcollection() {
+import { FormField, MultiSelect } from '../../components/FormField';
+function Createcollection(props) {
     const [ show, setShow ] = useState(false);
 
     const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
+
+    const { handleSubmit } = props;
+    const onSubmitForm = (data) => {
+        // e.preventDefault();
+        console.log(data)
+        debugger
+    }
 
     const tokenoptions = [
         {
-            value: 'Add token', label: 'Add token'
+            value: 'ETH', label: 'ETH'
         },
         {
-            value: 'Rinkeby', label: 'Rinkeby'
-        },
-        {
-            value: 'Basenet', label: 'Basenet'
-        },
+            value: 'USDT', label: 'USDT'
+        }
     ]
     return (
         <React.Fragment>
@@ -41,7 +47,7 @@ function Createcollection() {
             <Container fluid >
                 <Container className="ContMain custom_content">
                     <Row>
-                        <div className="collection-modal item-card">
+                        <Form onSubmit={handleSubmit(onSubmitForm)} className="collection-modal item-card">
                             <Uploadcard heading="Createcollection" subheading="Logo image *" text="This image will also be used for navigation. 350 x 350 recommended." />
                             <Uploadcard subheading="Featured image " optional=" (optional)" text="This image will be used for featuring your collection on the homepage, cate<b much text in this banner image, as the dimensions change on different devices. 1400 x 400 recommended." />
                             <div className="create-item-form">
@@ -51,7 +57,7 @@ function Createcollection() {
                                             Name*
                                         </Form.Label>
                                         <Col sm="10">
-                                            <Form.Control type="text" placeholder="Thomas George" />
+                                            <Field component={FormField} className="form-control" name="name" type="text" placeholder="Example:: Elon Musk" validate={[required()]} />
                                         </Col>
                                     </Form.Group>
                                     <Form.Group as={Row} controlId="formPlaintextEmail">
@@ -59,7 +65,7 @@ function Createcollection() {
                                             External Link
                                         </Form.Label>
                                         <Col sm="10">
-                                            <Form.Control type="text" placeholder="https://loremlipsum.com/items/xyz" />
+                                            <Field component={FormField} className="form-control" name="externalLink" type="text" placeholder="https://loremlipsum.com/items/xyz" />
                                             <p className="mt-3">NFT will include a link to this URL on this item's detail page, so that users can click to learn more about it. You are welcome to link to your own webpage with more details.</p>
                                         </Col>
                                     </Form.Group>
@@ -68,11 +74,11 @@ function Createcollection() {
                                             Description
                                         </Form.Label>
                                         <Col sm="10">
-                                            <Form.Control as="textarea" rows={4} placeholder="0 to 1000 characters used..." />
+                                            <Field component={FormField} className="form-control" rows={4} name="description" type="textarea" textarea={true} placeholder="0 to 1000 characters used..." validate={[required()]} />
                                             <p>The description will be included on the item's detail page underneath its image.</p>
                                         </Col>
                                     </Form.Group>
-                                    <Form.Group as={Row} controlId="formPlaintextPassword">
+                                    {/* <Form.Group as={Row} controlId="formPlaintextPassword">
                                         <Form.Label column sm="2">
                                             Category
                                         </Form.Label>
@@ -83,9 +89,8 @@ function Createcollection() {
                                                 <small>You can select a maximum of one category.</small>
                                             </div>
                                             <p>Adding a category will help make your item discoverable on NFT.</p>
-
                                         </Col>
-                                    </Form.Group>
+                                    </Form.Group> */}
                                     <Form.Group as={Row} controlId="formPlaintextPassword">
                                         <Form.Label column sm="2">
                                             Links
@@ -95,17 +100,21 @@ function Createcollection() {
                                                 <InputGroup.Prepend>
                                                     <InputGroup.Text id="basic-addon1"><img src={web} /></InputGroup.Text>
                                                 </InputGroup.Prepend>
-                                                <Form.Control
+                                                <Field
+                                                    component = {FormControl}
                                                     placeholder="yoursite.io"
                                                     aria-label="Username"
                                                     aria-describedby="basic-addon1"
+                                                    name="web"
                                                 />
                                             </InputGroup>
                                             <InputGroup className="mb-3 sociallink-box">
                                                 <InputGroup.Prepend>
                                                     <InputGroup.Text id="basic-addon1"><img src={discord} /></InputGroup.Text>
                                                 </InputGroup.Prepend>
-                                                <Form.Control
+                                                <Field
+                                                    component = {FormControl}
+                                                    name="discord"
                                                     placeholder="https://discord.gg/abcdef"
                                                     aria-label="Username"
                                                     aria-describedby="basic-addon1"
@@ -116,8 +125,9 @@ function Createcollection() {
                                                     <InputGroup.Text id="basic-addon1"><img src={twitter} /></InputGroup.Text>
                                                 </InputGroup.Prepend>
                                                 <Form.Control
-                                                    placeholder=""
-                                                    aria-label="Username"
+                                                    component = {FormControl}
+                                                    name="twitter"
+                                                    aria-label="twitter"
                                                     aria-describedby="basic-addon1"
                                                     defaultValue="https://twitter.com/YourTwitterHandle"
                                                 />
@@ -172,7 +182,7 @@ function Createcollection() {
                                             % Fee
                                         </Form.Label>
                                         <Col sm="10">
-                                            <Form.Control type="text" placeholder="0.00" />
+                                            <Field component={FormField} className="form-control" name="fee" type="text" placeholder="0.00" validate={[required()]} />
                                         </Col>
                                     </Form.Group>
                                     <Form.Group as={Row} controlId="formPlaintextEmail">
@@ -180,7 +190,8 @@ function Createcollection() {
                                             Blockchain
                                         </Form.Label>
                                         <Col sm="10">
-                                            <Reactselect currencyicon={eth} placeholder="Rinkeby" />
+                                            <MultiSelect currencyicon={eth} placeholder="Rinkeby"/>
+                                            {/* <Reactselect currencyicon={eth} placeholder="Rinkeby"  /> */}
                                             <p>Select the blockchain where you'd like new items from this collection to be added by default. <img className="info-black" src={info} />
                                             </p>
                                         </Col>
@@ -191,30 +202,30 @@ function Createcollection() {
                                         </Form.Label>
                                         <Col sm="10" className="category-labl payment-token">
                                             <div className="token-cols">
-                                                <span class="label non-active eth-token"><span className="curr-icon"><img src={eth} /></span><span className="curr-text"> <small className="black-text">ETH <br /></small>Rinkeby</span></span>
-                                                <span class="label non-active eth-token"><span className="curr-icon"><img src={eth} /></span><span className="curr-text"> <small className="black-text">WETH <br /></small>Rinkeby</span></span>
+                                                <span class="label non-active eth-token"><span className="curr-icon"><img src={eth} /></span><span className="curr-text"> <small className="black-text">ETH <br /></small>ETH</span></span>
+                                                <span class="label non-active eth-token"><span className="curr-icon"><img src={eth} /></span><span className="curr-text"> <small className="black-text">USDT <br /></small>USDT</span></span>
 
-                                                <span class="label non-active">Rinkeby</span>
-                                                <span class="label non-active">Rinkeby</span>
+                                                {/* <span class="label non-active">Rinkeby</span>
+                                                <span class="label non-active">Rinkeby</span> */}
                                             </div>
                                             <p>These tokens can be used to buy and sell your items. <img src={info} /></p>
                                             <Select options={tokenoptions} className="form-control mt-3"
 
                                                 options={tokenoptions}
-
                                                 classNamePrefix="react-select"
                                                 placeholder="Add token"
                                                 label="Add token"
+                                                defaultValue={tokenoptions[0]}
                                             // menuIsOpen="true"
                                             />
                                         </Col>
                                     </Form.Group>
                                     <Form.Group as={Row} controlId="formPlaintextPassword" className="switch-toggle">
-                                        <Form.Label column sm="2">
+                                        {/* <Form.Label column sm="2">
                                             Display <br />theme
-                                        </Form.Label>
+                                        </Form.Label> */}
                                         <Col sm="10" className="">
-                                            <div className="theme-col">
+                                            {/* <div className="theme-col">
                                                 <div className="display-theme active-theme">
                                                     <img src={padded} />
                                                     <h5>Padded</h5>
@@ -231,7 +242,7 @@ function Createcollection() {
                                                     <p>Recommended for assets that can extend to the edge</p>
                                                 </div>
 
-                                            </div>
+                                            </div> */}
                                             <p className="mt-3">Change how your items are shown.</p>
                                             <div className="switch-toggle">
                                                 <div>
@@ -239,24 +250,24 @@ function Createcollection() {
                                                     <p>Set this collection as explicit and sensitive content &nbsp;<img src={info} />
                                                     </p>
                                                 </div>
-                                                <Form.Check
-                                                    type="switch"
+                                                <Field
+                                                    component={FormField}
+                                                    type="checkbox"
                                                     id="custom-switch"
-
+                                                    className="form-control"
+                                                    name="checkbox"
                                                 />
                                             </div>
                                         </Col>
                                     </Form.Group>
 
                                 </Form>
-
                                 <Form className="info-form ">
-
-                                    <Button href="#" className="read-btn" onClick={handleShow}>Create</Button>
+                                    <Button type="submit" className="read-btn">Create</Button>
                                 </Form>
 
                             </div>
-                        </div>
+                        </Form>
                     </Row>
 
                 </Container>
@@ -283,4 +294,4 @@ function Createcollection() {
     )
 }
 
-export default Createcollection
+export default reduxForm({ form: "Createcollection", enableReinitialize: true })(Createcollection);
