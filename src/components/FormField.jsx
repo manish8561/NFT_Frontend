@@ -1,4 +1,7 @@
 import React from "react";
+import Select from 'react-select'
+import eth from '../assets/Images/eth.svg'
+import './Reactselect/Reactselect.scss'
 
 const TextField = props => {
     // props.input.value = props.formValue;
@@ -168,6 +171,30 @@ const TextAreaField = ({ input, type, maxLength, formValue, placeholder, classNa
         </div>
     );
 };
+const MultiSelect = props => {
+    const options = [
+        {
+            value: 'Eth', label: (
+                <div>
+                    <img src={props.currencyicon} className="optionIcon" />
+                    {props.placeholder}
+                </div>
+            ),
+        }
+    ]
+    return (
+        <div>
+            <Select options={options} className="form-control"
+
+                options={options}
+                defaultValue={options[0]}
+                classNamePrefix="react-select"
+                placeholder="{props.placeholder}"
+                label="{props.label}"
+            />
+        </div>
+    )
+}
 
 const FormField = props => {
     switch (props.type) {
@@ -181,10 +208,13 @@ const FormField = props => {
             return <TextAreaField {...props} />;
         case "radio":
             return <RadioBox {...props} />
-
+        case "multiselect":
+            return <MultiSelect {...props} />
         default:
             return <TextField {...props} />;
     }
 };
 
-export { TextField, CheckBox, FormField };
+
+
+export { TextField, CheckBox, FormField, MultiSelect };

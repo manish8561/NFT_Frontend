@@ -23,6 +23,11 @@ class Web3Service {
         const web3 = await this.initializeWeb3();
         return new web3.eth.Contract(abi, address);
     }
+
+    getNetworkId = async () => {
+        const web3 = await this.initializeWeb3();
+        return new web3.eth.net.getId();
+    }
 }
 
 export default new Web3Service();

@@ -7,6 +7,9 @@ import {
 } from "react-router-dom";
 import PublicRoutes from "./routes/PublicRoutes/PublicRoutes";
 import LoaderComponent from "./components/LoaderCompoent/LoaderCompoent";
+import AuthGuard from "./routes/Guards/AuthGuard";
+import UnAuthGuard from "./routes/Guards/UnAuthGuard";
+import PrivateRoutes from "./routes/PrivateRoutes/PrivateRoutes";
 
 class Application extends Component {
   render() {
@@ -14,8 +17,9 @@ class Application extends Component {
       <React.Fragment>
         <LoaderComponent></LoaderComponent>
         <Router>
-          <Switch>
-            <Route path="/" component={PublicRoutes}  />
+        <Switch>
+            <AuthGuard path="/marketplace" component={PrivateRoutes} />
+            <PublicRoutes />
           </Switch>
         </Router>
       </React.Fragment>
