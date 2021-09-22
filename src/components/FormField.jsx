@@ -44,7 +44,7 @@ const CheckBox = props => {
         type: "checkbox",
         className: "form__checkbox",
         name: props.input.name,
-        id: props.input.name,
+        id: props.input.id,
         headLabel: props.input.label,
         defaultChecked: meta.uncontrolled ? props.defaultChecked : undefined,
         onChange: props.input.onChange,

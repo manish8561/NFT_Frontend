@@ -1,7 +1,7 @@
-import React, {useState} from 'react'
-import {Container, Row, Col, Button, Form, InputGroup, Modal, FormControl} from "react-bootstrap";
-import {Field, reduxForm} from 'redux-form';
-import {required} from 'redux-form-validators';
+import React, { useState } from 'react'
+import { Container, Row, Col, Button, Form, InputGroup, Modal, FormControl } from "react-bootstrap";
+import { Field, reduxForm } from 'redux-form';
+import { required } from 'redux-form-validators';
 import './Createcollection.scss'
 import close from '../../assets/Images/close.svg'
 import Uploadcard from '../../components/Uploadcard/Uploadcard';
@@ -21,26 +21,20 @@ import Reactselect from '../../components/Reactselect/Reactselect';
 import displayimg from '../../assets/Images/jelly-fish.png'
 import Breadcrumbs from '../../components/Breadcrumbs/Breadcrumbs';
 import { FormField, MultiSelect } from '../../components/FormField';
-function Createcollection(props) {
-    const [ show, setShow ] = useState(false);
+import { GlobalVariables } from '../../constants/globalVariables.constant';
+
+const Createcollection = ({ handleSubmit }) => {
+    const [show, setShow] = useState(false);
 
     const handleClose = () => setShow(false);
 
-    const { handleSubmit } = props;
     const onSubmitForm = (data) => {
         // e.preventDefault();
+        console.clear();
+        alert('hi')
         console.log(data)
-        debugger
     }
 
-    const tokenoptions = [
-        {
-            value: 'ETH', label: 'ETH'
-        },
-        {
-            value: 'USDT', label: 'USDT'
-        }
-    ]
     return (
         <React.Fragment>
             <Breadcrumbs text="My collections" active="Create collections" />
@@ -49,7 +43,9 @@ function Createcollection(props) {
                     <Row>
                         <Form onSubmit={handleSubmit(onSubmitForm)} className="collection-modal item-card">
                             <Uploadcard heading="Createcollection" subheading="Logo image *" text="This image will also be used for navigation. 350 x 350 recommended." />
+                            
                             <Uploadcard subheading="Featured image " optional=" (optional)" text="This image will be used for featuring your collection on the homepage, cate<b much text in this banner image, as the dimensions change on different devices. 1400 x 400 recommended." />
+                           
                             <div className="create-item-form">
                                 <Form className="info-form ">
                                     <Form.Group as={Row} controlId="formPlaintextEmail">
@@ -75,6 +71,7 @@ function Createcollection(props) {
                                         </Form.Label>
                                         <Col sm="10">
                                             <Field component={FormField} className="form-control" rows={4} name="description" type="textarea" textarea={true} placeholder="0 to 1000 characters used..." validate={[required()]} />
+
                                             <p>The description will be included on the item's detail page underneath its image.</p>
                                         </Col>
                                     </Form.Group>
@@ -101,31 +98,33 @@ function Createcollection(props) {
                                                     <InputGroup.Text id="basic-addon1"><img src={web} /></InputGroup.Text>
                                                 </InputGroup.Prepend>
                                                 <Field
-                                                    component = {FormControl}
+                                                    component={FormControl}
                                                     placeholder="yoursite.io"
                                                     aria-label="Username"
                                                     aria-describedby="basic-addon1"
                                                     name="web"
                                                 />
                                             </InputGroup>
+
                                             <InputGroup className="mb-3 sociallink-box">
                                                 <InputGroup.Prepend>
                                                     <InputGroup.Text id="basic-addon1"><img src={discord} /></InputGroup.Text>
                                                 </InputGroup.Prepend>
                                                 <Field
-                                                    component = {FormControl}
+                                                    component={FormControl}
                                                     name="discord"
                                                     placeholder="https://discord.gg/abcdef"
                                                     aria-label="Username"
                                                     aria-describedby="basic-addon1"
                                                 />
                                             </InputGroup>
+                                            
                                             <InputGroup className="mb-3 sociallink-box">
                                                 <InputGroup.Prepend>
                                                     <InputGroup.Text id="basic-addon1"><img src={twitter} /></InputGroup.Text>
                                                 </InputGroup.Prepend>
                                                 <Form.Control
-                                                    component = {FormControl}
+                                                    component={FormControl}
                                                     name="twitter"
                                                     aria-label="twitter"
                                                     aria-describedby="basic-addon1"
@@ -190,7 +189,7 @@ function Createcollection(props) {
                                             Blockchain
                                         </Form.Label>
                                         <Col sm="10">
-                                            <MultiSelect currencyicon={eth} placeholder="Rinkeby"/>
+                                            <MultiSelect currencyicon={eth} placeholder="Rinkeby" />
                                             {/* <Reactselect currencyicon={eth} placeholder="Rinkeby"  /> */}
                                             <p>Select the blockchain where you'd like new items from this collection to be added by default. <img className="info-black" src={info} />
                                             </p>
@@ -209,13 +208,11 @@ function Createcollection(props) {
                                                 <span class="label non-active">Rinkeby</span> */}
                                             </div>
                                             <p>These tokens can be used to buy and sell your items. <img src={info} /></p>
-                                            <Select options={tokenoptions} className="form-control mt-3"
-
-                                                options={tokenoptions}
+                                            <Select options={GlobalVariables.tokenoptions} className="form-control mt-3"
                                                 classNamePrefix="react-select"
                                                 placeholder="Add token"
                                                 label="Add token"
-                                                defaultValue={tokenoptions[0]}
+                                                defaultValue={GlobalVariables.tokenoptions[0]}
                                             // menuIsOpen="true"
                                             />
                                         </Col>
@@ -274,7 +271,7 @@ function Createcollection(props) {
             </Container>
 
             <Modal show={show} onHide={handleClose} className="create-modal collection-modal isBlank">
-                <Modal.Header closeButton className="b-0"> <Modal.Title >Your collection has been created!</Modal.Title> </Modal.Header>
+                <Modal.Header closeButton className="b-0"> <Modal.Title >Your colle``ction has been created!</Modal.Title> </Modal.Header>
                 <Modal.Body>
 
                     <div className="item-body">

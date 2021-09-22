@@ -36,7 +36,7 @@ function* callCheckLoginOrRegister(actionData) {
 
     const response = yield call(checkUserExists, payload, {});
     const { data } = response;
-    console.log(history);
+
     if(data && data.status == "200" && data.token && data.data && data.data.user && data.data.user.walletAddress) {
       yield put({ type: types.saga.persist.CALL_SAVE_IS_LOGGED_IN, payload: true})
       yield put({type: types.saga.persist.CALL_SAVE_WALLET_ADDRESS, payload: {address: data.data.user.walletAddress}})
