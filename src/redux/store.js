@@ -9,13 +9,15 @@ import createSagaMiddleware from 'redux-saga';
 import rootSaga from './saga';
 import logger from 'redux-logger';
 
-const persistConfig = { key: "root", storage: storage};
+const persistConfig = {
+  key: "root",
+  storage: storage,
+  whitelist: ["persist"]
+};
+
 const sagaMiddleware = createSagaMiddleware();
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 
-let middleWare = composeWithDevTools(
-  applyMiddleware(sagaMiddleware, logger, routerMiddleware(history))
-);
 
 const configureStore = () => {
   const middlewares = [logger, sagaMiddleware, routerMiddleware(history)];

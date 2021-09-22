@@ -1,4 +1,4 @@
-import { delay, call, put, takeEvery, takeLatest } from "redux-saga/effects";
+import { delay, select, call, put, takeEvery, takeLatest } from "redux-saga/effects";
 import { ApiService } from "../../services/api.service";
 import IpfsService from "../../services/ipfs.service";
 import { ApiActions } from "../actions/api.action";
@@ -6,6 +6,7 @@ import types from "../types";
 import { PersistActions } from "../actions/persist.action";
 import web3Service from "../../services/web3.service";
 
+export const getProject = (state) => state.persist;
 
 function* callGetMintedTokens(data) {
   try {
@@ -15,7 +16,11 @@ function* callGetMintedTokens(data) {
     if (res) {
       const { savegetMintedTokens } = ApiActions;
       let { data: { data: { logs } } } = res;
+
       console.clear();
+      const abc = yield select(getProject);
+      console.log({ abc });
+      return;
       logs = logs.map( async (row) => {
         const { data } = await getIpfsDataWithhash(row['tokenUri']);
         console.log({...data});

@@ -16,10 +16,9 @@ const Uploadcard = (props) => {
         ext = ext.toLowerCase();
         if ((ext === "jpg") || (ext === "jpeg") || (ext === "png") || (ext === "gif")) {
             const fileSize = file.size / 1024 / 1024 / 1024;
-
             if (fileSize > 3000) return toast.info('Image should be less than or equal to 3MB');
-
-           
+            const blob = URL.createObjectURL(file)
+            setImage(blob);
         } else {
             return toast.info("Please upload a valid image format (.jpg, .jpeg, .png, .gif)");
         }
@@ -37,11 +36,11 @@ const Uploadcard = (props) => {
 
                 <Form.Group className="upload-doc upload-file">
                     <div className="add-icon">
-                        <img src={plus_icon} alt="" />
+                        <img style={{ height: '250px', width: '308px' }} src={image.length > 0 ? image : plus_icon} alt="" />
                         <p>Drag and drop file <br /> or <span className="blue-text">browse media or your device</span></p>
 
                     </div>
-                    <Form.File id="exampleFormControlFile1" />
+                    <Form.File onChange={onImageChange} id="exampleFormControlFile1" />
 
                 </Form.Group>
             </Form>
