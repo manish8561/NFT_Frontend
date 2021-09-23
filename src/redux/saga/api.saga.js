@@ -13,17 +13,13 @@ function* callGetMintedTokens(data) {
     const { payload } = data;
     const { getMintedTokens, getIpfsDataWithhash } = ApiService;
     const res = yield call(getMintedTokens, payload, {});
+  
     if (res) {
       const { savegetMintedTokens } = ApiActions;
       let { data: { data: { logs } } } = res;
 
-      console.clear();
-      const abc = yield select(getProject);
-      console.log({ abc });
-      return;
       logs = logs.map( async (row) => {
         const { data } = await getIpfsDataWithhash(row['tokenUri']);
-        console.log({...data});
         return { ...data };
       });
       logs = yield Promise.all(logs);

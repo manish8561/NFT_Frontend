@@ -22,17 +22,17 @@ import displayimg from '../../assets/Images/jelly-fish.png'
 import Breadcrumbs from '../../components/Breadcrumbs/Breadcrumbs';
 import { FormField, MultiSelect } from '../../components/FormField';
 import { GlobalVariables } from '../../constants/globalVariables.constant';
+import { useDispatch } from 'react-redux';
+import { ApiActions } from '../../redux/actions/api.action';
 
 const Createcollection = ({ handleSubmit }) => {
+    const dispatch = useDispatch();
     const [show, setShow] = useState(false);
-
     const handleClose = () => setShow(false);
 
     const onSubmitForm = (data) => {
-        // e.preventDefault();
-        console.clear();
-        alert('hi')
-        console.log(data)
+        const { callCreateCollection } = ApiActions;
+        dispatch(callCreateCollection(data));
     }
 
     return (
@@ -42,9 +42,10 @@ const Createcollection = ({ handleSubmit }) => {
                 <Container className="ContMain custom_content">
                     <Row>
                         <Form onSubmit={handleSubmit(onSubmitForm)} className="collection-modal item-card">
-                            <Uploadcard heading="Createcollection" subheading="Logo image *" text="This image will also be used for navigation. 350 x 350 recommended." />
                             
-                            <Uploadcard subheading="Featured image " optional=" (optional)" text="This image will be used for featuring your collection on the homepage, cate<b much text in this banner image, as the dimensions change on different devices. 1400 x 400 recommended." />
+                            <Uploadcard heading="Createcollection" subheading="Logo image *" text="This image will also be used for navigation. 350 x 350 recommended." name="logo" />
+                            
+                            <Uploadcard subheading="Featured image " optional=" (optional)" text="This image will be used for featuring your collection on the homepage, cate<b much text in this banner image, as the dimensions change on different devices. 1400 x 400 recommended." name="banner" />
                            
                             <div className="create-item-form">
                                 <Form className="info-form ">

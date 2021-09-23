@@ -3,6 +3,9 @@ import { Form } from "react-bootstrap";
 import './Uploadcard.scss'
 import plus_icon from '../../assets/Images/plus_icon.svg'
 import { toast } from 'react-toastify';
+import { Field } from 'redux-form';
+import { FormField } from '../FormField';
+import { required } from 'redux-form-validators';
 
 const Uploadcard = (props) => {
     const [image, setImage] = useState("");
@@ -40,7 +43,8 @@ const Uploadcard = (props) => {
                         <p>Drag and drop file <br /> or <span className="blue-text">browse media or your device</span></p>
 
                     </div>
-                    <Form.File onChange={onImageChange} id="exampleFormControlFile1" />
+                    <Field component={FormField} type="file" name={props.name} onChangeImage={onImageChange} validate={[ required() ]} />
+                    {/* <Form.File onChange={onImageChange} id="exampleFormControlFile1" /> */}
 
                 </Form.Group>
             </Form>
