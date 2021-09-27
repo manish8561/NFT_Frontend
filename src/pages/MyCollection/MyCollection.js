@@ -16,6 +16,7 @@ function MyCollection() {
     const dispatch = useDispatch();
     const address = useSelector(state => state.persist.address);
     const mintedLogs = useSelector(state => state.api.mintedLogs);
+    const collections = useSelector(state => state.api.collectionsLogs);
     const [ showCreateModal, setShowCreateModal ] = useState(false);
 
     const mintNewToken = (values) => {
@@ -25,18 +26,26 @@ function MyCollection() {
 
     const callMintedtokens = () => {
         const {callGetMintedTokens} = ApiActions;
-        dispatch(callGetMintedTokens({page: 0, limit: 10, user: address}));
+        dispatch(callGetMintedTokens({page: 0, limit: 10, user: address}))
+    }
+
+    const callCollection = () => {
+        const {callGetCollection} = ApiActions;
+        dispatch(callGetCollection({page : 0, limit : 20, filter : {}}));
     }
 
     useEffect(() => {
-        if (address && address.trim().length > 0) callMintedtokens();
+        if (address && address.trim().length > 0){ 
+        callMintedtokens();
+        callCollection();
+        }
     }, [ address ]);
 
     return (
         <div>
+            
             <TopLinks />
             <Container className="ContMain">
-
                 <Row className="banner_row ">
                     <Col lg={9}>
                         <div className="collection_col">
@@ -75,7 +84,7 @@ function MyCollection() {
                             <img src={collectionsitem2} />
                             <p>Explore the Untitled Collection #2728089 collection<br /> <b> 1 Item </b> </p>
                         </div>
-
+                        
                     </Col>
                     {/* {
                         mintedLogs.length > 0 ?
@@ -88,12 +97,8 @@ function MyCollection() {
                                 </Col>
                             )) : "No Records Found."
                     } */}
-
-
-
                 </Row>
             </Container>
-
             {/* <Container fluid className="collection">
                 <Container className="custom-cont ContMain">
                     <h4 className="main-heading">Collection items</h4>
@@ -112,11 +117,9 @@ function MyCollection() {
                                 <Col sm={6} lg={3} className="p-0"> <CollectionItems thumb={collections_items2} title="Jacks Oscar " text="Art World" price="$ 155.99" ></CollectionItems></Col>
                                 <Col sm={6} lg={3} className="p-0"> <CollectionItems thumb={collections_items3} title="William Leo " text="Art World" price="$ 155.99" ></CollectionItems></Col>
                                 <Col sm={6} lg={3} className="p-0"> <CollectionItems thumb={collections_items4} title="Jacks Oscar " text="Art World" price="$ 155.99" ></CollectionItems></Col>
-
                             </Row>
                         </div>
                     </div>
-
                 </Container>
             </Container> */}
         </div>

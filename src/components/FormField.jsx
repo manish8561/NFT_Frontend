@@ -5,7 +5,6 @@ import './Reactselect/Reactselect.scss'
 
 const TextField = props => {
     // props.input.value = props.formValue;
-
     const { meta = {} } = props;
     const inputProps = {
         type: props.type || "text",
@@ -39,7 +38,6 @@ const TextField = props => {
 
 const CheckBox = props => {
     const { meta = {} } = props;
-
     const checboxProps = {
         type: "checkbox",
         className: "form__checkbox",
@@ -114,7 +112,6 @@ const SelectField = ({ input, meta: { touched, error }, children, className, for
 };
 
 const File = ({ input, type, meta: { touched, error }, accept, className, onChangeImage }) => {
-
     const handleChange = (event, input) => {
         event.preventDefault();
         let imageFile = event.target.files[0];
@@ -123,9 +120,9 @@ const File = ({ input, type, meta: { touched, error }, accept, className, onChan
             onChangeImage(event);
         }
     };
-
     return (
-        <div>
+        <React.Fragment>
+
             <input name="name"
                 type={type}
                 accept={input.accept}
@@ -135,12 +132,12 @@ const File = ({ input, type, meta: { touched, error }, accept, className, onChan
             {touched && error ? (
                 <div className="form__field-error text-danger">{error}</div>
             ) : null}
-        </div>
+        </ React.Fragment>
+
     );
 };
 
 const TextAreaField = ({ input, type, maxLength, formValue, placeholder, className, textarea, rows, meta: { touched, error, warning, invalid } }) => {
-
     const textareaType = (
         <textarea
             {...input}
@@ -171,26 +168,27 @@ const TextAreaField = ({ input, type, maxLength, formValue, placeholder, classNa
         </div>
     );
 };
-const MultiSelect = props => {
-    const options = [
-        {
-            value: 'Eth', label: (
-                <div>
-                    <img src={props.currencyicon} className="optionIcon" />
-                    {props.placeholder}
-                </div>
-            ),
-        }
-    ]
+
+const MultiSelect = props => {    
+    const selectProps = { value : props.value ,
+                         onChange : props.onChange,
+                         options : props.options,
+                         isMulti : props.isMulti || false,
+                         }
+    console.log("selected", selectProps)
+                         
     return (
         <div>
-            <Select options={options} className="form-control"
-
-                options={options}
-                defaultValue={options[0]}
+            <Select options={selectProps.options} className="form-control"
+                // options={selectProps.options[0]}
+                closeMenuOnSelect={false}
+                defaultValue={selectProps.defaultValue}
                 classNamePrefix="react-select"
-                placeholder="{props.placeholder}"
-                label="{props.label}"
+                isMulti={selectProps.isMulti}
+                onChange={(e)=>selectProps.onChange(e)} // assign onChange function
+                value={{value: selectProps.value, label : selectProps.value}}
+                placeholder={props.placeholder}
+                label={props.label}
             />
         </div>
     )

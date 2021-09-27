@@ -30,9 +30,23 @@ const Createcollection = ({ handleSubmit }) => {
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
 
+    const [blockChainValue, setBlockChainValue] = React.useState("");
+    const [paymentToken, setPaymentToken] = React.useState("");
+    
+    const SelecthandleChange = e =>  setBlockChainValue(e.value);
+    const SelecthandleChangePayment = (e) => setPaymentToken(Array.isArray(e) ? e.map(x => x.value) : []);
+
     const onSubmitForm = (data) => {
-        const { callCreateCollection } = ApiActions;
-        dispatch(callCreateCollection(data));
+        let newData = {
+            name : data.name,
+            banner : data.banner,
+            logo : data.logo,
+            description: data.description,
+            externalLink : data.externalLink
+        }
+        console.log(newData);
+        // const { callCreateCollection } = ApiActions;
+        // dispatch(callCreateCollection(data));
     }
 
     return (
@@ -96,74 +110,93 @@ const Createcollection = ({ handleSubmit }) => {
                                         <Col sm="10" className="">
                                             <InputGroup className="mb-3 sociallink-box">
                                                 <InputGroup.Prepend>
-                                                    <InputGroup.Text id="basic-addon1"><img src={web} /></InputGroup.Text>
+                                                    <InputGroup.Text id="basic-web_link"><img src={web} /></InputGroup.Text>
                                                 </InputGroup.Prepend>
                                                 <Field
-                                                    component={FormControl}
+                                                    className="form-control"
+                                                    component={FormField}
                                                     placeholder="yoursite.io"
-                                                    aria-label="Username"
-                                                    aria-describedby="basic-addon1"
+                                                    type="text"
+                                                    aria-label="web_link"
+                                                    aria-describedby="basic-web_link"
                                                     name="web"
                                                 />
                                             </InputGroup>
 
                                             <InputGroup className="mb-3 sociallink-box">
                                                 <InputGroup.Prepend>
-                                                    <InputGroup.Text id="basic-addon1"><img src={discord} /></InputGroup.Text>
+                                                    <InputGroup.Text id="basic-discord_link"><img src={discord} /></InputGroup.Text>
                                                 </InputGroup.Prepend>
                                                 <Field
-                                                    component={FormControl}
-                                                    name="discord"
+                                                    className="form-control"
+                                                    component={FormField}
+                                                    name="discord_link"
+                                                    type="text"
+                                                    aria-label="discord_link"
+                                                    aria-describedby="basic-discord_link"
                                                     placeholder="https://discord.gg/abcdef"
-                                                    aria-label="Username"
-                                                    aria-describedby="basic-addon1"
                                                 />
                                             </InputGroup>
-                                            
+
                                             <InputGroup className="mb-3 sociallink-box">
                                                 <InputGroup.Prepend>
-                                                    <InputGroup.Text id="basic-addon1"><img src={twitter} /></InputGroup.Text>
+                                                    <InputGroup.Text id="basic-twitter_link"><img src={twitter} /></InputGroup.Text>
                                                 </InputGroup.Prepend>
-                                                <Form.Control
-                                                    component={FormControl}
-                                                    name="twitter"
+                                                <Field
+                                                    className="form-control"
+                                                    component={FormField}
+                                                    name="twitter_link"
+                                                    type="text"
                                                     aria-label="twitter"
-                                                    aria-describedby="basic-addon1"
-                                                    defaultValue="https://twitter.com/YourTwitterHandle"
+                                                    placeholder="https://twitter.com/YourTwitterHandle"
+                                                    aria-describedby="basic-twitter_link"
                                                 />
                                             </InputGroup>
+
                                             <InputGroup className="mb-3 sociallink-box">
                                                 <InputGroup.Prepend>
-                                                    <InputGroup.Text id="basic-addon1"><img className="instaicon" src={instagram} /></InputGroup.Text>
+                                                    <InputGroup.Text id="basic-instagram_link"><img className="instaicon" src={instagram} /></InputGroup.Text>
                                                 </InputGroup.Prepend>
-                                                <Form.Control
-                                                    placeholder=""
-                                                    aria-label="Username"
-                                                    aria-describedby="basic-addon1"
-                                                    defaultValue="https://www.instagram.com/YourInstagramHandle"
-                                                />
-                                            </InputGroup> <InputGroup className="mb-3 sociallink-box">
-                                                <InputGroup.Prepend>
-                                                    <InputGroup.Text id="basic-addon1"><img src={medium} /></InputGroup.Text>
-                                                </InputGroup.Prepend>
-                                                <Form.Control
-                                                    placeholder=""
-                                                    aria-label="Username"
-                                                    aria-describedby="basic-addon1"
-                                                    defaultValue="https://www.medium.com/@YourMediumHandle"
+                                                <Field
+                                                    className="form-control"
+                                                    component={FormField}
+                                                    name="instagram_link"
+                                                    type="text"
+                                                    aria-label="instagram"
+                                                    placeholder="https://www.instagram.com/YourInstagramHandle"
+                                                    aria-describedby="basic-instagram_link"
                                                 />
                                             </InputGroup>
+
                                             <InputGroup className="mb-3 sociallink-box">
                                                 <InputGroup.Prepend>
-                                                    <InputGroup.Text id="basic-addon1"><img src={telegram} /></InputGroup.Text>
+                                                    <InputGroup.Text id="basic-medium_link"><img src={medium} /></InputGroup.Text>
                                                 </InputGroup.Prepend>
-                                                <Form.Control
-                                                    placeholder=""
-                                                    aria-label="Username"
-                                                    aria-describedby="basic-addon1"
+                                                <Field
+                                                    className="form-control"
+                                                    component={FormField}
+                                                    placeholder="https://www.medium.com/@YourMediumHandle"
+                                                    name="medium_link"
+                                                    aria-label="medium"
+                                                    aria-describedby="basic-medium_link"
+                                                />
+                                            </InputGroup>
+                                          
+                                            <InputGroup className="mb-3 sociallink-box">
+                                                <InputGroup.Prepend>
+                                                    <InputGroup.Text id="basic-telegram_link"><img src={telegram} /></InputGroup.Text>
+                                                </InputGroup.Prepend>
+                                                <Field
+                                                    className="form-control"
+                                                    component={FormField}
+                                                    placeholder="https://t.me/abcdef"
+                                                    aria-label="telegram"
+                                                    name="telegram_link"
+                                                    aria-describedby="basic-telegram_link"
                                                     defaultValue="https://t.me/abcdef"
                                                 />
                                             </InputGroup>
+
                                         </Col>
                                     </Form.Group>
                                     <Form.Group as={Row} controlId="formPlaintextPassword">
@@ -171,7 +204,6 @@ const Createcollection = ({ handleSubmit }) => {
                                             Royalties
                                         </Form.Label>
                                         <Col sm="10" className="category-labl">
-
                                             <p className="m-0">Collect a fee when a user re-sells an item you originally created. This is deducted from the final sale price and paid monthly to a payout address of your choosing.
                                                 <a className="blue-text" href="#">Learn more</a>
                                             </p>
@@ -182,7 +214,7 @@ const Createcollection = ({ handleSubmit }) => {
                                             % Fee
                                         </Form.Label>
                                         <Col sm="10">
-                                            <Field component={FormField} className="form-control" name="fee" type="text" placeholder="0.00" validate={[required()]} />
+                                            <Field component={FormField} className="form-control" name="royality" type="text" placeholder="0.00" validate={[required()]} />
                                         </Col>
                                     </Form.Group>
                                     <Form.Group as={Row} controlId="formPlaintextEmail">
@@ -190,8 +222,7 @@ const Createcollection = ({ handleSubmit }) => {
                                             Blockchain
                                         </Form.Label>
                                         <Col sm="10">
-                                            <MultiSelect currencyicon={eth} placeholder="Rinkeby" />
-                                            {/* <Reactselect currencyicon={eth} placeholder="Rinkeby"  /> */}
+                                            <MultiSelect options={GlobalVariables.blockchainOptions} placeholder="Rinkeby" value={blockChainValue} onChange={SelecthandleChange}/>
                                             <p>Select the blockchain where you'd like new items from this collection to be added by default. <img className="info-black" src={info} />
                                             </p>
                                         </Col>
@@ -209,9 +240,14 @@ const Createcollection = ({ handleSubmit }) => {
                                                 <span class="label non-active">Rinkeby</span> */}
                                             </div>
                                             <p>These tokens can be used to buy and sell your items. <img src={info} /></p>
-                                            <Select options={GlobalVariables.tokenoptions} className="form-control mt-3"
+                                            <MultiSelect 
+                                                options={GlobalVariables.tokenoptions} 
+                                                className="form-control mt-3"
                                                 classNamePrefix="react-select"
                                                 placeholder="Add token"
+                                                isMulti={true}
+                                                value={paymentToken}
+                                                onChange={SelecthandleChangePayment}
                                                 label="Add token"
                                                 defaultValue={GlobalVariables.tokenoptions[0]}
                                             // menuIsOpen="true"
@@ -272,7 +308,7 @@ const Createcollection = ({ handleSubmit }) => {
             </Container>
 
             <Modal show={show} onHide={handleClose} className="create-modal collection-modal isBlank">
-                <Modal.Header closeButton className="b-0"> <Modal.Title >Your colle``ction has been created!</Modal.Title> </Modal.Header>
+                <Modal.Header closeButton className="b-0"> <Modal.Title >Your collection has been created!</Modal.Title> </Modal.Header>
                 <Modal.Body>
 
                     <div className="item-body">

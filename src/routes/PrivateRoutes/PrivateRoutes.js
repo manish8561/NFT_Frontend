@@ -18,7 +18,7 @@ class PrivateRoutes extends Component {
                     <Route path="/marketplace/create-item" component={CreateItem} exact={true} />
                     <Route path="/marketplace/profile" component={Profile} exact={true} />
                     <Route path="/marketplace/create-collection" component={Createcollection} exact={true} />
-                 </div> 
+                </div>
                 <Footer />
             </React.Fragment>
         )

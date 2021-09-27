@@ -14,16 +14,14 @@ export class CollectionItems extends Component {
                     </div>
                     <p className="price">{price}</p>
                 </div>
+                
                 <div className="overlay">
                     <div className="overlay-btns">
                         <Button href="#" className="read-btn">Read More </Button>
                         <Button href="#" className="buy-btn">Buy Now </Button>
                     </div>
-
                 </div>
             </div>
-
-
         )
     }
 }
