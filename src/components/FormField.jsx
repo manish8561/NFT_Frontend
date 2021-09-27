@@ -174,12 +174,11 @@ const MultiSelect = props => {
                          onChange : props.onChange,
                          options : props.options,
                          isMulti : props.isMulti || false,
-                         }
-    console.log("selected", selectProps)
-                         
+                         }                         
     return (
         <div>
-            <Select options={selectProps.options} className="form-control"
+            <Select options={selectProps.options} 
+                className="form-control"
                 // options={selectProps.options[0]}
                 closeMenuOnSelect={false}
                 defaultValue={selectProps.defaultValue}

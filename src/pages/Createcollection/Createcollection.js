@@ -44,7 +44,7 @@ const Createcollection = ({ handleSubmit }) => {
             description: data.description,
             externalLink : data.externalLink
         }
-        console.log(newData);
+        console.log(data);
         // const { callCreateCollection } = ApiActions;
         // dispatch(callCreateCollection(data));
     }
