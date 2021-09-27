@@ -1,6 +1,5 @@
 import React from "react";
 import Select from 'react-select'
-import eth from '../assets/Images/eth.svg'
 import './Reactselect/Reactselect.scss'
 
 const TextField = props => {
@@ -163,33 +162,28 @@ const TextAreaField = ({ input, type, maxLength, formValue, placeholder, classNa
                 {textarea ? textareaType : inputType}
                 {touched &&
                     ((error && <span className="form__field-error text-danger"> {error} </span>) ||
-                    (warning && <span>{warning}</span>))}
+                        (warning && <span>{warning}</span>))}
             </div>
         </div>
     );
 };
 
-const MultiSelect = props => {    
-    const selectProps = { value : props.value ,
-                         onChange : props.onChange,
-                         options : props.options,
-                         isMulti : props.isMulti || false,
-                         }                         
+const MultiSelect = props => {
     return (
-        <div>
-            <Select options={selectProps.options} 
+            <Select
+                { ...props.input } 
+                closeMenuOnSelect={ props.closeMenuOnSelect ||false}
                 className="form-control"
-                // options={selectProps.options[0]}
-                closeMenuOnSelect={false}
-                defaultValue={selectProps.defaultValue}
                 classNamePrefix="react-select"
-                isMulti={selectProps.isMulti}
-                onChange={(e)=>selectProps.onChange(e)} // assign onChange function
-                value={{value: selectProps.value, label : selectProps.value}}
+                defaultValue={props.defaultValue}
+                isClearable
+                isSearchable={props.isSearchable || false}
+                isMulti={props.isMulti || false}
                 placeholder={props.placeholder}
+                options={props.options} 
                 label={props.label}
-            />
-        </div>
+                />
+           
     )
 }
 
@@ -205,7 +199,7 @@ const FormField = props => {
             return <TextAreaField {...props} />;
         case "radio":
             return <RadioBox {...props} />
-        case "multiselect":
+        case "multi-select":
             return <MultiSelect {...props} />
         default:
             return <TextField {...props} />;

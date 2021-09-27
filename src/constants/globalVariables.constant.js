@@ -7,7 +7,7 @@ const tokenoptions = [
 ]
 
 const blockchainOptions = [
-    { value: 'Rinkeby', label: (<div> <img src={eth} className="optionIcon" />Rinkeyby</div>)},
+    { value: 'Rinkeby', label: (<div> <img src={eth} alt="" className="optionIcon" />Rinkeby</div>)},
 ]
 
 export const GlobalVariables = {

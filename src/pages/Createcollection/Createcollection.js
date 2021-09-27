@@ -30,23 +30,30 @@ const Createcollection = ({ handleSubmit }) => {
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
 
-    const [blockChainValue, setBlockChainValue] = React.useState("");
-    const [paymentToken, setPaymentToken] = React.useState("");
-    
-    const SelecthandleChange = e =>  setBlockChainValue(e.value);
-    const SelecthandleChangePayment = (e) => setPaymentToken(Array.isArray(e) ? e.map(x => x.value) : []);
-
     const onSubmitForm = (data) => {
-        let newData = {
-            name : data.name,
-            banner : data.banner,
-            logo : data.logo,
-            description: data.description,
-            externalLink : data.externalLink
-        }
-        console.log(data);
-        // const { callCreateCollection } = ApiActions;
-        // dispatch(callCreateCollection(data));
+        let links = []
+        let paymentTokens = []
+
+        if(data.web)links.push({web : data.web})
+        if(data.twitter_link)links.push({twiter : data.twitter_link})
+        if(data.telegram_link)links.push({instagram : data.telegram_link})
+        if(data.medium_link)links.push({medium :  data.medium_link})
+        if(data.instagram_link)links.push({instagram : data.instagram_link})
+        if(data.discord_link)links.push({discord : data.discord_link})
+
+        if(data.paymentToken && data.paymentToken.length > 0){data.paymentToken.map((items) => { if(items.value){paymentTokens.push(items.value)}})}
+        
+        let newData = { name: data.name, 
+                        banner: data.banner,
+                        logo: data.logo,links : links, 
+                        description: data.description, 
+                        externalLink: data.externalLink, 
+                        blockChain: data.blockchain ? data.blockchain.value : null, 
+                        paymentToken: paymentTokens.toString()
+                    }
+                    
+        const { callCreateCollection } = ApiActions;
+        dispatch(callCreateCollection(newData));
     }
 
     return (
@@ -56,11 +63,11 @@ const Createcollection = ({ handleSubmit }) => {
                 <Container className="ContMain custom_content">
                     <Row>
                         <Form onSubmit={handleSubmit(onSubmitForm)} className="collection-modal item-card">
-                            
+
                             <Uploadcard heading="Createcollection" subheading="Logo image *" text="This image will also be used for navigation. 350 x 350 recommended." name="logo" />
-                            
+
                             <Uploadcard subheading="Featured image " optional=" (optional)" text="This image will be used for featuring your collection on the homepage, cate<b much text in this banner image, as the dimensions change on different devices. 1400 x 400 recommended." name="banner" />
-                           
+
                             <div className="create-item-form">
                                 <Form className="info-form ">
                                     <Form.Group as={Row} controlId="formPlaintextEmail">
@@ -181,7 +188,7 @@ const Createcollection = ({ handleSubmit }) => {
                                                     aria-describedby="basic-medium_link"
                                                 />
                                             </InputGroup>
-                                          
+
                                             <InputGroup className="mb-3 sociallink-box">
                                                 <InputGroup.Prepend>
                                                     <InputGroup.Text id="basic-telegram_link"><img src={telegram} /></InputGroup.Text>
@@ -222,7 +229,20 @@ const Createcollection = ({ handleSubmit }) => {
                                             Blockchain
                                         </Form.Label>
                                         <Col sm="10">
-                                            <MultiSelect options={GlobalVariables.blockchainOptions} placeholder="Rinkeby" value={blockChainValue} onChange={SelecthandleChange}/>
+                                            <Field 
+                                                component={FormField} 
+                                                options={GlobalVariables.blockchainOptions} 
+                                                name="blockchain" 
+                                                className="form-control mt-3"
+                                                classNamePrefix="react-select"
+                                                placeholder="Rinkeby" 
+                                                isClearable     
+                                                closeMenuOnSelect={true}
+                                                type="multi-select" 
+                                                label="blockchain"
+                                                type="multi-select"
+                                                defaultValue={GlobalVariables.blockchainOptions[0]}
+                                                />
                                             <p>Select the blockchain where you'd like new items from this collection to be added by default. <img className="info-black" src={info} />
                                             </p>
                                         </Col>
@@ -232,26 +252,24 @@ const Createcollection = ({ handleSubmit }) => {
                                             Payment tokens
                                         </Form.Label>
                                         <Col sm="10" className="category-labl payment-token">
-                                            <div className="token-cols">
+                                            {/* <div className="token-cols">
                                                 <span class="label non-active eth-token"><span className="curr-icon"><img src={eth} /></span><span className="curr-text"> <small className="black-text">ETH <br /></small>ETH</span></span>
                                                 <span class="label non-active eth-token"><span className="curr-icon"><img src={eth} /></span><span className="curr-text"> <small className="black-text">USDT <br /></small>USDT</span></span>
-
-                                                {/* <span class="label non-active">Rinkeby</span>
-                                                <span class="label non-active">Rinkeby</span> */}
-                                            </div>
-                                            <p>These tokens can be used to buy and sell your items. <img src={info} /></p>
-                                            <MultiSelect 
-                                                options={GlobalVariables.tokenoptions} 
+                                            </div> */}
+                                            <Field 
+                                                component={FormField}
+                                                options={GlobalVariables.tokenoptions}
                                                 className="form-control mt-3"
                                                 classNamePrefix="react-select"
                                                 placeholder="Add token"
                                                 isMulti={true}
-                                                value={paymentToken}
-                                                onChange={SelecthandleChangePayment}
+                                                type="multi-select"
+                                                name="paymentToken"
+                                                isSearchable={true}
                                                 label="Add token"
                                                 defaultValue={GlobalVariables.tokenoptions[0]}
-                                            // menuIsOpen="true"
                                             />
+                                             <p>These tokens can be used to buy and sell your items. <img src={info} /></p>
                                         </Col>
                                     </Form.Group>
                                     <Form.Group as={Row} controlId="formPlaintextPassword" className="switch-toggle">
