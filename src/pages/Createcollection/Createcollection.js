@@ -32,17 +32,20 @@ const Createcollection = ({ handleSubmit }) => {
 
     const [blockChainValue, setBlockChainValue] = React.useState("");
     const [paymentToken, setPaymentToken] = React.useState("");
-    
-    const SelecthandleChange = e =>  setBlockChainValue(e.value);
-    const SelecthandleChangePayment = (e) => setPaymentToken(Array.isArray(e) ? e.map(x => x.value) : []);
+
+    const SelecthandleChange = e => setBlockChainValue(e.value);
+    const SelecthandleChangePayment = (e) => {
+        console.log(e);
+        // setPaymentToken(Array.isArray(e) ? e.map(x => x.value) : [])
+    };
 
     const onSubmitForm = (data) => {
         let newData = {
-            name : data.name,
-            banner : data.banner,
-            logo : data.logo,
+            name: data.name,
+            banner: data.banner,
+            logo: data.logo,
             description: data.description,
-            externalLink : data.externalLink
+            externalLink: data.externalLink
         }
         console.log(newData);
         // const { callCreateCollection } = ApiActions;
@@ -56,11 +59,11 @@ const Createcollection = ({ handleSubmit }) => {
                 <Container className="ContMain custom_content">
                     <Row>
                         <Form onSubmit={handleSubmit(onSubmitForm)} className="collection-modal item-card">
-                            
+
                             <Uploadcard heading="Createcollection" subheading="Logo image *" text="This image will also be used for navigation. 350 x 350 recommended." name="logo" />
-                            
+
                             <Uploadcard subheading="Featured image " optional=" (optional)" text="This image will be used for featuring your collection on the homepage, cate<b much text in this banner image, as the dimensions change on different devices. 1400 x 400 recommended." name="banner" />
-                           
+
                             <div className="create-item-form">
                                 <Form className="info-form ">
                                     <Form.Group as={Row} controlId="formPlaintextEmail">
@@ -181,7 +184,7 @@ const Createcollection = ({ handleSubmit }) => {
                                                     aria-describedby="basic-medium_link"
                                                 />
                                             </InputGroup>
-                                          
+
                                             <InputGroup className="mb-3 sociallink-box">
                                                 <InputGroup.Prepend>
                                                     <InputGroup.Text id="basic-telegram_link"><img src={telegram} /></InputGroup.Text>
@@ -222,7 +225,8 @@ const Createcollection = ({ handleSubmit }) => {
                                             Blockchain
                                         </Form.Label>
                                         <Col sm="10">
-                                            <MultiSelect options={GlobalVariables.blockchainOptions} placeholder="Rinkeby" value={blockChainValue} onChange={SelecthandleChange}/>
+                                            <Field component={FormField} options={GlobalVariables.blockchainOptions} placeholder="Rinkeby" value={blockChainValue} onChange={SelecthandleChange} type="multi-select" isMulti={false} />
+                                            {/* <MultiSelect options={GlobalVariables.blockchainOptions} placeholder="Rinkeby" value={blockChainValue} onChange={SelecthandleChange}/> */}
                                             <p>Select the blockchain where you'd like new items from this collection to be added by default. <img className="info-black" src={info} />
                                             </p>
                                         </Col>
@@ -240,8 +244,8 @@ const Createcollection = ({ handleSubmit }) => {
                                                 <span class="label non-active">Rinkeby</span> */}
                                             </div>
                                             <p>These tokens can be used to buy and sell your items. <img src={info} /></p>
-                                            <MultiSelect 
-                                                options={GlobalVariables.tokenoptions} 
+                                            {/* <MultiSelect
+                                                options={GlobalVariables.tokenoptions}
                                                 className="form-control mt-3"
                                                 classNamePrefix="react-select"
                                                 placeholder="Add token"
@@ -251,6 +255,20 @@ const Createcollection = ({ handleSubmit }) => {
                                                 label="Add token"
                                                 defaultValue={GlobalVariables.tokenoptions[0]}
                                             // menuIsOpen="true"
+                                            /> */}
+
+                                            <Field 
+                                                component={FormField}
+                                                options={GlobalVariables.tokenoptions}
+                                                className="form-control mt-3"
+                                                classNamePrefix="react-select"
+                                                placeholder="Add token"
+                                                isMulti={true}
+                                                type="multi-select"
+                                                value={paymentToken}
+                                                onChange={SelecthandleChangePayment}
+                                                label="Add token"
+                                                defaultValue={GlobalVariables.tokenoptions[0]}
                                             />
                                         </Col>
                                     </Form.Group>

@@ -1,6 +1,5 @@
 import React from "react";
 import Select from 'react-select'
-import eth from '../assets/Images/eth.svg'
 import './Reactselect/Reactselect.scss'
 
 const TextField = props => {
@@ -163,30 +162,24 @@ const TextAreaField = ({ input, type, maxLength, formValue, placeholder, classNa
                 {textarea ? textareaType : inputType}
                 {touched &&
                     ((error && <span className="form__field-error text-danger"> {error} </span>) ||
-                    (warning && <span>{warning}</span>))}
+                        (warning && <span>{warning}</span>))}
             </div>
         </div>
     );
 };
 
-const MultiSelect = props => {    
-    const selectProps = { value : props.value ,
-                         onChange : props.onChange,
-                         options : props.options,
-                         isMulti : props.isMulti || false,
-                         }
-    console.log("selected", selectProps)
-                         
+const MultiSelect = props => {
+    
+    console.clear();
+    console.log({...props})
+    
     return (
         <div>
-            <Select options={selectProps.options} className="form-control"
-                // options={selectProps.options[0]}
+            <Select { ...props.input } options={props.options} className="form-control"
                 closeMenuOnSelect={false}
-                defaultValue={selectProps.defaultValue}
+                // defaultValue={props.defaultValue}
                 classNamePrefix="react-select"
-                isMulti={selectProps.isMulti}
-                onChange={(e)=>selectProps.onChange(e)} // assign onChange function
-                value={{value: selectProps.value, label : selectProps.value}}
+                isMulti={props.isMulti || false}
                 placeholder={props.placeholder}
                 label={props.label}
             />
@@ -206,7 +199,7 @@ const FormField = props => {
             return <TextAreaField {...props} />;
         case "radio":
             return <RadioBox {...props} />
-        case "multiselect":
+        case "multi-select":
             return <MultiSelect {...props} />
         default:
             return <TextField {...props} />;
