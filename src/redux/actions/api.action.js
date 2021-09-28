@@ -32,6 +32,15 @@ const callCreateCollection = (data, history) => ({
     history
 })
 
+const callGetNft = (data) => ({
+    type: types.saga.api.CALL_GET_NFT,
+    payload: data
+});
+
+const saveNft= (data) => ({
+    type: types.reducer.api.SAVE_GET_NFT,
+    payload: data
+});
 
 export const ApiActions = {
     callGetMintedTokens,
@@ -39,5 +48,7 @@ export const ApiActions = {
     callCheckLoginOrRegister,
     callCreateCollection,
     saveCollection,
-    callGetCollection
+    callGetCollection,
+    callGetNft,
+    saveNft,
 }

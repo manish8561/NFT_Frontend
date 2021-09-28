@@ -9,8 +9,8 @@ import TopLinks from '../../components/TopLinks/TopLinks';
 import { ContractActions } from '../../redux/actions/contract.action';
 import { useDispatch, useSelector } from 'react-redux';
 import { ApiActions } from '../../redux/actions/api.action';
-import collectionsitem1 from '../../assets/Images/my_collections2.png';
-import collectionsitem2 from '../../assets/Images/my_collections1.png';
+// import collectionsitem1 from '../../assets/Images/my_collections2.png';
+// import collectionsitem2 from '../../assets/Images/my_collections1.png';
 import info from '../../assets/Images/exclaimation.svg'
 
 function MyCollection({ history }) {
@@ -49,8 +49,7 @@ function MyCollection({ history }) {
                     <Col lg={9}>
                         <div className="collection_col">
                             <h2 className="main-heading">My Collections </h2>
-   
-                               <p>Create, curate, and manage collections of unique NFTs to share and sell. <img src={info} /></p>
+                                <p>Create, curate, and manage collections of unique NFTs to share and sell. <img src={info} /></p>
                         </div>
                     </Col>
                 </Row>
@@ -67,7 +66,7 @@ function MyCollection({ history }) {
                                     setShowCreateModal={setShowCreateModal}
                                     mintNewToken={mintNewToken}
                                 /> */}
-                                <Button className="create-btn" href="/marketplace/create-collection">Create <img src={add_circle} /></Button>
+                                <Button className="create-btn" onClick={()=> history.push("/marketplace/create-collection")} href="#" >Create <img src={add_circle} /></Button>
                                 <img src={toggle} className="toggle" />
                             </div>
                         </div>

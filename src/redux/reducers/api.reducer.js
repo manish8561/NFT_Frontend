@@ -8,7 +8,8 @@ import types from "../types";
 
 const initialState = {
   mintedLogs: [],
-  collections: []
+  collections: [],
+  nft:[],
 };
 
 const api = (state = initialState, {type, payload}) => {

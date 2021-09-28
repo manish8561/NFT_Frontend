@@ -5,11 +5,9 @@ import './Breadcrumbs.scss'
 function Breadcrumbs(props) {
     return (
         <Container fluid className="top_list">
-
             <div className="breadcrumbs-col">
                 <Breadcrumb>
-                    <Breadcrumb.Item href="#">{props.text}</Breadcrumb.Item>
-
+                    <Breadcrumb.Item onClick={props.history ? props.history.goBack : <a href="#"/>}>{props.text}</Breadcrumb.Item>
                     <Breadcrumb.Item active>{props.active}</Breadcrumb.Item>
                 </Breadcrumb>
             </div>

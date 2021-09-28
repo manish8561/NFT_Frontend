@@ -14,10 +14,12 @@ import telegram from '../../assets/Images/telegram.svg'
 import eth from '../../assets/Images/eth.svg'
 import Select from 'react-select'
 import info from '../../assets/Images/exclaimation.svg'
+
 import padded from '../../assets/Images/card-display-padded.svg'
 import contained from '../../assets/Images/card-display-contain.svg'
 import covered from '../../assets/Images/card-display-cover.svg'
 import Reactselect from '../../components/Reactselect/Reactselect';
+
 import displayimg from '../../assets/Images/jelly-fish.png'
 import Breadcrumbs from '../../components/Breadcrumbs/Breadcrumbs';
 import { FormField } from '../../components/FormField';
@@ -39,32 +41,33 @@ const Createcollection = ({ handleSubmit, history }) => {
         let links = []
         let paymentTokens = []
 
-       links.push({web : data.web})
-       links.push({twiter : data.twitterLink})
-       links.push({instagram : data.telegramLink})
-       links.push({medium :  data.mediumLink})
-       links.push({instagram : data.instagramLink})
-       links.push({discord : data.discordLink})
+        links.push({ web: data.web })
+        links.push({ twiter: data.twitterLink })
+        links.push({ instagram: data.telegramLink })
+        links.push({ medium: data.mediumLink })
+        links.push({ instagram: data.instagramLink })
+        links.push({ discord: data.discordLink })
 
-        if(data.paymentToken && data.paymentToken.length > 0){data.paymentToken.map((items) => { if(items.value){paymentTokens.push(items.value)}})}
+        if (data.paymentToken && data.paymentToken.length > 0) { data.paymentToken.map((items) => { if (items.value) { paymentTokens.push(items.value) } }) }
 
-        let newData = { name: data.name, 
-                        banner: data.banner,
-                        royality : parseInt(data.royality),
-                        logo: data.logo,links : links, 
-                        description: data.description, 
-                        externalLink: data.externalLink, 
-                        blockChain: data.blockchain ? data.blockchain.value : null, 
-                        paymentToken: paymentTokens.toString()
-                    }
-        
+        let newData = {
+            name: data.name,
+            banner: data.banner,
+            royality: parseInt(data.royality),
+            logo: data.logo, links: links,
+            description: data.description,
+            externalLink: data.externalLink,
+            blockChain: data.blockchain ? data.blockchain.value : null,
+            paymentToken: paymentTokens.toString()
+        }
+
         const { callCreateCollection } = ApiActions;
         dispatch(callCreateCollection(newData, history));
     }
 
     return (
         <React.Fragment>
-            <Breadcrumbs text="My collections" active="Create collections" />
+            <Breadcrumbs text="My collections" active="Create collections" history={history} />
             <Container fluid >
                 <Container className="ContMain custom_content">
                     <Row>
@@ -244,6 +247,7 @@ const Createcollection = ({ handleSubmit, history }) => {
                                                 placeholder="Rinkeby"
                                                 value={blockChainValue}
                                                 isClearable
+                                                validate={[required()]}
                                                 closeMenuOnSelect={true}
                                                 type="multi-select"
                                                 label="blockchain"
@@ -270,6 +274,7 @@ const Createcollection = ({ handleSubmit, history }) => {
                                                 classNamePrefix="react-select"
                                                 placeholder="Add token"
                                                 isMulti={true}
+                                                validate={[required()]}
                                                 value={paymentToken}
                                                 type="multi-select"
                                                 name="paymentToken"
@@ -301,7 +306,6 @@ const Createcollection = ({ handleSubmit, history }) => {
                                                     <h5>Covered</h5>
                                                     <p>Recommended for assets that can extend to the edge</p>
                                                 </div>
-
                                             </div> */}
                                             <p className="mt-3">Change how your items are shown.</p>
                                             <div className="switch-toggle">
@@ -320,26 +324,21 @@ const Createcollection = ({ handleSubmit, history }) => {
                                             </div>
                                         </Col>
                                     </Form.Group>
-
                                 </Form>
                                 <Form className="info-form ">
                                     <Button type="submit" className="read-btn">Create</Button>
                                 </Form>
-
                             </div>
                         </Form>
                     </Row>
-
                 </Container>
             </Container>
 
             <Modal show={show} onHide={handleClose} className="create-modal collection-modal isBlank">
                 <Modal.Header closeButton className="b-0"> <Modal.Title >Your collection has been created!</Modal.Title> </Modal.Header>
                 <Modal.Body>
-
                     <div className="item-body">
                         <img className="w-100 item-img" src={displayimg} />
-
                     </div>
                 </Modal.Body >
 

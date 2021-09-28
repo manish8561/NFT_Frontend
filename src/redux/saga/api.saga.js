@@ -72,9 +72,7 @@ export function* callGetCollections(props) {
     if (res) {
       const { data: { data } } = res;
       yield put(saveCollection({ collections: data }));
-      yield put (reset('Createcollection'));  // requires form name
     } 
-
   }
 
   catch(error) {
@@ -117,6 +115,7 @@ export function* callCreateCollections(props) {
     const { data } = response;
     if(data && data.status == "200") {
       // do something
+      yield put (reset('Createcollection'));  // requires form name
       if(history && history.push) {
         history.push('/marketplace/my-collection');
       }
@@ -126,6 +125,31 @@ export function* callCreateCollections(props) {
     console.log({ CALL_CREATE_COLLECTION : error })
   }
 }
+
+// ---------------------------- getNft function -------------------------------------------------------
+
+
+export function* callGetNft(props) {
+  try {
+  const { payload } = props;
+    const { getNft } = ApiService;
+    const { saveNft } = ApiActions
+    let jwt = yield getJwt(); //The result of yield take(pattern) is an action object being dispatched.
+    //call creates a plain object describing the function call. The redux-saga middleware takes care of 
+    // executing the function call and resuming the generator with the resolved response.
+
+    const res =  yield call(getNft, payload,  jwt , {} ); 
+    if (res) {
+      const { data: { data } } = res;
+      yield put(saveNft({ collections: data }));
+    } 
+  }
+
+  catch(error) {
+    console.log({ CALL_GET_COLLECTIONS: error });
+  } 
+}
+
 
 
 // ---------------------------- apiSaga function ---------------------------------------------------------
