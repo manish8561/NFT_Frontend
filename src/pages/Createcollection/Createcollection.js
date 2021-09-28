@@ -28,7 +28,7 @@ import { ApiActions } from '../../redux/actions/api.action';
 
 const Createcollection = ({ handleSubmit, history }) => {
     const dispatch = useDispatch();
-    
+
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
 
@@ -235,21 +235,21 @@ const Createcollection = ({ handleSubmit, history }) => {
                                             Blockchain
                                         </Form.Label>
                                         <Col sm="10">
-                                            <Field 
-                                                component={FormField} 
-                                                options={GlobalVariables.blockchainOptions} 
-                                                name="blockchain" 
+                                            <Field
+                                                component={FormField}
+                                                options={GlobalVariables.blockchainOptions}
+                                                name="blockchain"
                                                 className="form-control mt-3"
                                                 classNamePrefix="react-select"
-                                                placeholder="Rinkeby" 
+                                                placeholder="Rinkeby"
                                                 value={blockChainValue}
-                                                isClearable     
+                                                isClearable
                                                 closeMenuOnSelect={true}
-                                                type="multi-select" 
+                                                type="multi-select"
                                                 label="blockchain"
                                                 type="multi-select"
                                                 defaultValue={GlobalVariables.blockchainOptions[0]}
-                                                />
+                                            />
                                             <p>Select the blockchain where you'd like new items from this collection to be added by default. <img className="info-black" src={info} />
                                             </p>
                                         </Col>
@@ -263,7 +263,7 @@ const Createcollection = ({ handleSubmit, history }) => {
                                                 <span class="label non-active eth-token"><span className="curr-icon"><img src={eth} /></span><span className="curr-text"> <small className="black-text">ETH <br /></small>ETH</span></span>
                                                 <span class="label non-active eth-token"><span className="curr-icon"><img src={eth} /></span><span className="curr-text"> <small className="black-text">USDT <br /></small>USDT</span></span>
                                             </div> */}
-                                            <Field 
+                                            <Field
                                                 component={FormField}
                                                 options={GlobalVariables.tokenoptions}
                                                 className="form-control mt-3"

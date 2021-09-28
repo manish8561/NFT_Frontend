@@ -67,13 +67,14 @@ export function* callGetCollections(props) {
     let jwt = yield getJwt(); //The result of yield take(pattern) is an action object being dispatched.
     //call creates a plain object describing the function call. The redux-saga middleware takes care of 
     // executing the function call and resuming the generator with the resolved response.
-    const response =  yield call(getCollections, payload,  jwt , {} ); 
-    const { data } = response;
 
-    if(data && data.status == "200" && data.data) {
-      yield put(saveCollection(data.data))
+    const res =  yield call(getCollections, payload,  jwt , {} ); 
+    if (res) {
+      const { data: { data } } = res;
+      yield put(saveCollection({ collections: data }));
       yield put (reset('Createcollection'));  // requires form name
-    }
+    } 
+
   }
 
   catch(error) {

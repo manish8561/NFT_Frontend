@@ -1,48 +1,47 @@
-import React, {useEffect, useState} from 'react'
-import {Container, Row, Col, Button} from "react-bootstrap";
+import React, { useEffect, useState } from 'react'
+import { Container, Row, Col, Button } from "react-bootstrap";
 import CreateCollectionpopup from "../../components/Popup/CreateCollectionpopup";
 import CollectionItems from './CollectionItems';
 import './MyCollection.scss';
 import toggle from '../../assets/Images/line.svg'
 import add_circle from '../../assets/Images/add_circle_plus.svg'
 import TopLinks from '../../components/TopLinks/TopLinks';
-import {ContractActions} from '../../redux/actions/contract.action';
-import {useDispatch, useSelector} from 'react-redux';
-import {ApiActions} from '../../redux/actions/api.action';
+import { ContractActions } from '../../redux/actions/contract.action';
+import { useDispatch, useSelector } from 'react-redux';
+import { ApiActions } from '../../redux/actions/api.action';
 import collectionsitem1 from '../../assets/Images/my_collections2.png';
 import collectionsitem2 from '../../assets/Images/my_collections1.png';
 
-function MyCollection() {
+function MyCollection({ history }) {
     const dispatch = useDispatch();
     const address = useSelector(state => state.persist.address);
-    const collections = useSelector(state => state.api.collectionsData);
-    const [ showCreateModal, setShowCreateModal ] = useState(false);
+    const collections = useSelector(state => state.api.collections);
 
     const mintNewToken = (values) => {
-        const {callMintTokens} = ContractActions;
-        dispatch(callMintTokens({...values, address}));
+        const { callMintTokens } = ContractActions;
+        dispatch(callMintTokens({ ...values, address }));
     };
 
     const callMintedtokens = () => {
-        const {callGetMintedTokens} = ApiActions;
-        dispatch(callGetMintedTokens({page: 0, limit: 10, user: address}))
+        const { callGetMintedTokens } = ApiActions;
+        dispatch(callGetMintedTokens({ page: 0, limit: 10, user: address }))
     }
 
     const callCollection = () => {
-        const {callGetCollection} = ApiActions;
-        dispatch(callGetCollection({page : 0, limit : 20, filter : {}}));
+        const { callGetCollection } = ApiActions;
+        dispatch(callGetCollection({ page: 0, limit: 20, filter: {} }));
     }
 
     useEffect(() => {
-        if (address && address.trim().length > 0){ 
-        callMintedtokens();
-        callCollection();
+        if (address && address.trim().length > 0) {
+            callMintedtokens();
+            callCollection();
         }
-    }, [ address ]);
+    }, [address]);
 
     return (
         <div>
-            
+
             <TopLinks />
             <Container className="ContMain">
                 <Row className="banner_row ">
@@ -73,32 +72,17 @@ function MyCollection() {
 
                     {
                         collections.length > 0 ?
-                        collections.map(row => (
-                            <Col sm={6} lg={3}>
-                            <div className="coll-new mb-3">
-                                <img src={row.logo} />
-                                <p>{row.name}<br /> <b>{row._id}</b> </p>
-                            </div>
-    
-                        </Col>
-                            ))
-                             : "No Records Found."
-                    } 
+                            collections.map(row => (
+                                <Col sm={6} lg={3} onClick={() => history.push()}>
+                                    <div className="coll-new mb-3">
+                                        <img style={{ width: '300px', height: '250px' }} src={ row.logo } alt="name" />
+                                        <p> { row.name } #{ row['_id'] } collection <br /> <b>0 Item</b> </p>
+                                    </div>
+                                </Col>
+                            )) :
+                            "No Collections Found."
+                    }
 
-                    {/* // <Col sm={6} lg={3}>
-                    //     <div className="coll-new mb-3">
-                    //         <img src={collectionsitem1} />
-                    //         <p>Explore the My NFT Collection #2728089 collection <br /> <b>0 Item</b> </p>
-                    //     </div>
-
-                    // </Col>
-                    // <Col sm={6} lg={3}>
-                    //     <div className="coll-new mb-3">
-                    //         <img src={collectionsitem2} />
-                    //         <p>Explore the Untitled Collection #2728089 collection<br /> <b> 1 Item </b> </p>
-                    //     </div>
-                        
-                    // </Col> */}
                     {/* {
                         mintedLogs.length > 0 ?
                             mintedLogs.map(row => (

@@ -15,7 +15,7 @@ class PrivateRoutes extends Component {
                 <div className="PublicArea__content">
                     <Header />
                     <Route path="/marketplace/my-collection" component={MyCollection} exact={true} />
-                    <Route path="/marketplace/create-item" component={CreateItem} exact={true} />
+                    <Route path="/marketplace/create-item/:collectionId" component={CreateItem} exact={true} />
                     <Route path="/marketplace/profile" component={Profile} exact={true} />
                     <Route path="/marketplace/create-collection" component={Createcollection} exact={true} />
                 </div>

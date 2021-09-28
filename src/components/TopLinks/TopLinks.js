@@ -5,7 +5,7 @@ import './TopLinks.scss'
 function TopLinks() {
     return (
         <Container fluid className="top_list">
-        <Container>
+        {/* <Container>
             <ul>
                 <li>
                     <a href="#">New</a>
@@ -33,6 +33,7 @@ function TopLinks() {
                 </li>
             </ul>
         </Container>
+    */}
     </Container>
     )
 }

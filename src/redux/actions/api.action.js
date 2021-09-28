@@ -17,13 +17,9 @@ const callCheckLoginOrRegister = (data, history) => ({
 });
 
 const saveCollection = (data) => ({
-    // The Redux store doesn't care what the actual text of the action.type field is. 
-    // However, your own code will look at action.type to see if an update is needed.
     type: types.reducer.api.SAVE_GET_COLLECTIONS,
-    //We normally put any extra data needed to describe what's happening into the action.payload field.
-    //  This could be a number, a string, or an object with multiple fields inside.
     payload: data
-})
+});
 
 const callGetCollection = (data) => ({
     type: types.saga.api.CALL_GET_COLLECTIONS,
