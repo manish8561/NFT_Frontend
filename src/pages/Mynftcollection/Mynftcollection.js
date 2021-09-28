@@ -15,7 +15,8 @@ import Searchbar from "../../components/Searchbar/Searchbar";
 import SidebarCard from "../../components/Sidebar/SidebarCard";
 import Searchresults from "../../components/Searchresults/Searchresults";
 
-function Mynftcollection() {
+function Mynftcollection({ history, match: { params: { collectionId } } }) {
+  
   return (
     <div>
       <Container fluid className="top_list  collectiontop-bar">
@@ -25,7 +26,7 @@ function Mynftcollection() {
         <div>
           <img src={list} />
           <img src={edit} />
-          <Button variant="primary">Add item</Button>
+          <Button variant="primary" onClick={() => history.push(`/marketplace/collection/items/create-item/${collectionId}`)}>Add item</Button>
         </div>
       </Container>
       <Collectiontopbar />

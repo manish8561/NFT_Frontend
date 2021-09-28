@@ -76,7 +76,7 @@ function MyCollection({ history }) {
                     {
                         collections.length > 0 ?
                             collections.map(row => (
-                                <Col sm={6} lg={3} onClick={() => history.push()}>
+                                <Col sm={6} lg={3} onClick={() => history.push(`/marketplace/collection/items/${row['_id']}`)}>
                                     <div className="coll-new mb-3">
                                         <img style={{ width: '300px', height: '250px' }} src={ row.logo } alt="name" />
                                         <p> { row.name } #{ row['_id'] } collection <br /> <b>0 Item</b> </p>

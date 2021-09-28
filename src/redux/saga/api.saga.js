@@ -48,15 +48,13 @@ function* callCheckLoginOrRegister(actionData) {
       yield put({type: types.reducer.persist.SAVE_JWT_TOKEN, payload : data.token})
 
       if(history && history.push) {
-        history.push('/marketplace/my-collection');
+        history.push('/marketplace/collections');
       }
     }
   } catch(error) {
     console.log('Check login or register api error', error);
   }
 }
-
-
 // ---------------------------- callGetCollections function -------------------------------------
 
 export function* callGetCollections(props) {
@@ -118,7 +116,7 @@ export function* callCreateCollections(props) {
     if(data && data.status == "200") {
       // do something
       if(history && history.push) {
-        history.push('/marketplace/my-collection');
+        history.push('/marketplace/collections');
       }
     }
   }

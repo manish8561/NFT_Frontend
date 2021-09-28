@@ -8,7 +8,7 @@ const UnAuthGuard = ({ component: Component, ...rest }) => {
   return (
     <Route {...rest} render={props => isLoggedIn === false ?
       (<Component {...props} />) :
-      (<Redirect to={{ pathname: "/marketplace/my-collection", state: { from: props.location } }} />)}
+      (<Redirect to={{ pathname: "/marketplace/collections", state: { from: props.location } }} />)}
     />
   );
 };
