@@ -27,8 +27,12 @@ import { ApiActions } from '../../redux/actions/api.action';
 
 const Createcollection = ({ handleSubmit }) => {
     const dispatch = useDispatch();
+    
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
+
+    const [blockChainValue, setBlockChainValue] = React.useState("");
+    const [paymentToken, setPaymentToken] = React.useState("");
 
     const onSubmitForm = (data) => {
         let links = []
@@ -42,16 +46,21 @@ const Createcollection = ({ handleSubmit }) => {
         if(data.discord_link)links.push({discord : data.discord_link})
 
         if(data.paymentToken && data.paymentToken.length > 0){data.paymentToken.map((items) => { if(items.value){paymentTokens.push(items.value)}})}
-        
+        console.clear();
+
+        console.log("royality -- old", parseInt(data.royality))
+
         let newData = { name: data.name, 
                         banner: data.banner,
+                        royality : parseInt(data.royality),
                         logo: data.logo,links : links, 
                         description: data.description, 
                         externalLink: data.externalLink, 
                         blockChain: data.blockchain ? data.blockchain.value : null, 
                         paymentToken: paymentTokens.toString()
                     }
-                    
+        
+        console.log("royality", newData.royality)
         const { callCreateCollection } = ApiActions;
         dispatch(callCreateCollection(newData));
     }
@@ -236,6 +245,7 @@ const Createcollection = ({ handleSubmit }) => {
                                                 className="form-control mt-3"
                                                 classNamePrefix="react-select"
                                                 placeholder="Rinkeby" 
+                                                value={blockChainValue}
                                                 isClearable     
                                                 closeMenuOnSelect={true}
                                                 type="multi-select" 
@@ -263,13 +273,14 @@ const Createcollection = ({ handleSubmit }) => {
                                                 classNamePrefix="react-select"
                                                 placeholder="Add token"
                                                 isMulti={true}
+                                                value={paymentToken}
                                                 type="multi-select"
                                                 name="paymentToken"
                                                 isSearchable={true}
                                                 label="Add token"
                                                 defaultValue={GlobalVariables.tokenoptions[0]}
                                             />
-                                             <p>These tokens can be used to buy and sell your items. <img src={info} /></p>
+                                            <p>These tokens can be used to buy and sell your items. <img src={info} /></p>
                                         </Col>
                                     </Form.Group>
                                     <Form.Group as={Row} controlId="formPlaintextPassword" className="switch-toggle">

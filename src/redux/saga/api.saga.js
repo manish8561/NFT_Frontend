@@ -82,7 +82,6 @@ export function* callCreateCollections(props) {
     const { createCollections, uploadFile } = ApiService;
 
     payload.payoutWalletAddress = state.persist.address
-    payload.royality = parseInt(payload.fee)
 
     let bannerUpload = new FormData();
     let logoUpload = new FormData();
@@ -105,6 +104,9 @@ export function* callCreateCollections(props) {
 
     const response = yield call(createCollections, payload,  jwt , {} );  
     const { data } = response;
+    console.log(" ===========>>>>data", data);
+    console.log(" ===========>>>>data", props);
+
     if(data && data.status == "200") {
       // do something
       if(history && history.push) {

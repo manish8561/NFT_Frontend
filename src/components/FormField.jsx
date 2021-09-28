@@ -169,21 +169,27 @@ const TextAreaField = ({ input, type, maxLength, formValue, placeholder, classNa
 };
 
 const MultiSelect = props => {
+    const { meta = {} } = props;
+
     return (
+        <>
             <Select
                 { ...props.input } 
                 closeMenuOnSelect={ props.closeMenuOnSelect ||false}
                 className="form-control"
                 classNamePrefix="react-select"
                 defaultValue={props.defaultValue}
-                isClearable
                 isSearchable={props.isSearchable || false}
                 isMulti={props.isMulti || false}
                 placeholder={props.placeholder}
                 options={props.options} 
                 label={props.label}
                 />
-           
+                {meta.touched && meta.error ? (
+                <div className="form__field-error text-danger">{meta.error}</div>
+            ) : null}    
+        </>
+
     )
 }
 
