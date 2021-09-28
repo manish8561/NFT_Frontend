@@ -1,9 +1,9 @@
 import React from "react";
-import { connect } from "react-redux";
+import { connect, useSelector } from "react-redux";
 import { Route, Redirect } from "react-router-dom";
 
 const UnAuthGuard = ({ component: Component, ...rest }) => {
-  const { isLoggedIn } = rest;
+  const isLoggedIn = useSelector(state => state.persist.isLoggedIn);
 
   return (
     <Route {...rest} render={props => isLoggedIn === false ?
@@ -13,8 +13,5 @@ const UnAuthGuard = ({ component: Component, ...rest }) => {
   );
 };
 
-const mapStateToProps = state => ({
-  isLoggedIn: (state && state.persist && state.persist.isLoggedIn) || false
-})
-
-export default connect(mapStateToProps, null)(UnAuthGuard);
+ 
+export default UnAuthGuard;

@@ -17,9 +17,9 @@ class Application extends Component {
       <React.Fragment>
         <LoaderComponent></LoaderComponent>
         <Router>
-        <Switch>
+          <Switch>
             <AuthGuard path="/marketplace" component={PrivateRoutes} />
-            <PublicRoutes />
+            <Route path="/" component={PublicRoutes} />
           </Switch>
         </Router>
       </React.Fragment>
