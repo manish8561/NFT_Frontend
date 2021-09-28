@@ -1,0 +1,85 @@
+.nft-profile {
+  position: relative;
+  .profile {
+    width: 100%;
+  }
+  .like {
+    width: 50px;
+    height: 48px;
+    position: absolute;
+    top: 20px;
+    background: rgba(0, 0, 0, 0.4);
+    border-radius: 5px;
+    right: 20px;
+    font-size: 15px;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    img {
+      margin-right: 5px;
+    }
+  }
+}
+.profile-desc {
+  margin-top: 20px;
+  .card {
+    border: 1px solid #bcbcbc;
+    border-radius: 5px;
+    background-color: #f7f7f7;
+    .card-header {
+      background: #fff;
+      padding: 14px 10px;
+      border-radius: 5px;
+      font-size: 15px;
+      color: #000;
+      font-weight: 500;
+
+      .btn-link {
+        color: #000;
+        font-size: 15px;
+        line-height: 19px;
+        text-decoration: none;
+        font-weight: 500;
+        position: relative;
+        width: 100%;
+        text-align: left;
+        display: flex;
+        align-items: center;
+        &::before {
+          content: " ";
+          background-image: url(../../assets/Images/arrow-toggle-right.svg);
+          width: 6px;
+          height: 11px;
+          position: absolute;
+          right: 10px;
+          background-repeat: no-repeat;
+          background-position: center;
+          transition: transform 0.25s ease-in-out;
+        }
+
+        &.active {
+          &::before {
+            transform: rotate(90deg);
+          }
+        }
+        &:focus {
+          box-shadow: unset;
+        }
+        img {
+          margin-right: 5px;
+          vertical-align: middle;
+        }
+      }
+    }
+    .card-body {
+      font-size: 16px;
+      line-height: 19px;
+      color: #000;
+      padding: 30px 20px;
+      a {
+        color: #0c9eda;
+      }
+    }
+  }
+}

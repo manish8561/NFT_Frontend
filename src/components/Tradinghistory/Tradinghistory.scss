@@ -1,0 +1,19 @@
+.table-head {
+  display: flex;
+  justify-content: space-between;
+  background: #f7f7f7 !important;
+  &:before {
+    display: none;
+  }
+}
+.trading-table {
+  table {
+    margin-bottom: 0;
+  }
+  th {
+    background: #fff;
+    color: #0c9eda;
+    font-weight: 400;
+    font-size: 14px;
+  }
+}

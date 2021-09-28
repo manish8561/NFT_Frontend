@@ -1,117 +1,98 @@
 import React from 'react'
+import {Container, Col, Button, Card, Accordion} from "react-bootstrap";
+import list from '../../assets/Images/list.svg'
+import edit from '../../assets/Images/editicon.svg'
+import back from '../../assets/Images/arrow_back_black.svg'
 import './Profile.scss'
-import { Container, Row, Col, Button, Form } from "react-bootstrap";
+import statusicon from '../../assets/Images/status.svg'
+import price from '../../assets/Images/price.svg'
+import chains from '../../assets/Images/chains.svg'
+import sale from '../../assets/Images/sale.svg'
+import filtericon from '../../assets/Images/filter.svg'
+import Searchbar from '../../components/Searchbar/Searchbar';
 import cover from '../../assets/Images/cover.png'
-import edit from '../../assets/Images/edit.svg'
-import TopLinks from '../../components/TopLinks/TopLinks';
-import profilepic from '../../assets/Images/my_collections3.png'
-import barcode from '../../assets/Images/bar-code.svg'
-import arrowright from '../../assets/Images/arrow-right.svg'
-import add_circle from '../../assets/Images/add_circle_plus.svg'
-import my_collections1 from '../../assets/Images/my_collections1.png'
-import my_collections2 from '../../assets/Images/my_collections2.png'
-import my_collections3 from '../../assets/Images/my_collections3.png'
-import collections_items1 from '../../assets/Images/collections_items1.png'
-import collections_items2 from '../../assets/Images/collections_items2.png'
-import collections_items3 from '../../assets/Images/collections_items3.png'
-import collections_items4 from '../../assets/Images/collections_items4.png'
-import CollectionItems from '../MyCollection/CollectionItems';
-
+import displayimg from '../../assets/Images/my_collections1.png'
+import Searchresults from '../../components/Searchresults/Searchresults';
+import copy from '../../assets/Images/copy.png'
 function Profile() {
     return (
-        <React.Fragment>
-            <TopLinks />
-            <Container className="ContMain">
-                <Row className="banner_row">
-                    <div className="bg-cover">
-                        <img src={cover} className="cover-img" />
-                        <Form>
-                            <Form.Group className="upload-img">
-                                <div className="edit-icon"><img src={edit} />
+        <div>
 
-                                </div>
-                                <Form.File id="exampleFormControlFile1" />
+            <div className="cover">
+                <img className="w-100 cover_img" src={cover} />
+            </div>
+            <div className="coll-profile">
+                <img className="profile-pic" src={displayimg} />
+                <h2>My NFT</h2>
+                <p className="sub-line mb-0">0x9a58...f5d3 <img className="copy" src={copy} /></p>
+            </div>
+            <Container fluid className="categorie_sec collection_card">
+                <div className="nft-collection categorie_row">
+                    <div className="sidebar_col">
+                        <Accordion defaultActiveKey="0" className="profile-desc sidebar-col">
+                            <Card>
+                                <div className="main-title"> <img src={filtericon} /> <span className="sidebar-heading blue-text">My Items</span></div>
+                                <ul className="item_list">
+                                    <li>Collected <span className="count">0</span></li>
+                                    <li>Created  <span className="count">0</span></li>
+                                    <li>Favorited <span className="count">0</span></li>
+                                    <li>Hidden <span className="count">0</span></li>
+                                </ul>
 
-                            </Form.Group>
-                        </Form>
+                            </Card>
+                            <Card>
+                                <Card.Header>
+                                    <Accordion.Toggle as={Button} variant="link" eventKey="1">
+                                        <img src={price} /> <span className="sidebar-heading">Price</span>
+                                    </Accordion.Toggle>
+                                </Card.Header>
+                                <Accordion.Collapse eventKey="1">
+                                    <Card.Body>
+                                        <p>$ 1.11</p>
+                                    </Card.Body>
+                                </Accordion.Collapse>
+                            </Card>
+
+
+                            <Card>
+                                <Card.Header>
+                                    <Accordion.Toggle as={Button} variant="link" eventKey="3">
+                                        <img src={chains} /> <span className="sidebar-heading">Chains</span>
+                                    </Accordion.Toggle>
+                                </Card.Header>
+                                <Accordion.Collapse eventKey="3">
+                                    <Card.Body>
+                                        <p>$ 1.11</p>
+                                    </Card.Body>
+                                </Accordion.Collapse>
+                            </Card>
+                            <Card>
+                                <Card.Header>
+                                    <Accordion.Toggle as={Button} variant="link" eventKey="4">
+                                        <img src={sale} /> <span className="sidebar-heading">On Sale In</span>
+                                    </Accordion.Toggle>
+                                </Card.Header>
+                                <Accordion.Collapse eventKey="4">
+                                    <Card.Body>
+                                        <p>$ 1.11</p>
+                                    </Card.Body>
+                                </Accordion.Collapse>
+                            </Card>
+                        </Accordion>
+
                     </div>
-                    <div className="profile-info">
-                        <div className="user_info">
-                            <img src={profilepic} />
-                            <span className="user-name">
-                                <h2>Thomas George</h2>
-                                <p>Creative People</p>
+                    <div className="right_sec coll-right">
+                        <Searchbar />
+                        <Col sm={12} lg={12}>
+                            <p>2 results</p>
+                        </Col>
+                        <Searchresults />
 
-                                <Button variant="outline-secondary" className="profile-btns">Edit <img src={edit} /></Button>
-                                <Button variant="outline-secondary" className="profile-btns">Payout <img src={barcode} /></Button>
-                                <Button variant="outline-secondary" className="profile-btns">Visit <img src={arrowright} /></Button>
-                            </span>
-                        </div>
-                        <Button href="#" className="create-btn" >Add New Item <img src={add_circle} /></Button>
                     </div>
+                </div>
 
-                </Row>
             </Container>
-            <Container fluid className="collection profile-collect">
-                <Container className="custom-cont ContMain">
-                    <Row>
-                        <div className="collection-modal search-form">
-                            <div className="collectionForm ">
-                                <Form className="info-form" as={Row}>
-                                    <Col lg={8}>
-                                        <Form.Group as={Row} controlId="formPlaintextEmail">
-                                            <Form.Label column sm="1">
-                                                Items
-                                      </Form.Label>
-                                            <Col sm="11">
-                                                <Form.Control type="text" placeholder="Search" />
-
-                                                <div className="search-icon"><i className="fa fa-search"></i></div>
-                                            </Col>
-                                        </Form.Group>
-
-
-                                    </Col>
-                                    <Col lg={4}>
-                                        <Form.Group as={Row} controlId="exampleForm.ControlSelect1">
-
-                                            <Form.Control as="select" className="sort-value">
-                                                <option>Sort by</option>
-                                                <option>1-2</option>
-                                                <option>3-4</option>
-
-                                            </Form.Control>
-                                        </Form.Group>
-
-                                    </Col>
-                                </Form>
-                            </div>
-                        </div>
-                    </Row>
-
-                    <div className="coll-box">
-                        <div className=" item-col">
-                            <Row>
-                                <Col sm={6} lg={3} className="p-0"> <CollectionItems thumb={collections_items1} title="William Leo " text="Art World" price="$ 155.99" ></CollectionItems></Col>
-                                <Col sm={6} lg={3} className="p-0"> <CollectionItems thumb={collections_items2} title="Jacks Oscar " text="Art World" price="$ 155.99" ></CollectionItems></Col>
-                                <Col sm={6} lg={3} className="p-0"> <CollectionItems thumb={collections_items3} title="William Leo " text="Art World" price="$ 155.99" ></CollectionItems></Col>
-                                <Col sm={6} lg={3} className="p-0"> <CollectionItems thumb={collections_items4} title="Jacks Oscar " text="Art World" price="$ 155.99" ></CollectionItems></Col>
-                                <Col sm={6} lg={3} className="p-0"> <CollectionItems thumb={collections_items3} title="William Leo " text="Art World" price="$ 155.99" ></CollectionItems></Col>
-                                <Col sm={6} lg={3} className="p-0"> <CollectionItems thumb={collections_items4} title="Jacks Oscar " text="Art World" price="$ 155.99" ></CollectionItems></Col>
-                                <Col sm={6} lg={3} className="p-0"> <CollectionItems thumb={collections_items1} title="William Leo " text="Art World" price="$ 155.99" ></CollectionItems></Col>
-                                <Col sm={6} lg={3} className="p-0"> <CollectionItems thumb={collections_items2} title="Jacks Oscar " text="Art World" price="$ 155.99" ></CollectionItems></Col>
-                                <Col sm={6} lg={3} className="p-0"> <CollectionItems thumb={collections_items1} title="William Leo " text="Art World" price="$ 155.99" ></CollectionItems></Col>
-                                <Col sm={6} lg={3} className="p-0"> <CollectionItems thumb={collections_items2} title="Jacks Oscar " text="Art World" price="$ 155.99" ></CollectionItems></Col>
-                                <Col sm={6} lg={3} className="p-0"> <CollectionItems thumb={collections_items3} title="William Leo " text="Art World" price="$ 155.99" ></CollectionItems></Col>
-                                <Col sm={6} lg={3} className="p-0"> <CollectionItems thumb={collections_items4} title="Jacks Oscar " text="Art World" price="$ 155.99" ></CollectionItems></Col>
-
-                            </Row>
-                        </div>
-                    </div>
-
-                </Container>
-            </Container>
-        </React.Fragment>
+        </div>
     )
 }
 

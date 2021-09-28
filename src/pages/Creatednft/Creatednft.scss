@@ -1,0 +1,33 @@
+.top-bar {
+  padding: 15px 0;
+  display: flex;
+  justify-content: flex-end;
+  button.btn {
+    border-radius: 20px;
+    width: 90px;
+    height: 40px;
+    font-size: 16px;
+  }
+  button.btn.btn-outline-primary {
+    border: 1px solid #0c9eda;
+    color: #0c9eda;
+    margin-right: 10px;
+    &:hover {
+      background: #0c9eda;
+      border-color: #0c9eda;
+      color: #fff;
+    }
+  }
+  button.btn.btn-primary {
+    background: #0c9eda;
+    border-color: #0c9eda;
+    &:hover {
+      background: transparent;
+      color: #0c9eda;
+    }
+  }
+}
+.create-nft-col {
+  margin-top: 24px;
+  padding-bottom: 150px;
+}

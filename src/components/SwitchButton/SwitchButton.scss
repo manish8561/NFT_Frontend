@@ -1,0 +1,45 @@
+@import "../../_var.scss";
+
+.switch-toggle {
+  margin-right: 0;
+  margin-top: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  .custom-switch {
+    .custom-control-label {
+      &::before {
+        position: absolute;
+        left: -2rem;
+        width: 50px;
+        height: 26px;
+        pointer-events: all;
+        border-radius: 50px;
+        pointer-events: none;
+        content: "";
+        background-color: #bcbcbc;
+        border: none;
+        display: block;
+      }
+      &::after {
+        top: calc(0.28rem + 2px);
+        left: calc(-1.93rem + 2px);
+        width: 20px;
+        height: 20px;
+        background-color: #fff;
+        border-radius: 0.8rem;
+      }
+    }
+    .custom-control-input:checked ~ .custom-control-label::after {
+      transform: translateX(1.6rem);
+    }
+    .custom-control-input:checked ~ .custom-control-label::before {
+      color: #fff;
+      border-color: $light-blue-bg;
+      background-color: $light-blue-bg;
+    }
+  }
+  .custom-control-input {
+    width: 4rem;
+  }
+}

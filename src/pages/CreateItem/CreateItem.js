@@ -12,13 +12,14 @@ import lock from '../../assets/Images/lock.svg'
 import warning from '../../assets/Images/warning.svg'
 import Reactselect from '../../components/Reactselect/Reactselect';
 import eth from '../../assets/Images/eth.svg'
-import displayimg from '../../assets/Images/display-img.svg'
+import displayimg from '../../assets/Images/mask.png'
 import telegram from '../../assets/Images/telegram.svg'
 import fb from '../../assets/Images/fb.svg'
 import link from '../../assets/Images/link.svg'
 
 
 import twitter from '../../assets/Images/twitter.svg'
+import SwitchButton from '../../components/SwitchButton/SwitchButton';
 function CreateItem() {
     const [ show, setShow ] = useState(false);
 
@@ -48,7 +49,7 @@ function CreateItem() {
                                         </Form.Label>
                                         <Col sm="10">
                                             <Form.Control type="text" placeholder="https://loremlipsum.com/items/xyz" />
-                                            <p className="mt-3">NFT will include a link to this URL on this item's detail page, so that users can click to learn more about it. You are welcome to link to your own webpage with more details.</p>
+                                            <p className="mt-3 form-textline">NFT will include a link to this URL on this item's detail page, so that users can click to learn more about it. You are welcome to link to your own webpage with more details.</p>
                                         </Col>
                                     </Form.Group>
                                     <Form.Group as={Row} controlId="formPlaintextPassword">
@@ -57,7 +58,7 @@ function CreateItem() {
                                         </Form.Label>
                                         <Col sm="10">
                                             <Form.Control as="textarea" rows={4} placeholder="0 to 1000 characters used..." />
-                                            <p>The description will be included on the item's detail page underneath its image.</p>
+                                            <p className="form-textline">The description will be included on the item's detail page underneath its image.</p>
                                         </Col>
                                     </Form.Group>
                                     <Form.Group as={Row} controlId="formPlaintextEmail">
@@ -66,7 +67,7 @@ function CreateItem() {
                                         </Form.Label>
                                         <Col sm="10">
                                             <Form.Control type="text" placeholder="https://loremlipsum.com/items/xyz" />
-                                            <p className="mt-3">This is the collection where your item will appear. <img src={info} /></p>
+                                            <p className="mt-3 form-textline">This is the collection where your item will appear. <img src={info} /></p>
                                         </Col>
                                     </Form.Group>
                                 </Form>
@@ -106,11 +107,8 @@ function CreateItem() {
                                                     <div className="grey-text list-text">    Include unlockable content that can only be revealed by the owner of the item. </div></p>
                                             </div>
                                             <div className="switch-toggle">
-                                                <Form.Check
-                                                    type="switch"
-                                                    id="custom-switch"
 
-                                                />
+                                                <SwitchButton id="custom_switch" />
                                             </div>
                                         </ListGroup.Item>
                                         <ListGroup.Item >
@@ -119,11 +117,7 @@ function CreateItem() {
                                                     <div className="grey-text list-text">  Set this item as explicit and sensitive content </div></p>
                                             </div>
                                             <div className="switch-toggle">
-                                                <Form.Check
-                                                    type="switch"
-                                                    id="custom-toggle"
-
-                                                />
+                                                <SwitchButton id="switch" />
                                             </div>
                                         </ListGroup.Item>
                                     </ListGroup>
@@ -138,7 +132,7 @@ function CreateItem() {
                                         </Form.Label>
                                         <Col sm="10">
                                             <Form.Control type="text" placeholder="1" />
-                                            <p>The number of copies that can be minted. No gas cost to you! Quantities above one coming soon.</p>
+                                            <p className="form-textline">The number of copies that can be minted. No gas cost to you! Quantities above one coming soon.</p>
                                         </Col>
                                     </Form.Group>
                                     <Form.Group as={Row} controlId="formPlaintextEmail">
@@ -147,7 +141,7 @@ function CreateItem() {
                                         </Form.Label>
                                         <Col sm="10">
                                             <Reactselect currencyicon={eth} placeholder="Rinkeby" />
-                                            <p>The number of copies that can be minted. No gas cost to you! Quantities above one coming soon.
+                                            <p className="form-textline">The number of copies that can be minted. No gas cost to you! Quantities above one coming soon.
                                             </p>
                                         </Col>
                                     </Form.Group>
@@ -157,7 +151,7 @@ function CreateItem() {
                                         </Form.Label>
                                         <Col sm="10">
                                             <Form.Control type="text" placeholder="To freeze your metadata, you must create your item first." />
-                                            <p>Freezing your metadata will allow you to permanently lock and store all of this item's content in decentralized file storage.</p>
+                                            <p className="form-textline">Freezing your metadata will allow you to permanently lock and store all of this item's content in decentralized file storage.</p>
                                         </Col>
                                     </Form.Group>
                                     <Button href="#" className="read-btn" onClick={handleShow}>Create</Button>
@@ -175,11 +169,10 @@ function CreateItem() {
                 <Modal.Body>
 
                     <div className="item-body">
-                        <p> Woot! You just created My NFT</p>
                         <img src={displayimg} />
 
                     </div>
-                    <div className="black-text text-uppercase text-center share">Share</div>
+                    {/* <div className="black-text text-uppercase text-center share">Share</div> */}
                 </Modal.Body >
 
                 <Modal.Footer className="social-footer">

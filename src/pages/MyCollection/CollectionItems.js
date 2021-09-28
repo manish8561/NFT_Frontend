@@ -1,29 +1,42 @@
-import React, { Component } from 'react'
+import React, { Component } from "react";
 import { Button } from "react-bootstrap";
+import HeartRed from "../../assets/Images/heart.svg";
+import Heartlite from "../../assets/Images/heartlite.svg";
 
-export class CollectionItems extends Component {
-    render() {
-        const { thumb, title, text, price } = this.props
-        return (
-            <div className="business-list white-bg">
-                <div className="business-img"> <img className="list-img" src={thumb} /></div>
-                <div className="business-info">
-                    <div className="title-info">
-                        <h3>{title}</h3>
-                        <p>{text}</p>
-                    </div>
-                    <p className="price">{price}</p>
-                </div>
-                
-                <div className="overlay">
-                    <div className="overlay-btns">
-                        <Button href="#" className="read-btn">Read More </Button>
-                        <Button href="#" className="buy-btn">Buy Now </Button>
-                    </div>
-                </div>
-            </div>
-        )
-    }
+function CollectionItems(props) {
+  return (
+    <>
+      <div className="business-list">
+        <span className="favorite">
+          {props.favorite ? <img src={HeartRed} /> : <img src={Heartlite} />}
+          {props.favorite ? 1 : 0}
+        </span>
+        <div className="business-img">
+          <img className="list-img" src={props.thumb} />
+        </div>
+        <div className="business-info">
+          <div className="title-info">
+            <h3>{props.title}</h3>
+            <p>{props.text}</p>
+          </div>
+          <p className="price">
+            <img src={props.icon} />
+            {props.price}
+          </p>
+        </div>
+        <div className="overlay">
+          <div className="overlay-btns">
+            <Button href="#" className="read-btn">
+              Read More{" "}
+            </Button>
+            <Button href="#" className="buy-btn">
+              Buy Now{" "}
+            </Button>
+          </div>
+        </div>
+      </div>
+    </>
+  );
 }
 
-export default CollectionItems
+export default CollectionItems;

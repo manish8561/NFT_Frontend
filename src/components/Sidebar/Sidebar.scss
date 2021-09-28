@@ -1,9 +1,9 @@
 @import "../../_var.scss";
 
-.sidebtn{
+.sidebtn {
   position: absolute;
   right: -40px;
-  top:0px;
+  top: 0px;
   display: none;
   z-index: 555;
   @media (max-width: 991px) {
@@ -16,24 +16,42 @@
 }
 
 .sidebar_col {
-  padding: 0 25px;
+  padding: 0;
   background: $white-bg;
-  width: 350px;
+  width: 310px;
+  border-right: 1px solid $light-grey-color;
   @media (max-width: 1500px) {
-    padding: 0 20px;
     width: 280px;
   }
   @media (max-width: 991px) {
     position: absolute;
     left: -280px;
-    &.open{
+    &.open {
       left: 0px;
     }
   }
- 
-  // @media (max-width: 1220px) {
-  //   display: none;
-  // }
+  .sidebar-col {
+    margin-top: 0;
+    width: 310px;
+  }
+  span.sidebar-heading {
+    margin-left: 10px;
+  }
+  .card {
+    background-color: #fff !important;
+    border-radius: 0;
+    margin-left: 1px;
+    border-right: none;
+    border-bottom: none;
+  }
+
+  .main-title {
+    background: #f7f7f7;
+    display: flex;
+    align-items: center;
+    padding: 16px 20px;
+    border-bottom: 1px solid #bcbcbc;
+  }
   h3 {
     font-size: 18px;
     font-weight: $font-weight-semiBold;
@@ -133,30 +151,54 @@
   .status_sec {
     display: flex;
     flex-wrap: wrap;
-    list-style: none;
-    padding: 0;
-    margin-top: 15px;
-    li {
-      margin-bottom: 15px;
-      margin-right: 10px;
-      a {
-        font-size: 14px;
-        background-color: $white-bg-F7;
-        color: $white-BC;
-        font-weight: $font-weight-regular;
-        text-decoration: none;
-        padding: 7px 17px;
-        border-radius: 30px;
-        transition: 0.3s ease;
-        @media (max-width: 1340px) {
-          font-size: 12px;
-        }
-        &:hover,
-        &.active {
-          color: $white;
-          background-color: $light-blue;
-        }
+    a {
+      font-size: 14px;
+      background-color: $white-bg-F7;
+      color: #707070 !important;
+      font-weight: $font-weight-regular;
+      text-decoration: none;
+      padding: 9px 0px;
+      border-radius: 30px;
+      transition: 0.3s ease;
+      margin-bottom: 10px;
+      margin-right: 5px;
+      width: 128px;
+      text-align: center;
+      @media (max-width: 1340px) {
+        font-size: 12px;
       }
+      &:hover,
+      &.active {
+        color: $white !important;
+        background-color: $light-blue;
+      }
+    }
+  }
+}
+.nft-collection {
+  .sidebar_col {
+    padding: 0;
+  }
+  .sidebar-col {
+    margin-top: 0;
+
+    .card {
+      background-color: #fff !important;
+      border-radius: 0;
+      margin-left: 1px;
+      border-right: none;
+      border-bottom: none;
+    }
+
+    .main-title {
+      background: #f7f7f7;
+      display: flex;
+      align-items: center;
+      padding: 16px 20px;
+      border-bottom: 1px solid #bcbcbc;
+    }
+    span.sidebar-heading {
+      margin-left: 10px;
     }
   }
 }

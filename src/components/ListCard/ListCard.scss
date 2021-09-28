@@ -1,0 +1,35 @@
+@import "../../_var.scss";
+
+.listGroup_Item {
+  border: 1px solid $white-bg-BC;
+  padding: 15px 17px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  &:first-child {
+    border-radius: 5px 5px 0 0;
+  }
+  .listItem_Text {
+    h6 {
+      margin-bottom: 5px;
+    }
+
+    .icon_Style {
+      margin-right: 10px;
+    }
+  }
+
+  &.summaryCard_style {
+    flex-direction: column;
+  }
+  &.priceList_group {
+    @media (max-width: 600px) {
+      flex-direction: column-reverse;
+    }
+    .comboFieldStyle {
+      @media (max-width: 600px) {
+        margin: 0 auto;
+      }
+    }
+  }
+}

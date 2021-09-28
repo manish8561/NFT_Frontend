@@ -93,6 +93,18 @@ html {
     color: $light-blue-bg;
   }
 }
+
+.offer_btn {
+  border-radius: 30px;
+  background: $white-bg;
+  color: $light-blue;
+  border: 1px solid $light-blue-bg;
+  &:hover {
+    background: $light-blue-bg;
+    border: 1px solid $light-blue-bg;
+    color: $white;
+  }
+}
 .custom_dropdown {
   margin: 12px 0 30px;
   .drop_btn {
@@ -161,6 +173,3 @@ html {
   border-radius: 20px;
   border: 3px solid #fff;
 }
-
-
-

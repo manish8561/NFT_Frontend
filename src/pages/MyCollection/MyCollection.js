@@ -11,6 +11,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { ApiActions } from '../../redux/actions/api.action';
 import collectionsitem1 from '../../assets/Images/my_collections2.png';
 import collectionsitem2 from '../../assets/Images/my_collections1.png';
+import info from '../../assets/Images/exclaimation.svg'
 
 function MyCollection({ history }) {
     const dispatch = useDispatch();
@@ -48,14 +49,16 @@ function MyCollection({ history }) {
                     <Col lg={9}>
                         <div className="collection_col">
                             <h2 className="main-heading">My Collections </h2>
-                            <p>Create, curate, and manage collections of unique NFTs to share and sell.</p>
+   
+                               <p>Create, curate, and manage collections of unique NFTs to share and sell. <img src={info} /></p>
                         </div>
                     </Col>
                 </Row>
 
                 <Row className="mb-5">
-                    <Col sm={6} lg={3}>
+                    <Col sm={6} lg={3} className="p-0">
                         <div className="col-new mb-3">
+                            <img src={toggle} className="toggle" />
                             <h3>Create new collection</h3>
                             <div className="d-flex">
                                 {/* -- Create NFT Modal -- */}

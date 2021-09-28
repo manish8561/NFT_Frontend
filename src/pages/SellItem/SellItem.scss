@@ -1,0 +1,107 @@
+@import "../../_var.scss";
+
+.comnHeading_Style {
+  font-size: 15px;
+  color: $black;
+  font-weight: 600;
+  line-height: 19px;
+}
+
+.comnSubheading_style {
+  color: $light-grey;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 15px;
+  margin-bottom: 0;
+}
+
+.mainTop_Row {
+  padding: 25px 45px;
+  background: $white-bg-FD;
+  @media (max-width: 767px) {
+    padding: 10px;
+  }
+  .collectionDiv {
+    padding-left: 38px;
+    @media (max-width: 767px) {
+      padding-left: 20px;
+    }
+    p {
+      margin-bottom: 0;
+      font-size: 14px;
+      line-height: 18px;
+    }
+    :first-child {
+      color: $light-grey;
+      font-weight: 400;
+    }
+    :last-child {
+      color: $black;
+      font-weight: 600;
+    }
+  }
+}
+.selecMethod_cont {
+  margin-top: 35px;
+  margin-bottom: 100px;
+  .selectMethod_Row {
+    .comnSelect_Col {
+      padding: 0 10px;
+    }
+  }
+}
+
+.listGroup_Style {
+  background: $white-bg;
+  margin-top: 20px;
+}
+.summaryCard_col {
+  padding-right: 0;
+  @media (max-width: 992px) {
+    padding-left: 0;
+    margin-top: 20px;
+  }
+  .line_style {
+    border-top: 1px solid $white-bg-BC;
+    width: 100%;
+  }
+  .feeText_style {
+    p {
+      font-size: 12px;
+      color: $light-grey;
+      font-weight: 400;
+      line-height: 13px;
+      a {
+        color: $light-blue;
+        &:hover {
+          text-decoration: none;
+        }
+      }
+    }
+  }
+  .postListing_btn {
+    font-size: 12px;
+    width: 150px;
+    height: 40px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+  }
+  .totalFees_txt {
+    margin-top: 15px;
+    p {
+      font-size: 12px;
+      line-height: 15px;
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 8px;
+    }
+    .totalNft {
+      color: $light-grey;
+      font-weight: 400;
+    }
+    .totalText {
+      color: $black;
+      font-weight: 600;
+    }
+  }
+}

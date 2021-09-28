@@ -1,10 +1,10 @@
-import React, { Component, useState } from 'react'
-import { Modal, Button, Form, Col, Row } from "react-bootstrap";
+import React, {Component, useState} from 'react'
+import {Modal, Button, Form, Col, Row} from "react-bootstrap";
 import plusicon from '../../assets/Images/add_black.svg'
 import deleteicon from '../../assets/Images/delete.svg'
 
 function AddProperty() {
-    const [show, setShow] = useState(false);
+    const [ show, setShow ] = useState(false);
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
@@ -15,39 +15,39 @@ function AddProperty() {
 
                 <Modal.Body>
                     <div className="collectionForm">
-                       <div className="topTile text-center">
+                        <div className="topTile text-center">
                             <Modal.Title>Add Properties</Modal.Title>
-                            <p>Properties show up underneath your item, are clickable, and can be filtered in your collection's sidebar.</p>
+                            <p className="title-text">Properties show up underneath your item, are clickable, and <br />can be filtered in your collection's sidebar.</p>
                         </div>
                         <Form className="info-form collectionForm_new" as={Row}>
                             <Col lg={12}>
                                 <Form.Group as={Row} controlId="formPlaintextEmail">
                                     <Form.Label column sm="1">
                                         Type
-                                      </Form.Label>
+                                    </Form.Label>
                                     <Col sm="5">
-                                        <Form.Control type="text" placeholder="Thomas George" />
+                                        <Form.Control type="text" placeholder="lorem lipsum" />
                                     </Col>
-                                 <Form.Label column sm="1">
+                                    <Form.Label column sm="1">
                                         Type</Form.Label>
                                     <Col sm="5" className="type-form">
-                                        <Form.Control type="text" placeholder="Thomas George" />
+                                        <Form.Control type="text" placeholder="lorem lipsum" />
                                         <div className="delete-icon"><img src={deleteicon}></img></div>
                                     </Col>
                                 </Form.Group>
                             </Col>
                             <Col lg={12}>
-                                 <Form.Group as={Row} controlId="formPlaintextEmail">
+                                <Form.Group as={Row} controlId="formPlaintextEmail">
                                     <Form.Label column sm="1">
-                                        Type
-                                     </Form.Label>
+                                        Name
+                                    </Form.Label>
                                     <Col sm="5">
-                                        <Form.Control type="text" placeholder="Thomas George" />
+                                        <Form.Control type="text" placeholder="lorem lipsum" />
                                     </Col>
-                                   <Form.Label column sm="1">
-                                        Type</Form.Label>
+                                    <Form.Label column sm="1">
+                                        Name</Form.Label>
                                     <Col sm="5" className="type-form">
-                                        <Form.Control type="text" placeholder="Thomas George" />
+                                        <Form.Control type="text" placeholder="lorem lipsum" />
                                         <div className="delete-icon"><img src={deleteicon}></img></div>
                                     </Col>
                                 </Form.Group>

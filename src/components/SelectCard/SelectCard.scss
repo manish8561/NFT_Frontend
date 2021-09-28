@@ -1,0 +1,31 @@
+@import "../../_var.scss";
+
+.selectMethod_Card {
+  border-radius: 5px;
+  border: 1px solid $white-BC;
+  // flex: 1 0 auto;
+  background: $white-bg-F7;
+  padding: 22px 24px;
+  padding-right: 10px;
+  transition: all ease 0.3s;
+  margin-right: 20px;
+  width: 240px;
+  &:last-child {
+    margin-right: 0;
+  }
+  &:hover,
+  &.active {
+    border-color: $light-blue;
+  }
+
+  @media (max-width: 1200px) {
+    margin-bottom: 10px;
+  }
+  @media (max-width: 767px) {
+    width: 100%;
+    margin-right: 0;
+  }
+  h6 {
+    margin-bottom: 5px;
+  }
+}

@@ -1,0 +1,30 @@
+.collectiontop-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  .back {
+    font-size: 15px;
+    color: #000000;
+  }
+  img {
+    margin: 0 5px;
+  }
+  .btn {
+    background: #0c9eda 0% 0% no-repeat padding-box;
+    border-radius: 20px;
+    border-color: #0c9eda;
+    width: 120px;
+    height: 40px;
+    font-size: 16px;
+    color: #fff;
+  }
+}
+.coll-right {
+  padding-left: 30px;
+  padding-right: 15px;
+  margin-top: 20px !important;
+}
+.collection_card {
+  margin-top: 50px;
+}

@@ -1,0 +1,39 @@
+.searchbar {
+  .form-group {
+    position: relative;
+    .search-control {
+      padding-left: 50px !important;
+    }
+    .css-yk16xz-control {
+      height: 42px !important;
+    }
+    .css-g1d714-ValueContainer {
+      height: 42px;
+    }
+    .form-control {
+      height: 46px;
+      font-size: 13px;
+      padding: 0 15px;
+    }
+    .searchicon {
+      position: absolute;
+      top: 13px;
+      left: 25px;
+    }
+  }
+  .p-10 {
+    padding: 0 10px;
+  }
+}
+.inputfield-card {
+  max-width: 190px;
+  width: 100%;
+}
+.m-10 {
+  margin-left: 10px;
+}
+.grid-btn {
+  .btn-outline-light {
+    border: 1px solid #bcbcbc;
+  }
+}

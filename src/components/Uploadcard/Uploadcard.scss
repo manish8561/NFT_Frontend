@@ -1,3 +1,4 @@
+@import "../../_var.scss";
 .create-item {
   padding-top: 40px;
 
@@ -8,17 +9,26 @@
     align-items: flex-start;
     padding-left: 0;
     padding-right: 0;
-
+    h4 {
+      color: $black;
+      font-size: 24px;
+      line-height: 29px;
+      font-weight: $font-weight-semiBold;
+    }
     p {
-      font-size: 15px;
-      color: #707070;
-      line-height: 20px;
+      font-size: 16px;
+      color: $textcolor;
+      line-height: 26px;
       margin-top: 5px;
       text-align: left;
+      margin-bottom: 5px;
     }
   }
   .black-text {
-    color: #000000 !important;
+    color: $black !important;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 26px;
   }
   .create-item-form {
     max-width: 880px;
@@ -36,7 +46,7 @@
       padding: 0;
     }
     p {
-      color: #707070;
+      color: $textcolor;
       font-size: 15px;
       margin-top: 15px;
       margin-bottom: 10px;

@@ -1,0 +1,65 @@
+@import "../../_var.scss";
+
+.comboFieldStyle {
+  display: flex;
+  position: relative;
+  flex-wrap: unset;
+  border-radius: 23px;
+  height: 45px;
+  width: 100%;
+  border: 0.5px solid $white-bg-BC;
+  width: 230px;
+  .form-control {
+    border-radius: 0 23px 23px 0;
+    border: 0;
+    border-left: 1px solid $white-bg-BC !important;
+    height: 100%;
+    padding-left: 15px;
+    font-size: 12px;
+    font-weight: 500;
+    color: $light-grey;
+    background: $white-bg-F7;
+    &:focus,
+    &:active,
+    &:hover {
+      box-shadow: unset !important;
+      border-left: 1px solid $white-bg-BC !important;
+    }
+  }
+
+  .react-select__control {
+    width: 70px;
+    height: 100% !important;
+    border-radius: 23px 0 0 23px;
+    border: 0;
+    background: $white-bg-F7;
+    &.react-select__control--is-focused {
+      box-shadow: unset;
+      border: 0;
+    }
+    .react-select__value-container {
+      padding-left: 16px;
+    }
+    .react-select__indicators {
+      padding-right: 18px;
+      .react-select__indicator {
+        background: url(../../assets/Images/down_icon_dark.svg);
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: 12px;
+        svg {
+          display: none;
+        }
+      }
+    }
+  }
+  .react-select__menu {
+    .react-select__menu-list {
+      background-color: $white-bg;
+      .react-select__option--is-focused,
+      .react-select__option--is-selected {
+        background-color: $white-bg-E3!important;
+      }
+    }
+  }
+}
