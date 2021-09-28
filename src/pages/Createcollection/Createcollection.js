@@ -20,12 +20,13 @@ import covered from '../../assets/Images/card-display-cover.svg'
 import Reactselect from '../../components/Reactselect/Reactselect';
 import displayimg from '../../assets/Images/jelly-fish.png'
 import Breadcrumbs from '../../components/Breadcrumbs/Breadcrumbs';
-import { FormField, MultiSelect } from '../../components/FormField';
+import { FormField } from '../../components/FormField';
 import { GlobalVariables } from '../../constants/globalVariables.constant';
 import { useDispatch } from 'react-redux';
 import { ApiActions } from '../../redux/actions/api.action';
 
-const Createcollection = ({ handleSubmit }) => {
+
+const Createcollection = ({ handleSubmit, history }) => {
     const dispatch = useDispatch();
     
     const [show, setShow] = useState(false);
@@ -38,17 +39,14 @@ const Createcollection = ({ handleSubmit }) => {
         let links = []
         let paymentTokens = []
 
-        if(data.web)links.push({web : data.web})
-        if(data.twitter_link)links.push({twiter : data.twitter_link})
-        if(data.telegram_link)links.push({instagram : data.telegram_link})
-        if(data.medium_link)links.push({medium :  data.medium_link})
-        if(data.instagram_link)links.push({instagram : data.instagram_link})
-        if(data.discord_link)links.push({discord : data.discord_link})
+       links.push({web : data.web})
+       links.push({twiter : data.twitterLink})
+       links.push({instagram : data.telegramLink})
+       links.push({medium :  data.mediumLink})
+       links.push({instagram : data.instagramLink})
+       links.push({discord : data.discordLink})
 
         if(data.paymentToken && data.paymentToken.length > 0){data.paymentToken.map((items) => { if(items.value){paymentTokens.push(items.value)}})}
-        console.clear();
-
-        console.log("royality -- old", parseInt(data.royality))
 
         let newData = { name: data.name, 
                         banner: data.banner,
@@ -60,9 +58,8 @@ const Createcollection = ({ handleSubmit }) => {
                         paymentToken: paymentTokens.toString()
                     }
         
-        console.log("royality", newData.royality)
         const { callCreateCollection } = ApiActions;
-        dispatch(callCreateCollection(newData));
+        dispatch(callCreateCollection(newData, history));
     }
 
     return (
@@ -141,74 +138,74 @@ const Createcollection = ({ handleSubmit }) => {
 
                                             <InputGroup className="mb-3 sociallink-box">
                                                 <InputGroup.Prepend>
-                                                    <InputGroup.Text id="basic-discord_link"><img src={discord} /></InputGroup.Text>
+                                                    <InputGroup.Text id="basic-discordLink"><img src={discord} /></InputGroup.Text>
                                                 </InputGroup.Prepend>
                                                 <Field
                                                     className="form-control"
                                                     component={FormField}
-                                                    name="discord_link"
+                                                    name="discordLink"
                                                     type="text"
-                                                    aria-label="discord_link"
-                                                    aria-describedby="basic-discord_link"
+                                                    aria-label="discordLink"
+                                                    aria-describedby="basic-discordLink"
                                                     placeholder="https://discord.gg/abcdef"
                                                 />
                                             </InputGroup>
 
                                             <InputGroup className="mb-3 sociallink-box">
                                                 <InputGroup.Prepend>
-                                                    <InputGroup.Text id="basic-twitter_link"><img src={twitter} /></InputGroup.Text>
+                                                    <InputGroup.Text id="basic-twitterLink"><img src={twitter} /></InputGroup.Text>
                                                 </InputGroup.Prepend>
                                                 <Field
                                                     className="form-control"
                                                     component={FormField}
-                                                    name="twitter_link"
+                                                    name="twitterLink"
                                                     type="text"
                                                     aria-label="twitter"
                                                     placeholder="https://twitter.com/YourTwitterHandle"
-                                                    aria-describedby="basic-twitter_link"
+                                                    aria-describedby="basic-twitterLink"
                                                 />
                                             </InputGroup>
 
                                             <InputGroup className="mb-3 sociallink-box">
                                                 <InputGroup.Prepend>
-                                                    <InputGroup.Text id="basic-instagram_link"><img className="instaicon" src={instagram} /></InputGroup.Text>
+                                                    <InputGroup.Text id="basic-instagramLink"><img className="instaicon" src={instagram} /></InputGroup.Text>
                                                 </InputGroup.Prepend>
                                                 <Field
                                                     className="form-control"
                                                     component={FormField}
-                                                    name="instagram_link"
+                                                    name="instagramLink"
                                                     type="text"
                                                     aria-label="instagram"
                                                     placeholder="https://www.instagram.com/YourInstagramHandle"
-                                                    aria-describedby="basic-instagram_link"
+                                                    aria-describedby="basic-instagramLink"
                                                 />
                                             </InputGroup>
 
                                             <InputGroup className="mb-3 sociallink-box">
                                                 <InputGroup.Prepend>
-                                                    <InputGroup.Text id="basic-medium_link"><img src={medium} /></InputGroup.Text>
+                                                    <InputGroup.Text id="basic-mediumLink"><img src={medium} /></InputGroup.Text>
                                                 </InputGroup.Prepend>
                                                 <Field
                                                     className="form-control"
                                                     component={FormField}
                                                     placeholder="https://www.medium.com/@YourMediumHandle"
-                                                    name="medium_link"
+                                                    name="mediumLink"
                                                     aria-label="medium"
-                                                    aria-describedby="basic-medium_link"
+                                                    aria-describedby="basic-mediumLink"
                                                 />
                                             </InputGroup>
 
                                             <InputGroup className="mb-3 sociallink-box">
                                                 <InputGroup.Prepend>
-                                                    <InputGroup.Text id="basic-telegram_link"><img src={telegram} /></InputGroup.Text>
+                                                    <InputGroup.Text id="basic-telegramLink"><img src={telegram} /></InputGroup.Text>
                                                 </InputGroup.Prepend>
                                                 <Field
                                                     className="form-control"
                                                     component={FormField}
                                                     placeholder="https://t.me/abcdef"
                                                     aria-label="telegram"
-                                                    name="telegram_link"
-                                                    aria-describedby="basic-telegram_link"
+                                                    name="telegramLink"
+                                                    aria-describedby="basic-telegramLink"
                                                     defaultValue="https://t.me/abcdef"
                                                 />
                                             </InputGroup>

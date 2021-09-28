@@ -16,7 +16,7 @@ const callCheckLoginOrRegister = (data, history) => ({
     history
 });
 
-const callSaveCollection = (data) => ({
+const saveCollection = (data) => ({
     // The Redux store doesn't care what the actual text of the action.type field is. 
     // However, your own code will look at action.type to see if an update is needed.
     type: types.reducer.api.SAVE_GET_COLLECTIONS,
@@ -42,6 +42,6 @@ export const ApiActions = {
     savegetMintedTokens,
     callCheckLoginOrRegister,
     callCreateCollection,
-    callSaveCollection,
+    saveCollection,
     callGetCollection
 }

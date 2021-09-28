@@ -15,8 +15,7 @@ import collectionsitem2 from '../../assets/Images/my_collections1.png';
 function MyCollection() {
     const dispatch = useDispatch();
     const address = useSelector(state => state.persist.address);
-    const mintedLogs = useSelector(state => state.api.mintedLogs);
-    const collections = useSelector(state => state.api.collectionsLogs);
+    const collections = useSelector(state => state.api.collectionsData);
     const [ showCreateModal, setShowCreateModal ] = useState(false);
 
     const mintNewToken = (values) => {
@@ -72,20 +71,34 @@ function MyCollection() {
                         </div>
                     </Col>
 
-                    <Col sm={6} lg={3}>
-                        <div className="coll-new mb-3">
-                            <img src={collectionsitem1} />
-                            <p>Explore the My NFT Collection #2728089 collection <br /> <b>0 Item</b> </p>
-                        </div>
+                    {
+                        collections.length > 0 ?
+                        collections.map(row => (
+                            <Col sm={6} lg={3}>
+                            <div className="coll-new mb-3">
+                                <img src={row.logo} />
+                                <p>{row.name}<br /> <b>{row._id}</b> </p>
+                            </div>
+    
+                        </Col>
+                            ))
+                             : "No Records Found."
+                    } 
 
-                    </Col>
-                    <Col sm={6} lg={3}>
-                        <div className="coll-new mb-3">
-                            <img src={collectionsitem2} />
-                            <p>Explore the Untitled Collection #2728089 collection<br /> <b> 1 Item </b> </p>
-                        </div>
+                    {/* // <Col sm={6} lg={3}>
+                    //     <div className="coll-new mb-3">
+                    //         <img src={collectionsitem1} />
+                    //         <p>Explore the My NFT Collection #2728089 collection <br /> <b>0 Item</b> </p>
+                    //     </div>
+
+                    // </Col>
+                    // <Col sm={6} lg={3}>
+                    //     <div className="coll-new mb-3">
+                    //         <img src={collectionsitem2} />
+                    //         <p>Explore the Untitled Collection #2728089 collection<br /> <b> 1 Item </b> </p>
+                    //     </div>
                         
-                    </Col>
+                    // </Col> */}
                     {/* {
                         mintedLogs.length > 0 ?
                             mintedLogs.map(row => (

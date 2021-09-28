@@ -18,11 +18,9 @@ const api = (state = initialState, {type, payload}) => {
     case types.reducer.api.SAVE_GET_MINTED_TOKENS:
       return { ...state, mintedLogs: payload.logs };
 
-    case types.reducer.api.SAVE_GET_COLLECTIONS:
-      return { ...state, collectionsData: payload.logs };
+    case types.reducer.api.SAVE_GET_COLLECTIONS:  
+      return { ...state, collectionsData: payload };
     
-    case types.reducer.api.SAVE_CREATE_COLLECTION:
-      return { ...state, collectionsData: payload.logs };
       // If this reducer doesn't recognize the action type, or doesn't
       // care about this specific action, return the existing state unchanged
     default:

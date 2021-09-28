@@ -22,7 +22,6 @@ function* callGetIpfsData(file, title, description, address) {
   return ipfsData;
 }
 
-
 function* callMintTokens(data) {
   try {
     const { uploadToIpfsAndGenerateHash } = IpfsService;

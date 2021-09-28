@@ -3,6 +3,8 @@ import { ApiService } from "../../services/api.service";
 import { ApiActions } from "../actions/api.action";
 import types from "../types";
 import getJwt from "./jwt.saga";
+import {reset} from 'redux-form';
+
 
 // saga must be a function which returns a Generator Object. 
 // The middleware will then iterate over the Generator and execute all yielded Effects.
@@ -57,15 +59,23 @@ function* callCheckLoginOrRegister(actionData) {
 
 // ---------------------------- callGetCollections function -------------------------------------
 
-export function* callGetCollections(data) {
+export function* callGetCollections(props) {
   try {
-  const { payload } = data;
+  const { payload } = props;
     const { getCollections } = ApiService;
+    const { saveCollection } = ApiActions
     let jwt = yield getJwt(); //The result of yield take(pattern) is an action object being dispatched.
     //call creates a plain object describing the function call. The redux-saga middleware takes care of 
     // executing the function call and resuming the generator with the resolved response.
-    yield call(getCollections, payload,  jwt , {} ); 
+    const response =  yield call(getCollections, payload,  jwt , {} ); 
+    const { data } = response;
+
+    if(data && data.status == "200" && data.data) {
+      yield put(saveCollection(data.data))
+      yield put (reset('Createcollection'));  // requires form name
+    }
   }
+
   catch(error) {
     console.log({ CALL_GET_COLLECTIONS: error });
   } 
@@ -104,9 +114,6 @@ export function* callCreateCollections(props) {
 
     const response = yield call(createCollections, payload,  jwt , {} );  
     const { data } = response;
-    console.log(" ===========>>>>data", data);
-    console.log(" ===========>>>>data", props);
-
     if(data && data.status == "200") {
       // do something
       if(history && history.push) {
