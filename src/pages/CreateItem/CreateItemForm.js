@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import info from '../../assets/Images/exclaimation.svg'
 import lock from '../../assets/Images/lock.svg'
 import warning from '../../assets/Images/warning.svg'
@@ -17,9 +17,15 @@ import { connect } from 'react-redux';
 import { compose } from 'redux';
 
 const CreateItemForm = ({ itemIndex, collectionsList, handleSubmit }) => {
+    const [blockChainValue, setBlockChainValue] = useState(GlobalVariables.blockchainOptions[0]);
+    const [collectionValue, setCollectionValue] = useState(collectionsList[itemIndex]);
 
-    console.clear();
-    console.log(collectionsList[itemIndex]);
+    const handleChangeBlockChain = (value) => setBlockChainValue(value);
+    const handleChangeCollection = (value) => setCollectionValue(value);
+
+    useEffect(() => {
+        setCollectionValue(collectionsList[itemIndex]);
+    }, [collectionsList, itemIndex]);
 
     return (
         <Row>
@@ -66,10 +72,11 @@ const CreateItemForm = ({ itemIndex, collectionsList, handleSubmit }) => {
                                     classNamePrefix="react-select"
                                     placeholder="collection"
                                     isClearable
+                                    onChange={handleChangeCollection}
                                     validate={[required()]}
                                     closeMenuOnSelect={true}
                                     type="multi-select"
-                                    defaultValue={collectionsList[itemIndex]}
+                                    defaultValue={collectionValue}
                                 />
 
                                 <p className="mt-3 form-textline">This is the collection where your item will appear. <img src={info} alt="info" /></p>
@@ -126,7 +133,7 @@ const CreateItemForm = ({ itemIndex, collectionsList, handleSubmit }) => {
                                 </ListGroup.Item>
                             </ListGroup>
                         </div>
-
+ 
                         <Form.Group as={Row} controlId="formPlaintextEmail">
                             <Form.Label column sm="2">
                                 Supply
@@ -146,11 +153,12 @@ const CreateItemForm = ({ itemIndex, collectionsList, handleSubmit }) => {
                                 <Field
                                     component={FormField}
                                     options={GlobalVariables.blockchainOptions}
-                                    defaultValue={GlobalVariables.blockchainOptions[0]}
+                                    defaultValue={blockChainValue}
                                     name="blockchain"
                                     className="form-control mt-3"
                                     classNamePrefix="react-select"
                                     placeholder="Rinkeby"
+                                    onChange={handleChangeBlockChain}
                                     isClearable
                                     validate={[required()]}
                                     closeMenuOnSelect={true}
@@ -170,7 +178,7 @@ const CreateItemForm = ({ itemIndex, collectionsList, handleSubmit }) => {
                                 <p className="form-textline">Freezing your metadata will allow you to permanently lock and store all of this item's content in decentralized file storage.</p>
                             </Col>
                         </Form.Group>
-                        <Button href="#" className="read-btn">Create</Button>
+                        <Button type="submit" className="read-btn">Create</Button>
                     </Form>
 
                 </div>

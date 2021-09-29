@@ -5,6 +5,7 @@ import './Reactselect/Reactselect.scss'
 const TextField = props => {
     // props.input.value = props.formValue;
     const { meta = {} } = props;
+   
     const inputProps = {
         type: props.type || "text",
         className: props.className || "LoginInput",
@@ -174,21 +175,21 @@ const MultiSelect = props => {
     return (
         <>
             <Select
-                { ...props.input } 
-                closeMenuOnSelect={ props.closeMenuOnSelect ||false}
+                {...props.input}
+                closeMenuOnSelect={props.closeMenuOnSelect || false}
                 className="form-control"
                 classNamePrefix="react-select"
-                defaultValue={props.defaultValue}
                 value={props.defaultValue}
                 isSearchable={props.isSearchable || false}
                 isMulti={props.isMulti || false}
                 placeholder={props.placeholder}
-                options={props.options} 
+                onChange={props.input.onChange}
+                options={props.options}
                 label={props.label}
-                />
-                {meta.touched && meta.error ? (
+            />
+            {meta.touched && meta.error ? (
                 <div className="form__field-error text-danger">{meta.error}</div>
-            ) : null}    
+            ) : null}
         </>
 
     )
