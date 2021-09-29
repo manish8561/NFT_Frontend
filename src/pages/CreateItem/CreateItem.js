@@ -10,8 +10,9 @@ import twitter from '../../assets/Images/twitter.svg'
 import CreateItemForm from './CreateItemForm';
 import { useDispatch, useSelector } from 'react-redux';
 import { ApiActions } from '../../redux/actions/api.action';
+import back from "../../assets/Images/arrow_back_black.svg";
 
-const CreateItem = ({ match: { params: { collectionId } } }) => {
+const CreateItem = ({ match: { params: { collectionId }, history } }) => {
     const dispatch = useDispatch();
     const [show, setShow] = useState(false);
     const [collectionsList, setCollectionsList] = useState([]);
@@ -23,9 +24,10 @@ const CreateItem = ({ match: { params: { collectionId } } }) => {
     const submitForm = (data) => {
         console.clear();
         console.log({ data });
+        const { callCreateNft } = ApiActions;
+        dispatch(callCreateNft(data, history));
+        
     }
-
-  
 
     useEffect(() => {
         let arr = [];
@@ -49,24 +51,23 @@ const CreateItem = ({ match: { params: { collectionId } } }) => {
     return (
         <React.Fragment>
             <Container fluid >
+            <div className="back">
+                <span style={{cursor : "pointer"}} onClick={() => history.goBack()}><img  src={back}/></span> Back
+            </div>
                 <Container className="ContMain custom_content">
                     <CreateItemForm itemIndex={itemIndex} collectionsList={collectionsList} onSubmit={submitForm} />
                 </Container>
             </Container>
-
             <Modal show={show} onHide={handleClose} className="create-modal isBlank">
                 <Modal.Header closeButton> <Modal.Title >You create My NFT!</Modal.Title> </Modal.Header>
                 <Modal.Body>
-
                     <div className="item-body">
                         <img src={displayimg} />
-
                     </div>
                     {/* <div className="black-text text-uppercase text-center share">Share</div> */}
                 </Modal.Body >
 
                 <Modal.Footer className="social-footer">
-
                     <ListGroup horizontal className="cssBlank share-social">
                         <ListGroup.Item action href="#"><img src={twitter} /></ListGroup.Item>
                         <ListGroup.Item action href="#"><img src={fb} /></ListGroup.Item>

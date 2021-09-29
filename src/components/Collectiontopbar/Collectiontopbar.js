@@ -5,7 +5,8 @@ import displayimg from '../../assets/Images/my_collections1.png'
 import ButtonGroup from 'react-bootstrap/ButtonGroup'
 import Button from 'react-bootstrap/Button'
 import eth from '../../assets/Images/eth.svg'
-function Collectiontopbar() {
+
+function Collectiontopbar(props) {
     return (
         <>
             <div className="cover">
@@ -13,20 +14,20 @@ function Collectiontopbar() {
             </div>
             <div className="coll-profile">
                 <img className="profile-pic" src={displayimg} />
-                <h2>Untitled Collection # 2728089</h2>
+                <h2>{props.items && props.items.name ? props.items.name.name: "Untitled Collection"} </h2>
                 <div className="group-collection">
                     <ButtonGroup aria-label="Basic example">
                         <Button variant="secondary">
-                            <h4>2</h4>
-                            <p>Items</p>
+                            <h4>{props.items.count ? props.items.count : 0 }</h4>
+                            <p>items</p>
                         </Button>
                         <Button variant="secondary">
                             <h4>1</h4>
-                            <p>Items</p>
+                            <p>owner</p>
                         </Button>
                         <Button variant="secondary">
                             <h4>---</h4>
-                            <p>Floor price</p>
+                            <p>floor price</p>
                         </Button>
 
                         <Button variant="secondary">
