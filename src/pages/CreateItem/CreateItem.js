@@ -18,7 +18,7 @@ import fb from '../../assets/Images/fb.svg'
 import link from '../../assets/Images/link.svg'
 import twitter from '../../assets/Images/twitter.svg'
 import SwitchButton from '../../components/SwitchButton/SwitchButton';
-
+import { Field, reduxForm } from 'redux-form';
 
 function CreateItem() {
     const [ show, setShow ] = useState(false);
@@ -188,4 +188,4 @@ function CreateItem() {
 
 }
 
-export default CreateItem
+export default reduxForm({ form: "CreateItem", enableReinitialize: true })(CreateItem);

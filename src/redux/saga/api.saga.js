@@ -135,9 +135,7 @@ export function* callGetNft(props) {
     let jwt = yield getJwt(); //The result of yield take(pattern) is an action object being dispatched.
     //call creates a plain object describing the function call. The redux-saga middleware takes care of 
     // executing the function call and resuming the generator with the resolved response.
-
-    console.log("props", props)
-
+    
     const res =  yield call(getNft, payload,  jwt , {} ); 
     if (res) {
       const { data: { data } } = res;
