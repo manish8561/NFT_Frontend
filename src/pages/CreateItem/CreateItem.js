@@ -11,10 +11,11 @@ import CreateItemForm from './CreateItemForm';
 import { useDispatch, useSelector } from 'react-redux';
 import { ApiActions } from '../../redux/actions/api.action';
 
-const CreateItem = () => {
+const CreateItem = ({ match: { params: { collectionId } } }) => {
     const dispatch = useDispatch();
     const [show, setShow] = useState(false);
     const [collectionsList, setCollectionsList] = useState([]);
+    const [itemIndex, setItemIndex] = useState(0);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
     const collections = useSelector(state => state.api.collections);
@@ -32,8 +33,13 @@ const CreateItem = () => {
             arr.push({ value: collection['_id'], label: collection['name'] });
         }
 
+        if (collectionId) {
+            const index = arr.findIndex(i => i.value === collectionId);
+            if (index !== -1) setItemIndex(index);
+        }
+
         setCollectionsList(arr);
-    }, [collections]);
+    }, [collections, collectionId]);
 
     useEffect(() => {
         const { callGetCollection } = ApiActions;
@@ -44,7 +50,7 @@ const CreateItem = () => {
         <React.Fragment>
             <Container fluid >
                 <Container className="ContMain custom_content">
-                    <CreateItemForm collectionsList={collectionsList} onSubmit={submitForm} />
+                    <CreateItemForm itemIndex={itemIndex} collectionsList={collectionsList} onSubmit={submitForm} />
                 </Container>
             </Container>
 

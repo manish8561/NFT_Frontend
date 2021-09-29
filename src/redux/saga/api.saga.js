@@ -5,12 +5,6 @@ import types from "../types";
 import getJwt from "./jwt.saga";
 import {reset} from 'redux-form';
 
-
-// saga must be a function which returns a Generator Object. 
-// The middleware will then iterate over the Generator and execute all yielded Effects.
-
-// ------------------------ callGetMintedTokens function -------------------------------
-
 function* callGetMintedTokens(data) {
   try {
     const { payload } = data;

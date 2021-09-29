@@ -179,6 +179,7 @@ const MultiSelect = props => {
                 className="form-control"
                 classNamePrefix="react-select"
                 defaultValue={props.defaultValue}
+                value={props.defaultValue}
                 isSearchable={props.isSearchable || false}
                 isMulti={props.isMulti || false}
                 placeholder={props.placeholder}

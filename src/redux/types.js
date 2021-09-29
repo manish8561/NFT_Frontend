@@ -5,6 +5,9 @@ const reducer = {
         SAVE_JWT_TOKEN: "[REDUCER] SAVE_JWT_TOKEN",
         RESET_STORE: "[REDUCER] RESET_STORE"
     },
+    form: {
+        SAVE_CREATE_ITEM_FORM_VALUES: '[FORM] SAVE_CREATE_ITEM_FORM_VALUES'
+    },
     api: {
         SAVE_GET_MINTED_TOKENS: "[REDUCER] SAVE_GET_MINTED_TOKENS",
         SAVE_CHECK_LOGIN_OR_REGISTER: "[REDUCER] SAVE_CHECK_LOGIN_OR_REGISTER",
@@ -21,6 +24,9 @@ const saga = {
     },
     contract: {
         CALL_MINT_TOKENS: "[ACTION] CALL_MINT_TOKENS"
+    },
+    form: {
+        CALL_CREATE_ITEM_FORM_VALUES: '[FORM] CALL_CREATE_ITEM_FORM_VALUES'
     },
     api: {
         CALL_GET_MINTED_TOKENS: "[ACTION] CALL_GET_MINTED_TOKENS",

@@ -1,5 +1,11 @@
 import types from "../types"
 
+const saveCreateFormDetails = (data) => ({
+    type: types.reducer.form.SAVE_CREATE_ITEM_FORM_VALUES,
+    payload: data
+});
+
+
 const savegetMintedTokens = (data) => ({
     type: types.reducer.api.SAVE_GET_MINTED_TOKENS,
     payload: data
@@ -43,6 +49,7 @@ const saveNft= (data) => ({
 });
 
 export const ApiActions = {
+    saveCreateFormDetails,
     callGetMintedTokens,
     savegetMintedTokens,
     callCheckLoginOrRegister,

@@ -13,8 +13,14 @@ import { Row, Col, Button, Form, ListGroup } from "react-bootstrap";
 import { required } from 'redux-form-validators';
 import { GlobalVariables } from '../../constants/globalVariables.constant';
 import Uploadcard from '../../components/Uploadcard/Uploadcard';
+import { connect } from 'react-redux';
+import { compose } from 'redux';
 
-const CreateItemForm = ({ collectionsList, handleSubmit }) => {
+const CreateItemForm = ({ itemIndex, collectionsList, handleSubmit }) => {
+
+    console.clear();
+    console.log(collectionsList[itemIndex]);
+
     return (
         <Row>
             <div className="collection-modal item-card">
@@ -63,7 +69,7 @@ const CreateItemForm = ({ collectionsList, handleSubmit }) => {
                                     validate={[required()]}
                                     closeMenuOnSelect={true}
                                     type="multi-select"
-                                    // defaultValue={GlobalVariables.blockchainOptions[0]}
+                                    defaultValue={collectionsList[itemIndex]}
                                 />
 
                                 <p className="mt-3 form-textline">This is the collection where your item will appear. <img src={info} alt="info" /></p>
@@ -140,6 +146,7 @@ const CreateItemForm = ({ collectionsList, handleSubmit }) => {
                                 <Field
                                     component={FormField}
                                     options={GlobalVariables.blockchainOptions}
+                                    defaultValue={GlobalVariables.blockchainOptions[0]}
                                     name="blockchain"
                                     className="form-control mt-3"
                                     classNamePrefix="react-select"
@@ -148,7 +155,6 @@ const CreateItemForm = ({ collectionsList, handleSubmit }) => {
                                     validate={[required()]}
                                     closeMenuOnSelect={true}
                                     type="multi-select"
-                                    defaultValue={GlobalVariables.blockchainOptions[0]}
                                 />
                                 <p className="form-textline">The number of copies that can be minted. No gas cost to you! Quantities above one coming soon.
                                 </p>
@@ -175,4 +181,11 @@ const CreateItemForm = ({ collectionsList, handleSubmit }) => {
     );
 }
 
-export default reduxForm({ form: "CreateItemForm", enableReinitialize: true })(CreateItemForm);
+const mapStateToProps = state => ({
+    initialValues: state.api.CreateItemForm
+})
+
+export default compose(
+    connect(mapStateToProps, null),
+    reduxForm({ form: "CreateItemForm", enableReinitialize: true })
+)(CreateItemForm);
