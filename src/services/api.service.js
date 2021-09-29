@@ -11,6 +11,7 @@ const getDetails = (jwt) => fetch("get", `${API_URL}/user/details`,{},jwt);
 const getCollections = (data, jwt) => fetch("post", `${API_URL}/collection/getCollections`, data , jwt);
 const createCollections = (data, jwt) => fetch("post", `${API_URL}/collection/add`, data , jwt);
 const getNft = (data, jwt) => fetch("post", `${API_URL}/collection/${data.id}`, data , jwt);
+const getItemsByCollectionId = (data, jwt) => fetch("post", `${API_URL}/collection/getItemsByCollectionId`, data , jwt);
 
 export const ApiService = {
   getCollections,
@@ -20,7 +21,8 @@ export const ApiService = {
   createCollections,
   checkUserExists,
   getDetails,
-  getNft
+  getNft,
+  getItemsByCollectionId
 };
 
 

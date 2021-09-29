@@ -132,19 +132,36 @@ export function* callGetNft(props) {
   const { payload } = props;
     const { getNft } = ApiService;
     const { saveNft } = ApiActions
-    let jwt = yield getJwt(); //The result of yield take(pattern) is an action object being dispatched.
-    //call creates a plain object describing the function call. The redux-saga middleware takes care of 
-    // executing the function call and resuming the generator with the resolved response.
-    
+    let jwt = yield getJwt();
     const res =  yield call(getNft, payload,  jwt , {} ); 
     if (res) {
       const { data: { data } } = res;
-      yield put(saveNft({ collections: data }));
+      yield put(saveNft({ nft: data }));
     } 
   }
-
   catch(error) {
-    console.log({ CALL_GET_COLLECTIONS: error });
+    console.log({ CALL_GET_NFT: error });
+  } 
+}
+
+// ---------------------------- getCollectionById function -------------------------------------------------------
+
+
+export function* callGetCollectionsById(props) {
+  try {
+  const { payload } = props;
+    const { getItemsByCollectionId } = ApiService;
+    const { saveCollectionById } = ApiActions
+
+    let jwt = yield getJwt();
+    const res =  yield call(getItemsByCollectionId, payload,  jwt , {} ); 
+    if (res) {
+      const { data: { data } } = res;
+      yield put(saveCollectionById({ collectionsById: data }));
+    } 
+  }
+  catch(error) {
+    console.log({ CALL_GET_COLLECTIONS_BY_ID: error });
   } 
 }
 
@@ -161,6 +178,8 @@ function* apiSaga() {
   yield takeLatest(types.saga.api.CALL_GET_COLLECTIONS, callGetCollections);
   yield takeLatest(types.saga.api.CALL_CREATE_COLLECTION, callCreateCollections);
   yield takeLatest(types.saga.api.CALL_GET_NFT, callGetNft);
+  yield takeLatest(types.saga.api.CALL_GET_COLLECTIONS_BY_ID, callGetCollectionsById);
+
 }
 
 export default apiSaga;

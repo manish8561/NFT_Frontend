@@ -21,15 +21,25 @@ function Mynftcollection({ history, match: { params: { collectionId } } }) {
   const dispatch = useDispatch();
 
   const address = useSelector(state => state.persist.address);
+  const nftCollection = useSelector(state => state.api.nft);
+  const CollectionById = useSelector(state => state.api.collectionsById);
 
-  const callNft = () => {
+
+  const getNft = () => {
       const { callGetNft } = ApiActions;
       dispatch(callGetNft({ page: 0, limit: 20, id: collectionId }));
   }
 
+  const getCollectionById = () => {
+    const { callGetCollectionById } = ApiActions;
+    dispatch(callGetCollectionById({ page: 0, limit: 20, id: collectionId }));
+}
+
   React.useEffect(() => {
     if (address && address.trim().length > 0) {
-      callNft();       
+      getNft();
+      getCollectionById();   
+
      }
   }, [address]);
 
@@ -45,7 +55,7 @@ function Mynftcollection({ history, match: { params: { collectionId } } }) {
           <Button variant="primary" onClick={() => history.push(`/marketplace/collection/items/create-item/${collectionId}`)}>Add item</Button>
         </div>
       </Container>
-      <Collectiontopbar />
+      <Collectiontopbar items={{count : CollectionById.count ?  CollectionById.count : 0 , name : nftCollection[0]}} />
       <Container fluid className="categorie_sec collection_card">
         <div className="nft-collection categorie_row">
           <Sidebar>
@@ -58,7 +68,7 @@ function Mynftcollection({ history, match: { params: { collectionId } } }) {
             >
               <ul className="status_sec m-0">
                 <li>
-                  <a href="#"> Buy Now</a>
+                  <a href="#">Buy Now</a>
                 </li>
                 <li>
                   <a href="#" className="active">
