@@ -32,16 +32,6 @@ const callCreateCollection = (data, history) => ({
     history
 })
 
-const callGetNft = (data) => ({
-    type: types.saga.api.CALL_GET_NFT,
-    payload: data
-});
-
-const saveNft= (data) => ({
-    type: types.reducer.api.SAVE_GET_NFT,
-    payload: data
-});
-
 const callGetCollectionById = (data) => ({
     type: types.saga.api.CALL_GET_COLLECTIONS_BY_ID,
     payload: data
@@ -52,6 +42,23 @@ const saveCollectionById= (data) => ({
     payload: data
 });
 
+const callGetNft = (data) => ({
+    type: types.saga.api.CALL_GET_NFT,
+    payload: data
+});
+
+const saveNft= (data) => ({
+    type: types.reducer.api.SAVE_GET_NFT,
+    payload: data
+});
+
+const callCreateNft = (data, history) => ({
+    type: types.saga.api.CALL_CREATE_NFT,
+    payload: data,
+    history
+});
+
+
 export const ApiActions = {
     callGetMintedTokens,
     savegetMintedTokens,
@@ -59,6 +66,7 @@ export const ApiActions = {
     callCreateCollection,
     saveCollection,
     callGetCollection,
+    callCreateNft,
     callGetNft,
     saveNft,
     callGetCollectionById,

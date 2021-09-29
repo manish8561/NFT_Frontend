@@ -165,6 +165,29 @@ export function* callGetCollectionsById(props) {
   } 
 }
 
+// ------------------------------ createNft function------------------------------------------------------------
+
+export function* createNft(props) {
+  try {
+    const  jwt = yield getJwt();
+    const { payload , history} = props;
+    const { createNft } = ApiService;
+
+    const response = yield call(createNft, payload,  jwt , {} );  
+
+    const { data } = response;
+    if(data && data.status == "200") {
+      yield put (reset('CreateItemForm'));
+      if(history && history.push) {
+        history.push(`/marketplace/collection/items/${payload.id}`);
+      }
+    }
+  }
+  catch (error) {
+    console.log({ CALL_CREATE_NFT: error })
+  }
+}
+
 
 
 // ---------------------------- apiSaga function ---------------------------------------------------------
@@ -177,9 +200,9 @@ function* apiSaga() {
   yield takeLatest(types.saga.api.CALL_CHECK_LOGIN_OR_REGISTER, callCheckLoginOrRegister);
   yield takeLatest(types.saga.api.CALL_GET_COLLECTIONS, callGetCollections);
   yield takeLatest(types.saga.api.CALL_CREATE_COLLECTION, callCreateCollections);
-  yield takeLatest(types.saga.api.CALL_GET_NFT, callGetNft);
   yield takeLatest(types.saga.api.CALL_GET_COLLECTIONS_BY_ID, callGetCollectionsById);
-
+  yield takeLatest(types.saga.api.CALL_GET_NFT, callGetNft);
+  yield takeLatest(types.saga.api.CALL_CREATE_NFT, createNft);
 }
 
 export default apiSaga;

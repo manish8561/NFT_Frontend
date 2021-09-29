@@ -250,8 +250,6 @@ const Createcollection = ({ handleSubmit, history }) => {
                                                 validate={[required()]}
                                                 closeMenuOnSelect={true}
                                                 type="multi-select"
-                                                label="blockchain"
-                                                type="multi-select"
                                                 defaultValue={GlobalVariables.blockchainOptions[0]}
                                             />
                                             <p>Select the blockchain where you'd like new items from this collection to be added by default. <img className="info-black" src={info} />
