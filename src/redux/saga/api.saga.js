@@ -48,15 +48,13 @@ function* callCheckLoginOrRegister(actionData) {
       yield put({type: types.reducer.persist.SAVE_JWT_TOKEN, payload : data.token})
 
       if(history && history.push) {
-        history.push('/marketplace/my-collection');
+        history.push('/marketplace/collections');
       }
     }
   } catch(error) {
     console.log('Check login or register api error', error);
   }
 }
-
-
 // ---------------------------- callGetCollections function -------------------------------------
 
 export function* callGetCollections(props) {
@@ -117,7 +115,7 @@ export function* callCreateCollections(props) {
       // do something
       yield put (reset('Createcollection'));  // requires form name
       if(history && history.push) {
-        history.push('/marketplace/my-collection');
+        history.push('/marketplace/collections');
       }
     }
   }
@@ -137,6 +135,8 @@ export function* callGetNft(props) {
     let jwt = yield getJwt(); //The result of yield take(pattern) is an action object being dispatched.
     //call creates a plain object describing the function call. The redux-saga middleware takes care of 
     // executing the function call and resuming the generator with the resolved response.
+
+    console.log("props", props)
 
     const res =  yield call(getNft, payload,  jwt , {} ); 
     if (res) {
@@ -162,7 +162,7 @@ function* apiSaga() {
   yield takeLatest(types.saga.api.CALL_CHECK_LOGIN_OR_REGISTER, callCheckLoginOrRegister);
   yield takeLatest(types.saga.api.CALL_GET_COLLECTIONS, callGetCollections);
   yield takeLatest(types.saga.api.CALL_CREATE_COLLECTION, callCreateCollections);
-
+  yield takeLatest(types.saga.api.CALL_GET_NFT, callGetNft);
 }
 
 export default apiSaga;

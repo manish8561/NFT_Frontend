@@ -15,7 +15,7 @@ const Home = (props) => {
   const onCreate = () => {
     const { history } = props;
     if(persistData && persistData.isLoggedIn) {
-      history.push('/marketplace/my-collection')
+      history.push('/marketplace/collections')
     } else {
       history.push('/login');
     }

@@ -19,6 +19,9 @@ const api = (state = initialState, {type, payload}) => {
     case types.reducer.api.SAVE_GET_MINTED_TOKENS:
       return { ...state, mintedLogs: payload.logs };
 
+    case types.reducer.api.SAVE_GET_NFT:
+        return { ...state, nft: payload.nft };
+
     case types.reducer.api.SAVE_GET_COLLECTIONS:
       return { ...state, collections: payload.collections };
     

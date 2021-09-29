@@ -10,7 +10,7 @@ const checkUserExists = (data, headers) => fetch("post", `${API_URL}/user/loginU
 const getDetails = (jwt) => fetch("get", `${API_URL}/user/details`,{},jwt);
 const getCollections = (data, jwt) => fetch("post", `${API_URL}/collection/getCollections`, data , jwt);
 const createCollections = (data, jwt) => fetch("post", `${API_URL}/collection/add`, data , jwt);
-const getNft = (data, jwt) => fetch("post", `${API_URL}/api/collection/${data.id}`, data , jwt);
+const getNft = (data, jwt) => fetch("post", `${API_URL}/collection/${data.id}`, data , jwt);
 
 export const ApiService = {
   getCollections,

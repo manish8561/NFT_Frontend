@@ -16,22 +16,21 @@ import displayimg from '../../assets/Images/mask.png'
 import telegram from '../../assets/Images/telegram.svg'
 import fb from '../../assets/Images/fb.svg'
 import link from '../../assets/Images/link.svg'
-
-
 import twitter from '../../assets/Images/twitter.svg'
 import SwitchButton from '../../components/SwitchButton/SwitchButton';
+
+
 function CreateItem() {
     const [ show, setShow ] = useState(false);
-
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
+
     return (
         <React.Fragment>
             <Container fluid >
                 <Container className="ContMain custom_content">
                     <Row>
                         <div className="collection-modal item-card">
-
                             <Uploadcard heading="Create new item" subheading="  Image, Video, Audio, or 3D Model" text=" File types supported: JPG, PNG, GIF, SVG, MP4, WEBM, MP3, WAV, OGG, GLB, GLTF. Max size: 100 MB." />
                             <div className="create-item-form">
                                 <Form className="info-form ">
@@ -107,7 +106,6 @@ function CreateItem() {
                                                     <div className="grey-text list-text">    Include unlockable content that can only be revealed by the owner of the item. </div></p>
                                             </div>
                                             <div className="switch-toggle">
-
                                                 <SwitchButton id="custom_switch" />
                                             </div>
                                         </ListGroup.Item>
@@ -121,8 +119,6 @@ function CreateItem() {
                                             </div>
                                         </ListGroup.Item>
                                     </ListGroup>
-
-
                                 </div>
 
                                 <Form className="info-form ">

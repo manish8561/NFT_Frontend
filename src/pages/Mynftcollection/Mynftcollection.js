@@ -14,18 +14,35 @@ import sale from "../../assets/Images/sale.svg";
 import Searchbar from "../../components/Searchbar/Searchbar";
 import SidebarCard from "../../components/Sidebar/SidebarCard";
 import Searchresults from "../../components/Searchresults/Searchresults";
+import { ApiActions } from "../../redux/actions/api.action";
+import { useDispatch, useSelector } from 'react-redux';
 
-function Mynftcollection() {
+function Mynftcollection({ history, match: { params: { collectionId } } }) {
+  const dispatch = useDispatch();
+
+  const address = useSelector(state => state.persist.address);
+
+  const callNft = () => {
+      const { callGetNft } = ApiActions;
+      dispatch(callGetNft({ page: 0, limit: 20, id: collectionId }));
+  }
+
+  React.useEffect(() => {
+    if (address && address.trim().length > 0) {
+      callNft();       
+     }
+  }, [address]);
+
   return (
     <div>
       <Container fluid className="top_list  collectiontop-bar">
         <div className="back">
-          <img src={back} /> Back
+          <span style={{cursor : "pointer"}} onClick={() => history.goBack()}><img src={back} /></span> Back
         </div>
         <div>
           <img src={list} />
           <img src={edit} />
-          <Button variant="primary">Add item</Button>
+          <Button variant="primary" onClick={() => history.push(`/marketplace/collection/items/create-item/${collectionId}`)}>Add item</Button>
         </div>
       </Container>
       <Collectiontopbar />
@@ -62,14 +79,12 @@ function Mynftcollection() {
               eventKey="1"
               content
             />
-
             <SidebarCard
               icon={chains}
               toggleHeading="Chains"
               eventKey="3"
               content
             />
-
             <SidebarCard
               icon={sale}
               toggleHeading="On Sale In"

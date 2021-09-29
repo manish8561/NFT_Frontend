@@ -26,11 +26,22 @@ class PublicRoutes extends Component {
       <React.Fragment>
         <div className="PublicArea__content">
           <Header />
-          <Route path="/" component={Home} exact={true} />
           {/* <Route path="/categories" component={Categories} exact={true} /> */}
           <Route path="/activities" component={Activities} exact={true} />
           <UnAuthGuard path="/login" component={Login} exact={true} />
-          <Redirect to="/" component={Home} />
+          {/* <UnAuthGuard path="/login" component={Login} exact={true} /> */}
+          <Route path="/Activities" component={Activities} exact={true} />
+          <Route path="/" component={Home} exact={true} />
+          {/* <Route
+            path="/Createcollection"
+            component={Createcollection}
+            exact={true}
+          />
+          <Route path="/Creatednft" component={Creatednft} exact={true} />
+         
+          <Route path="/Profile" component={Profile} exact={true} />
+          <Route path="/SellItem" component={SellItem} exact={true} />
+          <Route path="/Viewdetail" component={ViewDetails} exact={true} /> */}
         </div>
         <Footer />
       </React.Fragment>
