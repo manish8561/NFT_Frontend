@@ -90,15 +90,15 @@ const RadioBox = props => {
     );
 };
 
-const SelectField = ({ input, meta: { touched, error }, children, className, formValue, defaultValue, placeholder }) => {
+const SelectField = ({ input, meta: { touched, error }, options, className, formValue, defaultValue, placeholder }) => {
     return (
         <React.Fragment>
-            <select {...input} placeholder={placeholder} className="selectField">
+            <select {...input} placeholder={placeholder} className={className}>
                 <option value=""> {placeholder} </option>
-                {children.map(row => {
+                {options.map(row => {
                     return (
-                        <option className={className} key={row.key} value={row.key}>
-                            {row.title}
+                        <option className={className} key={row.value} value={row.value}>
+                            {row.label}
                         </option>
                     );
                 })}
@@ -169,24 +169,33 @@ const TextAreaField = ({ input, type, maxLength, formValue, placeholder, classNa
 };
 
 const MultiSelect = props => {
+
     const { meta = {} } = props;
+    // if (
+    //     (props.input.name === "blockchain") || 
+    //     (props.input.name === "paymentToken") || 
+    //     ((props.input.name === "collection"))
+    // ) {
+    //   props.input['value'] = props?.defaultValue?.value;
+    // }
 
     return (
         <>
-            <Select
-                { ...props.input } 
-                closeMenuOnSelect={ props.closeMenuOnSelect ||false}
+           <Select
+                {...props.input}
+                closeMenuOnSelect={props.closeMenuOnSelect || false}
                 className="form-control"
                 classNamePrefix="react-select"
-                defaultValue={props.defaultValue}
-                value={props.defaultValue}
+                // value={props.defaultValue}
                 isSearchable={props.isSearchable || false}
                 isMulti={props.isMulti || false}
                 placeholder={props.placeholder}
-                options={props.options} 
+                // onChange={props.input.onChange}
+                options={props.options}
                 label={props.label}
-                />
-                {meta.touched && meta.error ? (
+            />
+
+            {meta.touched && meta.error ? (
                 <div className="form__field-error text-danger">{meta.error}</div>
             ) : null}    
         </>

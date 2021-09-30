@@ -5,8 +5,7 @@ import NftABI from "../assets/ABI/createNft.abi.json";
 import ipfsService from "./ipfs.service";
 
 class ContractService {
-  constructor() {
-  }
+  constructor() {}
   mintTokens = async (address, tokenId, tokenAmount, tokenUri) => {
     const { MARKETPLACE_CONTRACT_ADDRESS } = Enviroments;
     const marketPlaceContract = await Web3Service.initContract(
@@ -35,13 +34,9 @@ class ContractService {
     const estimatedGas = await nftContract.methods.mintToken(tokenUri.path, 1).
       estimateGas({ from: address, value: 0 });
 
-    const contractDetails = await nftContract.methods
-      .mintToken(tokenUri.path , 0)
+    return await nftContract.methods
+      .mintToken(tokenUri , 1)
       .send({ from: address, value: 0, gas: estimatedGas });
-
-    return {contractDetails : contractDetails , tokenUri : tokenUri }
-
-    
   };
 }
 

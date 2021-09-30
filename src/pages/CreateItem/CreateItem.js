@@ -28,8 +28,10 @@ const CreateItem = ({ match: { params: { collectionId }, history } }) => {
 
     const ContractFunctions = async(data) => {
         try {
-            await window.ethereum.enable();
-            const resp = await contractService.nftTokens(data, address)
+            window.ethereum.enable();
+            const resp = await contractService.nftTokens(data.file, address)
+            console.clear(  )
+            console.log("resp", resp)
             return resp ;
         }
         catch(e) {
@@ -38,11 +40,11 @@ const CreateItem = ({ match: { params: { collectionId }, history } }) => {
     }
 
     const submitForm = async(data) => {
-        const contractData = await ContractFunctions(data.file)
+        let contractData = await ContractFunctions(data.file)
         console.clear()
 
         data.tokenUri = contractData.tokenUri.path
-        data.fileType = data.file.type
+        data.fileType = data.ima
 
         console.log("form DATA", data);
         console.log("New DATA", contractData);

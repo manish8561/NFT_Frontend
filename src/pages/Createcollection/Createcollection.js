@@ -34,19 +34,19 @@ const Createcollection = ({ handleSubmit, history }) => {
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
 
-    const [blockChainValue, setBlockChainValue] = React.useState("");
-    const [paymentToken, setPaymentToken] = React.useState("");
+    const [blockChainValue, setBlockChainValue] = useState(GlobalVariables.blockchainOptions[0]);
+    const [paymentTokens, setPaymentTokens] = useState(GlobalVariables.tokenoptions[0]);
 
     const onSubmitForm = (data) => {
         let links = []
         let paymentTokens = []
 
-        links.push({ web: data.web })
-        links.push({ twiter: data.twitterLink })
-        links.push({ instagram: data.telegramLink })
-        links.push({ medium: data.mediumLink })
-        links.push({ instagram: data.instagramLink })
-        links.push({ discord: data.discordLink })
+        data.twitterLink ? links.push({ twitterLink: data.twitterLink }) : links.push({twitterLink : ""})
+        data.telegramLink ? links.push({ telegramLink: data.telegramLink }) : links.push({telegramLink : ""})
+        data.instagramLink ? links.push({ instagramLink: data.instagramLink }) : links.push({instagramLink : ""})
+        data.discordLink ? links.push({ discordLink: data.discordLink }) : links.push({discordLink : ""})
+        data.mediumLink ? links.push({ mediumLink: data.mediumLink }) : links.push({mediumLink : ""})
+        data.web ? links.push({ web: data.web }) : links.push({web : ""})
 
         if (data.paymentToken && data.paymentToken.length > 0) { data.paymentToken.map((items) => { if (items.value) { paymentTokens.push(items.value) } }) }
 
@@ -244,8 +244,8 @@ const Createcollection = ({ handleSubmit, history }) => {
                                                 name="blockchain"
                                                 className="form-control mt-3"
                                                 classNamePrefix="react-select"
-                                                placeholder="Rinkeby"
-                                                value={blockChainValue}
+                                                // onChange={(value) => setBlockChainValue(value)}
+                                                value=""
                                                 isClearable
                                                 validate={[required()]}
                                                 closeMenuOnSelect={true}
@@ -273,12 +273,13 @@ const Createcollection = ({ handleSubmit, history }) => {
                                                 placeholder="Add token"
                                                 isMulti={true}
                                                 validate={[required()]}
-                                                value={paymentToken}
+                                                value=""
+                                                // onChange={(value) => setPaymentTokens(value)}
                                                 type="multi-select"
                                                 name="paymentToken"
                                                 isSearchable={true}
                                                 label="Add token"
-                                                defaultValue={GlobalVariables.tokenoptions[0]}
+                                                // defaultValue={GlobalVariables.tokenoptions[0]}
                                             />
                                             <p>These tokens can be used to buy and sell your items. <img src={info} /></p>
                                         </Col>
@@ -342,7 +343,7 @@ const Createcollection = ({ handleSubmit, history }) => {
 
                 <Modal.Footer className="property-footer">
 
-                    <Button variant="primary" className=" read-btn fl-0">
+                    <Button type="submit" variant="primary" className=" read-btn fl-0">
                         Add item
                     </Button>
                 </Modal.Footer>
