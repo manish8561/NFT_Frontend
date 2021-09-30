@@ -172,13 +172,13 @@ const TextAreaField = ({ input, type, maxLength, formValue, placeholder, classNa
 const MultiSelect = props => {
 
     const { meta = {} } = props;
-    if (
-        (props.input.name === "blockchain") || 
-        (props.input.name === "paymentToken") || 
-        ((props.input.name === "collection"))
-    ) {
-      props.input['value'] = props?.defaultValue?.value;
-    }
+    // if (
+    //     (props.input.name === "blockchain") || 
+    //     (props.input.name === "paymentToken") || 
+    //     ((props.input.name === "collection"))
+    // ) {
+    //   props.input['value'] = props?.defaultValue?.value;
+    // }
 
     return (
         <>
@@ -187,11 +187,11 @@ const MultiSelect = props => {
                 closeMenuOnSelect={props.closeMenuOnSelect || false}
                 className="form-control"
                 classNamePrefix="react-select"
-                value={props.defaultValue}
+                // value={props.defaultValue}
                 isSearchable={props.isSearchable || false}
                 isMulti={props.isMulti || false}
                 placeholder={props.placeholder}
-                onChange={props.input.onChange}
+                // onChange={props.input.onChange}
                 options={props.options}
                 label={props.label}
             />

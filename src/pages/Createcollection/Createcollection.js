@@ -65,18 +65,13 @@ const Createcollection = ({ handleSubmit, history }) => {
         dispatch(callCreateCollection(newData, history));
     }
 
-    const handleSubmitForm = (e) => {
-        e.preventDefault();
-        handleSubmit(onSubmitForm);
-    }
-
     return (
         <React.Fragment>
             <Breadcrumbs text="My collections" active="Create collections" history={history} />
             <Container fluid >
                 <Container className="ContMain custom_content">
                     <Row>
-                        <Form onSubmit={handleSubmitForm} className="collection-modal item-card">
+                        <Form onSubmit={handleSubmit(onSubmitForm)} className="collection-modal item-card">
 
                             <Uploadcard heading="Createcollection" subheading="Logo image *" text="This image will also be used for navigation. 350 x 350 recommended." name="logo" />
 
@@ -249,13 +244,13 @@ const Createcollection = ({ handleSubmit, history }) => {
                                                 name="blockchain"
                                                 className="form-control mt-3"
                                                 classNamePrefix="react-select"
-                                                onChange={(value) => setBlockChainValue(value)}
+                                                // onChange={(value) => setBlockChainValue(value)}
                                                 value=""
                                                 isClearable
                                                 validate={[required()]}
                                                 closeMenuOnSelect={true}
                                                 type="multi-select"
-                                                defaultValue={blockChainValue}
+                                                defaultValue={GlobalVariables.blockchainOptions[0]}
                                             />
                                             <p>Select the blockchain where you'd like new items from this collection to be added by default. <img className="info-black" src={info} />
                                             </p>
@@ -279,12 +274,12 @@ const Createcollection = ({ handleSubmit, history }) => {
                                                 isMulti={true}
                                                 validate={[required()]}
                                                 value=""
-                                                onChange={(value) => setPaymentTokens(value)}
-                                                type="multi-select"
+                                                // onChange={(value) => setPaymentTokens(value)}
+                                                type="mu1lti-select"
                                                 name="paymentToken"
                                                 isSearchable={true}
                                                 label="Add token"
-                                                defaultValue={paymentTokens}
+                                                defaultValue={GlobalVariables.tokenoptions[0]}
                                             />
                                             <p>These tokens can be used to buy and sell your items. <img src={info} /></p>
                                         </Col>

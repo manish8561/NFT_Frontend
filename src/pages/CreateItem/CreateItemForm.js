@@ -25,17 +25,13 @@ const CreateItemForm = ({ itemIndex, collectionsList, handleSubmit }) => {
         setCollectionValue(collectionsList[itemIndex]);
     }, [collectionsList, itemIndex]);
 
-    const submitForm = (e) => {
-        e.preventDefault();
-        handleSubmit();
-    };
 
     return (
         <Row>
             <div className="collection-modal item-card">
-                <Uploadcard heading="Create new item" subheading="  Image, Video, Audio, or 3D Model" text=" File types supported: JPG, PNG, GIF, SVG, MP4, WEBM, MP3, WAV, OGG, GLB, GLTF. Max size: 100 MB." />
-                <div className="create-item-form">
-                    <Form className="info-form " onSubmit={submitForm}>
+                <Form className="info-form " onSubmit={handleSubmit}>
+                    <Uploadcard heading="Create new item" subheading="  Image, Video, Audio, or 3D Model" text=" File types supported: JPG, PNG, GIF, SVG, MP4, WEBM, MP3, WAV, OGG, GLB, GLTF. Max size: 100 MB." />
+                    <div className="create-item-form">
                         <Form.Group as={Row} controlId="formPlaintextEmail">
                             <Form.Label column sm="2"> Name*</Form.Label>
                             <Col sm="10">
@@ -73,7 +69,7 @@ const CreateItemForm = ({ itemIndex, collectionsList, handleSubmit }) => {
                                     name="collection"
                                     validate={[required()]}
                                     classNamePrefix="react-select"
-                                    onChange={(value) => setCollectionValue(value)}
+                                    // onChange={(value) => setCollectionValue(value)}
                                     value=""
                                     isClearable
                                     closeMenuOnSelect={true}
@@ -81,7 +77,7 @@ const CreateItemForm = ({ itemIndex, collectionsList, handleSubmit }) => {
                                     defaultValue={collectionValue}
                                 />
 
-                                <p className="mt-3 form-textline">This is the collection where your item will appear. <img src={info} alt="info" /></p>
+                                <p className="mt-3 form-textline">This is the collection where your item will appear.<img src={info} alt="info" /></p>
                             </Col>
                         </Form.Group>
 
@@ -143,7 +139,7 @@ const CreateItemForm = ({ itemIndex, collectionsList, handleSubmit }) => {
                             <Col sm="10">
                                 <Field component={FormField} className="form-control" name="collection" type="text" placeholder="1" />
 
-                                <p className="form-textline">The number of copies that can be minted. No gas cost to you! Quantities above one coming soon.</p>
+                                <p className="form-textline">The number of copies that can be minted.No gas cost to you!Quantities above one coming soon.</p>
                             </Col>
                         </Form.Group>
 
@@ -152,7 +148,7 @@ const CreateItemForm = ({ itemIndex, collectionsList, handleSubmit }) => {
                                 Royalties
                             </Form.Label>
                             <Col sm="10" className="category-labl">
-                                <p className="m-0">Collect a fee when a user re-sells an item you originally created. This is deducted from the final sale price and paid monthly to a payout address of your choosing.
+                                <p className="m-0">Collect a fee when a user re-sells an item you originally created.This is deducted from the final sale price and paid monthly to a payout address of your choosing.
                                     <a className="blue-text" href="#">Learn more</a>
                                 </p>
                             </Col>
@@ -165,7 +161,7 @@ const CreateItemForm = ({ itemIndex, collectionsList, handleSubmit }) => {
                                 <Field component={FormField} className="form-control" name="royality" type="text" placeholder="0.00" validate={[required()]} />
                             </Col>
                         </Form.Group>
-                        
+
                         <Form.Group as={Row} controlId="formPlaintextEmail">
                             <Form.Label column sm="2">
                                 Blockchain
@@ -177,15 +173,15 @@ const CreateItemForm = ({ itemIndex, collectionsList, handleSubmit }) => {
                                     name="blockchain"
                                     className="form-control mt-3"
                                     classNamePrefix="react-select"
-                                    onChange={(value) => setBlockChainValue(value)}
+                                    // onChange={(value) => setBlockChainValue(value)}
                                     value=""
                                     isClearable
                                     validate={[required()]}
                                     closeMenuOnSelect={true}
                                     type="multi-select"
-                                    defaultValue={blockChainValue}
+                                    defaultValue={GlobalVariables.blockchainOptions[0]}
                                 />
-                                <p className="form-textline">The number of copies that can be minted. No gas cost to you! Quantities above one coming soon.
+                                <p className="form-textline">The number of copies that can be minted.No gas cost to you!Quantities above one coming soon.
                                 </p>
                             </Col>
                         </Form.Group>
@@ -201,12 +197,13 @@ const CreateItemForm = ({ itemIndex, collectionsList, handleSubmit }) => {
                             </Col>
                         </Form.Group>
 
-                        <Button className="read-btn">Create</Button>
-                    </Form>
+                        <Button type="submit" className="read-btn">Create</Button>
 
-                </div>
+                    </div>
+                </Form>
+
             </div>
-        </Row>
+        </Row >
 
 
     );
