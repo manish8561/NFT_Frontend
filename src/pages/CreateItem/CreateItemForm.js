@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import info from '../../assets/Images/exclaimation.svg'
 import lock from '../../assets/Images/lock.svg'
 import warning from '../../assets/Images/warning.svg'
@@ -13,12 +13,24 @@ import { Row, Col, Button, Form, ListGroup } from "react-bootstrap";
 import { required } from 'redux-form-validators';
 import { GlobalVariables } from '../../constants/globalVariables.constant';
 import Uploadcard from '../../components/Uploadcard/Uploadcard';
+import { connect } from 'react-redux';
+import { compose } from 'redux';
 
-const CreateItemForm = ({ collectionsList, handleSubmit }) => {
+const CreateItemForm = ({ itemIndex, collectionsList, handleSubmit }) => {
+    const [blockChainValue, setBlockChainValue] = useState(GlobalVariables.blockchainOptions[0]);
+    const [collectionValue, setCollectionValue] = useState(collectionsList[itemIndex]);
+
+    const handleChangeBlockChain = (value) => setBlockChainValue(value);
+    const handleChangeCollection = (value) => setCollectionValue(value);
+
+    useEffect(() => {
+        setCollectionValue(collectionsList[itemIndex]);
+    }, [collectionsList, itemIndex]);
+
     return (
         <Row>
             <div className="collection-modal item-card">
-                <Uploadcard heading="Create new item" subheading="  Image, Video, Audio, or 3D Model" text=" File types supported: JPG, PNG, GIF, SVG, MP4, WEBM, MP3, WAV, OGG, GLB, GLTF. Max size: 100 MB." />
+                <Uploadcard heading="Create new item" name="image" subheading="Image, Video, Audio, or 3D Model" text=" File types supported: JPG, PNG, GIF, SVG, MP4, WEBM, MP3, WAV, OGG, GLB, GLTF. Max size: 100 MB." />
                 <div className="create-item-form">
                     <Form className="info-form " onSubmit={handleSubmit}>
                         <Form.Group as={Row} controlId="formPlaintextEmail">
@@ -52,7 +64,7 @@ const CreateItemForm = ({ collectionsList, handleSubmit }) => {
                             </Form.Label>
                             <Col sm="10">
                                 {/* <Field component={FormField} className="form-control" name="" type="text" /> */}
-                                <Field
+                                {/* <Field
                                     component={FormField}
                                     options={collectionsList}
                                     name="collection"
@@ -60,17 +72,18 @@ const CreateItemForm = ({ collectionsList, handleSubmit }) => {
                                     classNamePrefix="react-select"
                                     placeholder="collection"
                                     isClearable
+                                    onChange={handleChangeCollection}
                                     validate={[required()]}
                                     closeMenuOnSelect={true}
                                     type="multi-select"
-                                    // defaultValue={GlobalVariables.blockchainOptions[0]}
-                                />
+                                    defaultValue={collectionValue}
+                                /> */}
 
                                 <p className="mt-3 form-textline">This is the collection where your item will appear. <img src={info} alt="info" /></p>
                             </Col>
                         </Form.Group>
 
-                        <div className="supply-col">
+                        {/* <div className="supply-col">
                             <ListGroup>
                                 <ListGroup.Item >
                                     <div className="list">
@@ -120,13 +133,13 @@ const CreateItemForm = ({ collectionsList, handleSubmit }) => {
                                 </ListGroup.Item>
                             </ListGroup>
                         </div>
-
+  */}
                         <Form.Group as={Row} controlId="formPlaintextEmail">
                             <Form.Label column sm="2">
                                 Supply
                             </Form.Label>
                             <Col sm="10">
-                                <Field component={FormField} className="form-control" name="collection" type="text" placeholder="1" />
+                                <Field component={FormField} className="form-control" name="supply" type="text" placeholder="1" />
 
                                 <p className="form-textline">The number of copies that can be minted. No gas cost to you! Quantities above one coming soon.</p>
                             </Col>
@@ -137,19 +150,20 @@ const CreateItemForm = ({ collectionsList, handleSubmit }) => {
                                 Blockchain
                             </Form.Label>
                             <Col sm="10">
-                                <Field
+                                {/* <Field
                                     component={FormField}
                                     options={GlobalVariables.blockchainOptions}
+                                    defaultValue={blockChainValue}
                                     name="blockchain"
                                     className="form-control mt-3"
                                     classNamePrefix="react-select"
                                     placeholder="Rinkeby"
+                                    onChange={handleChangeBlockChain}
                                     isClearable
                                     validate={[required()]}
                                     closeMenuOnSelect={true}
                                     type="multi-select"
-                                    defaultValue={GlobalVariables.blockchainOptions[0]}
-                                />
+                                /> */}
                                 <p className="form-textline">The number of copies that can be minted. No gas cost to you! Quantities above one coming soon.
                                 </p>
                             </Col>
@@ -159,20 +173,25 @@ const CreateItemForm = ({ collectionsList, handleSubmit }) => {
                                 Freeze metadata <span><img src={info} /></span>
                             </Form.Label>
                             <Col sm="10">
-                                <Field component={FormField} className="form-control" name="collection" type="text" placeholder="To freeze your metadata, you must create your item first." />
+                                <Field component={FormField} className="form-control" name="meta" type="text" placeholder="To freeze your metadata, you must create your item first." />
 
                                 <p className="form-textline">Freezing your metadata will allow you to permanently lock and store all of this item's content in decentralized file storage.</p>
                             </Col>
                         </Form.Group>
-                        <Button href="#" className="read-btn">Create</Button>
+                        <Button type="submit" className="read-btn">Create</Button>
                     </Form>
 
                 </div>
             </div>
         </Row>
-
-
     );
 }
 
-export default reduxForm({ form: "CreateItemForm", enableReinitialize: true })(CreateItemForm);
+const mapStateToProps = state => ({
+    initialValues: state.api.CreateItemForm
+})
+
+export default compose(
+    connect(mapStateToProps, null),
+    reduxForm({ form: "CreateItemForm", enableReinitialize: true })
+)(CreateItemForm);

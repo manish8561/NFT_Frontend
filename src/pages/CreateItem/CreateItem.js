@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Container, Row, ListGroup, Modal } from "react-bootstrap";
 import './CreateItem.scss'
-import Uploadcard from '../../components/Uploadcard/Uploadcard';
+// import Uploadcard from '../../components/Uploadcard/Uploadcard';
 import displayimg from '../../assets/Images/mask.png'
 import telegram from '../../assets/Images/telegram.svg'
 import fb from '../../assets/Images/fb.svg'
@@ -11,21 +11,41 @@ import CreateItemForm from './CreateItemForm';
 import { useDispatch, useSelector } from 'react-redux';
 import { ApiActions } from '../../redux/actions/api.action';
 import back from "../../assets/Images/arrow_back_black.svg";
+import { Link } from 'react-router-dom';
+import contractService from '../../services/contract.service';
 
-const CreateItem = ({ history }) => {
+const CreateItem = ({ match: { params: { collectionId }, history } }) => {
     const dispatch = useDispatch();
     const [show, setShow] = useState(false);
     const [collectionsList, setCollectionsList] = useState([]);
+    const [itemIndex, setItemIndex] = useState(0);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
     const collections = useSelector(state => state.api.collections);
+    const address = useSelector(state => state.persist.address);
 
-    const submitForm = (data) => {
-        console.clear();
-        console.log({ data });
-        const { callCreateNft } = ApiActions;
-        dispatch(callCreateNft(data, history));
-        
+
+
+    const ContractFunctions = async(data) => {
+        try {
+            await window.ethereum.enable();
+            const resp = await contractService.nftTokens(data, address)
+            return resp ;
+        }
+        catch(e) {
+            console.log('error', e)
+        }
+    }
+
+    const submitForm = async(data) => {
+        const contractData = await ContractFunctions(data.file)
+        console.clear()
+
+        data.tokenUri = contractData.tokenUri.path
+        data.fileType = data.file.type
+
+        console.log("form DATA", data);
+        console.log("New DATA", contractData);
     }
 
     useEffect(() => {
@@ -33,30 +53,28 @@ const CreateItem = ({ history }) => {
         for (const collection of collections) {
             arr.push({ value: collection['_id'], label: collection['name'] });
         }
-        setCollectionsList(arr);
-    }, [collections]);
-
-    useEffect(() => {
-        let arr = [];
-        for (const collection of collections) {
-            arr.push({ value: collection['_id'], label: collection['name'] });
+        if (collectionId) {
+            const index = arr.findIndex(i => i.value === collectionId);
+            if (index !== -1) setItemIndex(index);
         }
         setCollectionsList(arr);
-    }, [collections]);
+    }, [collections, collectionId]);
 
     useEffect(() => {
         const { callGetCollection } = ApiActions;
-        dispatch(callGetCollection({ page: 0, limit: 1000, filter: {} }));   
+        dispatch(callGetCollection({ page: 0, limit: 1000, filter: {} }));
     }, [dispatch]);
 
     return (
         <React.Fragment>
             <Container fluid >
-            <div className="back">
-                <span style={{cursor : "pointer"}} onClick={() => history.goBack()}><img  src={back}/></span> Back
-            </div>
+                <div className="back">
+                    <Link to={collectionId ? `/marketplace/collection/items/${collectionId}` : `/marketplace/collection`}>
+                        <span style={{ cursor: "pointer" }}><img alt="back btn" src={back} /></span>
+                    </Link> Back
+                </div>
                 <Container className="ContMain custom_content">
-                    <CreateItemForm collectionsList={collectionsList} onSubmit={submitForm} />
+                    <CreateItemForm itemIndex={itemIndex} collectionsList={collectionsList} onSubmit={submitForm} />
                 </Container>
             </Container>
             <Modal show={show} onHide={handleClose} className="create-modal isBlank">

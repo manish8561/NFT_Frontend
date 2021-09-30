@@ -12,5 +12,5 @@ const blockchainOptions = [
 
 export const GlobalVariables = {
     tokenoptions,
-    blockchainOptions
+          blockchainOptions
 }

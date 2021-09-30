@@ -1,16 +1,11 @@
 import types from "../types";
 
-// Reducers are functions that take the current state and an action as arguments, and return a new state result.
-// In other words, (state, action) => newState.
-
-// Every reducer needs some initial state.
-// Then, we can write an outline for the logic inside the reducer function:
-
 const initialState = {
   mintedLogs: [],
   collections: [],
-  nft:[],
-  collectionsById:[]
+  nft: [],
+  createItemData: {},
+  collectionsById: []
 };
 
 const api = (state = initialState, {type, payload}) => {
@@ -22,6 +17,9 @@ const api = (state = initialState, {type, payload}) => {
 
     case types.reducer.api.SAVE_GET_NFT:
         return { ...state, nft: payload.nft };
+
+    case types.reducer.form.SAVE_CREATE_ITEM_FORM_VALUES:
+        return { ...state, createItemData: payload.item }
 
     case types.reducer.api.SAVE_GET_COLLECTIONS:
       return { ...state, collections: payload.collections };

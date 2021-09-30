@@ -1,4 +1,4 @@
-import { delay, select, call, put, takeEvery, takeLatest } from "redux-saga/effects";
+import { call, takeLatest } from "redux-saga/effects";
 import types from "../types";
 import IpfsService from '../../services/ipfs.service';
 import { toast } from "../../components/Toast/Toast";
@@ -32,8 +32,7 @@ function* callMintTokens(data) {
       const { data: { data: { file } } } = uploadedFile;
       const ipfsData = yield call(callGetIpfsData, file, title, description, address);
       const uploadedToIpfs = yield call(uploadToIpfsAndGenerateHash, JSON.stringify(ipfsData));
-      
-    
+
       if (uploadedToIpfs) {
         const { mintTokens } = ContractService;
         const _mint = yield call(mintTokens, address, 0, amount, uploadedToIpfs.path);
@@ -47,7 +46,6 @@ function* callMintTokens(data) {
 }
 
 function* contractSaga() {
-  // yield takeLatest("FETCH_USER", fetchUser);
   yield takeLatest(types.saga.contract.CALL_MINT_TOKENS, callMintTokens);
 }
 
