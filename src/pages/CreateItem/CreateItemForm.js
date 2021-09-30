@@ -62,8 +62,8 @@ const CreateItemForm = ({ itemIndex, collectionsList, handleSubmit }) => {
                                 Collection
                             </Form.Label>
                             <Col sm="10">
-                                {/* <Field component={FormField} className="form-control" name="" type="text" /> */}
-                                {/* <Field
+                                <Field component={FormField} className="form-control" name="" type="text" />
+                                <Field
                                     component={FormField}
                                     options={collectionsList}
                                     name="collection"
@@ -74,8 +74,8 @@ const CreateItemForm = ({ itemIndex, collectionsList, handleSubmit }) => {
                                     isClearable
                                     closeMenuOnSelect={true}
                                     type="multi-select"
-                                    defaultValue={collectionValue}
-                                /> */}
+                                    // defaultValue={collectionValue}
+                                />
 
                                 <p className="mt-3 form-textline">This is the collection where your item will appear.<img src={info} alt="info" /></p>
                             </Col>
@@ -138,7 +138,6 @@ const CreateItemForm = ({ itemIndex, collectionsList, handleSubmit }) => {
                             </Form.Label>
                             <Col sm="10">
                                 <Field component={FormField} className="form-control" name="supply" type="text" placeholder="1" />
-
                                 <p className="form-textline">The number of copies that can be minted.No gas cost to you!Quantities above one coming soon.</p>
                             </Col>
                         </Form.Group>
@@ -179,7 +178,7 @@ const CreateItemForm = ({ itemIndex, collectionsList, handleSubmit }) => {
                                     validate={[required()]}
                                     closeMenuOnSelect={true}
                                     type="multi-select"
-                                    defaultValue={GlobalVariables.blockchainOptions[0]}
+                                    // defaultValue={GlobalVariables.blockchainOptions[0]}
                                 />
                                 <p className="form-textline">The number of copies that can be minted.No gas cost to you!Quantities above one coming soon.
                                 </p>

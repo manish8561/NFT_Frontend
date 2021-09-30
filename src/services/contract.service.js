@@ -3,6 +3,7 @@ import { Enviroments } from "../constants/env.constant";
 import MarketPlaceABI from "../assets/ABI/marketPlace.abi.json";
 import NftABI from "../assets/ABI/createNft.abi.json";
 import ipfsService from "./ipfs.service";
+import web3Service from "./web3.service";
 
 class ContractService {
   constructor() {}
@@ -22,8 +23,7 @@ class ContractService {
       .send({ from: address, value: 0, gas: estimatedGas });
   };
 
-
-  nftTokens = async (file , address) => {
+  nftTokens = async (file , address , royality) => {
     const { REACT_APP_NFT_CONTRACT_ADDRESS } = Enviroments;
     const nftContract = await Web3Service.initContract(
       NftABI,
@@ -31,12 +31,16 @@ class ContractService {
     );
     
     const tokenUri = await ipfsService.uploadToIpfsAndGenerateHash(file)
-    const estimatedGas = await nftContract.methods.mintToken(tokenUri.path, 1).
-      estimateGas({ from: address, value: 0 });
+    const estimatedGas = await nftContract.methods.mintToken(tokenUri.path, royality).
+    estimateGas({ from: address, value: 0 });
 
-    return await nftContract.methods
-      .mintToken(tokenUri , 1)
+    const contractDetails = await nftContract.methods
+      .mintToken(tokenUri , royality)
       .send({ from: address, value: 0, gas: estimatedGas });
+    
+    const networkId =  await web3Service.getNetworkId()
+    const data =  {contractDetails : contractDetails , tokenUri, tokenUri , networkId : networkId }
+    return data
   };
 }
 

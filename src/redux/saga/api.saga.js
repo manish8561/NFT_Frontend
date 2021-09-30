@@ -4,13 +4,13 @@ import { ApiActions } from "../actions/api.action";
 import types from "../types";
 import getJwt from "./jwt.saga";
 import { reset } from 'redux-form';
+import contractService from "../../services/contract.service";
 
 function* callGetMintedTokens(data) {
   try {
     const { payload } = data;
     const { getMintedTokens, getIpfsDataWithhash } = ApiService;
     const res = yield call(getMintedTokens, payload, {});
-
     if (res) {
       const { savegetMintedTokens } = ApiActions;
       let { data: { data: { logs } } } = res;
@@ -165,17 +165,37 @@ export function* createNft(props) {
   try {
     const jwt = yield getJwt();
     const { payload, history } = props;
-    const { createNft } = ApiService;
+    const { createNft , uploadFile } = ApiService;
 
-    const response = yield call(createNft, payload, jwt, {});
+    let filrUrl = new FormData();
 
-    const { data } = response;
-    if (data && data.status == "200") {
-      yield put(reset('CreateItemForm'));
-      if (history && history.push) {
-        history.push(`/marketplace/collection/items/${payload.id}`);
-      }
-    }
+    // try {
+    //   window.ethereum.enable();
+    //   const resp = await contractService.nftTokens(file, address , royality)
+    //   return resp ;
+    //   }
+    //   catch(e) {
+    //       console.log('error', e)
+    //   }
+
+    // bannerUpload.append('file', payload.banner);
+
+    // const response = yield call(uploadFile, bannerUpload, jwt, {});
+
+
+    // if (response.data && response.data.status === "200" && response.data.data) {
+    //   payload.banner = response.data.data.file
+    //   payload.logo = logoResponse.data.data.file
+    // }
+    // window.alert("OKOK")
+    // const response = yield call(createNft, payload, jwt, {});
+    // const { data } = response;
+    // if (data && data.status == "200") {
+    //   yield put(reset('CreateItemForm'));
+    //   if (history && history.push) {
+    //     history.push(`/marketplace/collection/items/${payload.id}`);
+    //   }
+    // }
   }
   catch (error) {
     console.log({ CALL_CREATE_NFT: error })

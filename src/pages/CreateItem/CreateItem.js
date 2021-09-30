@@ -25,13 +25,10 @@ const CreateItem = ({ match: { params: { collectionId }, history } }) => {
     const address = useSelector(state => state.persist.address);
 
 
-
-    const ContractFunctions = async(data) => {
+    const ContractFunctions = async(file , royality) => {
         try {
             window.ethereum.enable();
-            const resp = await contractService.nftTokens(data.file, address)
-            console.clear(  )
-            console.log("resp", resp)
+            const resp = await contractService.nftTokens(file, address , royality)
             return resp ;
         }
         catch(e) {
@@ -40,14 +37,17 @@ const CreateItem = ({ match: { params: { collectionId }, history } }) => {
     }
 
     const submitForm = async(data) => {
-        let contractData = await ContractFunctions(data.file)
-        console.clear()
-
+        let contractData = await ContractFunctions(data.file, data.royality)
         data.tokenUri = contractData.tokenUri.path
-        data.fileType = data.ima
+        data.fileType = data.file.type
+        data.supply = parseInt(data.supply)
+        data.royality = parseInt(data.royality)
+        data.networkId = contractData.networkId
+        data.collectiondb = collectionId
+        data.tokenUri = process.env.REACT_APP_NFT_CONTRACT_ADDRESS
+        data.transactionHash = contractData.contractDetails.transactionHash
 
-        console.log("form DATA", data);
-        console.log("New DATA", contractData);
+        console.log("DATA", data)
     }
 
     useEffect(() => {
