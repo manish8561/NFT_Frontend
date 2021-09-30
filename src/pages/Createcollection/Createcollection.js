@@ -34,8 +34,8 @@ const Createcollection = ({ handleSubmit, history }) => {
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
 
-    const [blockChainValue, setBlockChainValue] = React.useState("");
-    const [paymentToken, setPaymentToken] = React.useState("");
+    const [blockChainValue, setBlockChainValue] = useState(GlobalVariables.blockchainOptions[0]);
+    const [paymentTokens, setPaymentTokens] = useState(GlobalVariables.tokenoptions[0]);
 
     const onSubmitForm = (data) => {
         let links = []
@@ -65,13 +65,18 @@ const Createcollection = ({ handleSubmit, history }) => {
         dispatch(callCreateCollection(newData, history));
     }
 
+    const handleSubmitForm = (e) => {
+        e.preventDefault();
+        handleSubmit(onSubmitForm);
+    }
+
     return (
         <React.Fragment>
             <Breadcrumbs text="My collections" active="Create collections" history={history} />
             <Container fluid >
                 <Container className="ContMain custom_content">
                     <Row>
-                        <Form onSubmit={handleSubmit(onSubmitForm)} className="collection-modal item-card">
+                        <Form onSubmit={handleSubmitForm} className="collection-modal item-card">
 
                             <Uploadcard heading="Createcollection" subheading="Logo image *" text="This image will also be used for navigation. 350 x 350 recommended." name="logo" />
 
@@ -244,13 +249,13 @@ const Createcollection = ({ handleSubmit, history }) => {
                                                 name="blockchain"
                                                 className="form-control mt-3"
                                                 classNamePrefix="react-select"
-                                                placeholder="Rinkeby"
-                                                value={blockChainValue}
+                                                onChange={(value) => setBlockChainValue(value)}
+                                                value=""
                                                 isClearable
                                                 validate={[required()]}
                                                 closeMenuOnSelect={true}
                                                 type="multi-select"
-                                                defaultValue={GlobalVariables.blockchainOptions[0]}
+                                                defaultValue={blockChainValue}
                                             />
                                             <p>Select the blockchain where you'd like new items from this collection to be added by default. <img className="info-black" src={info} />
                                             </p>
@@ -273,12 +278,13 @@ const Createcollection = ({ handleSubmit, history }) => {
                                                 placeholder="Add token"
                                                 isMulti={true}
                                                 validate={[required()]}
-                                                value={paymentToken}
+                                                value=""
+                                                onChange={(value) => setPaymentTokens(value)}
                                                 type="multi-select"
                                                 name="paymentToken"
                                                 isSearchable={true}
                                                 label="Add token"
-                                                defaultValue={GlobalVariables.tokenoptions[0]}
+                                                defaultValue={paymentTokens}
                                             />
                                             <p>These tokens can be used to buy and sell your items. <img src={info} /></p>
                                         </Col>
@@ -342,7 +348,7 @@ const Createcollection = ({ handleSubmit, history }) => {
 
                 <Modal.Footer className="property-footer">
 
-                    <Button variant="primary" className=" read-btn fl-0">
+                    <Button type="submit" variant="primary" className=" read-btn fl-0">
                         Add item
                     </Button>
                 </Modal.Footer>

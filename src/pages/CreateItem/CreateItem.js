@@ -56,6 +56,8 @@ const CreateItem = ({ match: { params: { collectionId }, history } }) => {
             </div>
                 <Container className="ContMain custom_content">
                     <CreateItemForm itemIndex={itemIndex} collectionsList={collectionsList} onSubmit={submitForm} />
+
+                    
                 </Container>
             </Container>
             <Modal show={show} onHide={handleClose} className="create-modal isBlank">

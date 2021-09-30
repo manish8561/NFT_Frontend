@@ -17,22 +17,25 @@ import { connect } from 'react-redux';
 import { compose } from 'redux';
 
 const CreateItemForm = ({ itemIndex, collectionsList, handleSubmit }) => {
+    // const [blockChainValue, setBlockChainValue] = useState(GlobalVariables.blockchainOptions[0]);
     const [blockChainValue, setBlockChainValue] = useState(GlobalVariables.blockchainOptions[0]);
     const [collectionValue, setCollectionValue] = useState(collectionsList[itemIndex]);
-
-    const handleChangeBlockChain = (value) => setBlockChainValue(value);
-    const handleChangeCollection = (value) => setCollectionValue(value);
 
     useEffect(() => {
         setCollectionValue(collectionsList[itemIndex]);
     }, [collectionsList, itemIndex]);
+
+    const submitForm = (e) => {
+        e.preventDefault();
+        handleSubmit();
+    };
 
     return (
         <Row>
             <div className="collection-modal item-card">
                 <Uploadcard heading="Create new item" subheading="  Image, Video, Audio, or 3D Model" text=" File types supported: JPG, PNG, GIF, SVG, MP4, WEBM, MP3, WAV, OGG, GLB, GLTF. Max size: 100 MB." />
                 <div className="create-item-form">
-                    <Form className="info-form " onSubmit={handleSubmit}>
+                    <Form className="info-form " onSubmit={submitForm}>
                         <Form.Group as={Row} controlId="formPlaintextEmail">
                             <Form.Label column sm="2"> Name*</Form.Label>
                             <Col sm="10">
@@ -68,12 +71,11 @@ const CreateItemForm = ({ itemIndex, collectionsList, handleSubmit }) => {
                                     component={FormField}
                                     options={collectionsList}
                                     name="collection"
-                                    className="form-control mt-3"
-                                    classNamePrefix="react-select"
-                                    placeholder="collection"
-                                    isClearable
-                                    onChange={handleChangeCollection}
                                     validate={[required()]}
+                                    classNamePrefix="react-select"
+                                    onChange={(value) => setCollectionValue(value)}
+                                    value=""
+                                    isClearable
                                     closeMenuOnSelect={true}
                                     type="multi-select"
                                     defaultValue={collectionValue}
@@ -83,7 +85,7 @@ const CreateItemForm = ({ itemIndex, collectionsList, handleSubmit }) => {
                             </Col>
                         </Form.Group>
 
-                        <div className="supply-col">
+                        {/* <div className="supply-col">
                             <ListGroup>
                                 <ListGroup.Item >
                                     <div className="list">
@@ -133,7 +135,7 @@ const CreateItemForm = ({ itemIndex, collectionsList, handleSubmit }) => {
                                 </ListGroup.Item>
                             </ListGroup>
                         </div>
- 
+  */}
                         <Form.Group as={Row} controlId="formPlaintextEmail">
                             <Form.Label column sm="2">
                                 Supply
@@ -145,6 +147,25 @@ const CreateItemForm = ({ itemIndex, collectionsList, handleSubmit }) => {
                             </Col>
                         </Form.Group>
 
+                        <Form.Group as={Row} controlId="formPlaintextPassword">
+                            <Form.Label column sm="2">
+                                Royalties
+                            </Form.Label>
+                            <Col sm="10" className="category-labl">
+                                <p className="m-0">Collect a fee when a user re-sells an item you originally created. This is deducted from the final sale price and paid monthly to a payout address of your choosing.
+                                    <a className="blue-text" href="#">Learn more</a>
+                                </p>
+                            </Col>
+                        </Form.Group>
+                        <Form.Group as={Row} controlId="formPlaintextEmail">
+                            <Form.Label column sm="2">
+                                % Fee
+                            </Form.Label>
+                            <Col sm="10">
+                                <Field component={FormField} className="form-control" name="royality" type="text" placeholder="0.00" validate={[required()]} />
+                            </Col>
+                        </Form.Group>
+                        
                         <Form.Group as={Row} controlId="formPlaintextEmail">
                             <Form.Label column sm="2">
                                 Blockchain
@@ -153,21 +174,22 @@ const CreateItemForm = ({ itemIndex, collectionsList, handleSubmit }) => {
                                 <Field
                                     component={FormField}
                                     options={GlobalVariables.blockchainOptions}
-                                    defaultValue={blockChainValue}
                                     name="blockchain"
                                     className="form-control mt-3"
                                     classNamePrefix="react-select"
-                                    placeholder="Rinkeby"
-                                    onChange={handleChangeBlockChain}
+                                    onChange={(value) => setBlockChainValue(value)}
+                                    value=""
                                     isClearable
                                     validate={[required()]}
                                     closeMenuOnSelect={true}
                                     type="multi-select"
+                                    defaultValue={blockChainValue}
                                 />
                                 <p className="form-textline">The number of copies that can be minted. No gas cost to you! Quantities above one coming soon.
                                 </p>
                             </Col>
                         </Form.Group>
+
                         <Form.Group as={Row} controlId="formPlaintextEmail">
                             <Form.Label column sm="2" className="meta-label">
                                 Freeze metadata <span><img src={info} /></span>
@@ -178,7 +200,8 @@ const CreateItemForm = ({ itemIndex, collectionsList, handleSubmit }) => {
                                 <p className="form-textline">Freezing your metadata will allow you to permanently lock and store all of this item's content in decentralized file storage.</p>
                             </Col>
                         </Form.Group>
-                        <Button type="submit" className="read-btn">Create</Button>
+
+                        <Button className="read-btn">Create</Button>
                     </Form>
 
                 </div>
@@ -189,11 +212,8 @@ const CreateItemForm = ({ itemIndex, collectionsList, handleSubmit }) => {
     );
 }
 
-const mapStateToProps = state => ({
-    initialValues: state.api.CreateItemForm
-})
+// const mapStateToProps = state => ({
+//     initialValues: state.api.CreateItemForm
+// })
 
-export default compose(
-    connect(mapStateToProps, null),
-    reduxForm({ form: "CreateItemForm", enableReinitialize: true })
-)(CreateItemForm);
+export default reduxForm({ form: "CreateItemForm", enableReinitialize: true })(CreateItemForm);
