@@ -17,13 +17,11 @@ import { connect } from 'react-redux';
 import { compose } from 'redux';
 
 const CreateItemForm = ({ itemIndex, collectionsList, handleSubmit }) => {
-    // const [blockChainValue, setBlockChainValue] = useState(GlobalVariables.blockchainOptions[0]);
-    const [blockChainValue, setBlockChainValue] = useState(GlobalVariables.blockchainOptions[0]);
-    const [collectionValue, setCollectionValue] = useState(collectionsList[itemIndex]);
 
-    useEffect(() => {
-        setCollectionValue(collectionsList[itemIndex]);
-    }, [collectionsList, itemIndex]);
+
+    // useEffect(() => {
+    //     setCollectionValue(collectionsList[itemIndex]);
+    // }, [collectionsList, itemIndex]);
 
 
     return (
@@ -62,19 +60,17 @@ const CreateItemForm = ({ itemIndex, collectionsList, handleSubmit }) => {
                                 Collection
                             </Form.Label>
                             <Col sm="10">
-                                <Field component={FormField} className="form-control" name="" type="text" />
+                                {/* <Field component={FormField} className="form-control" name="" type="text" /> */}
                                 <Field
                                     component={FormField}
                                     options={collectionsList}
                                     name="collection"
                                     validate={[required()]}
                                     classNamePrefix="react-select"
-                                    // onChange={(value) => setCollectionValue(value)}
                                     value=""
                                     isClearable
                                     closeMenuOnSelect={true}
                                     type="multi-select"
-                                    // defaultValue={collectionValue}
                                 />
 
                                 <p className="mt-3 form-textline">This is the collection where your item will appear.<img src={info} alt="info" /></p>
@@ -137,7 +133,7 @@ const CreateItemForm = ({ itemIndex, collectionsList, handleSubmit }) => {
                                 Supply
                             </Form.Label>
                             <Col sm="10">
-                                <Field component={FormField} className="form-control" name="supply" type="text" placeholder="1" />
+                                <Field component={FormField} className="form-control"  validate={[required()]} name="supply" type="text" placeholder="0" />
                                 <p className="form-textline">The number of copies that can be minted.No gas cost to you!Quantities above one coming soon.</p>
                             </Col>
                         </Form.Group>
@@ -172,13 +168,11 @@ const CreateItemForm = ({ itemIndex, collectionsList, handleSubmit }) => {
                                     name="blockchain"
                                     className="form-control mt-3"
                                     classNamePrefix="react-select"
-                                    // onChange={(value) => setBlockChainValue(value)}
                                     value=""
                                     isClearable
                                     validate={[required()]}
                                     closeMenuOnSelect={true}
                                     type="multi-select"
-                                    // defaultValue={GlobalVariables.blockchainOptions[0]}
                                 />
                                 <p className="form-textline">The number of copies that can be minted.No gas cost to you!Quantities above one coming soon.
                                 </p>
@@ -196,11 +190,11 @@ const CreateItemForm = ({ itemIndex, collectionsList, handleSubmit }) => {
                             </Col>
                         </Form.Group>
 
-                        <Button type="submit" className="read-btn">Create</Button>
-
+                        <Button type="submit">Create</Button>
+                        {/* --- fix css --- */}
+                        {/* <Button type="submit" className="read-btn">Create</Button> */}
                     </div>
                 </Form>
-
             </div>
         </Row >
 

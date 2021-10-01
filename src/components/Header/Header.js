@@ -15,10 +15,11 @@ function Header(props) {
 
   const persistData = useSelector((state) => state.persist);
   const dispatch = useDispatch();
-  const onCreate = () => {
+
+  const onClick = (path) => {
     const { history } = props;
     if(persistData && persistData.isLoggedIn) {
-      history.push('/marketplace/collections')
+      history.push(path)
     } else {
       history.push('/login');
     }
@@ -49,7 +50,7 @@ function Header(props) {
             <Nav.Link href="/Marketplace">Marketplace</Nav.Link>
             <Nav.Link href="/Activities">Activities</Nav.Link>
             <Nav.Link href="#link">Trending</Nav.Link>
-            <Nav.Link onClick={() => onCreate()}>Create</Nav.Link>    
+            <Nav.Link onClick={() => onClick('/marketplace/create')}>Create</Nav.Link>    
             <Nav.Link href="#link">About us</Nav.Link>
             <Nav.Link href="#link">Contact</Nav.Link>
             {persistData && persistData.isLoggedIn && <Nav.Link onClick={() => onLogout()}>Logout</Nav.Link>}
@@ -64,7 +65,7 @@ function Header(props) {
         />
         <NavDropdown id="collasible-nav-dropdown" className="navDropdown_style">
           <NavDropdown.Item href="#action/3.1">My Profile</NavDropdown.Item>
-          <NavDropdown.Item href="#action/3.2">My Collections</NavDropdown.Item>
+          <NavDropdown.Item onClick={() => onClick('/marketplace/collections')}>My Collections</NavDropdown.Item>
           <NavDropdown.Item href="#action/3.3">My Favorites</NavDropdown.Item>
           <NavDropdown.Item href="#action/3.4">
             My Account Setting

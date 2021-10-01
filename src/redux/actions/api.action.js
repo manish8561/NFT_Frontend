@@ -64,6 +64,16 @@ const callCreateNft = (data, history) => ({
     history
 });
 
+const callGetNftDetails = (data) => ({
+    type: types.saga.api.CALL_GET_NFT_DETAILS,
+    payload: data
+});
+
+const saveNftDetails= (data) => ({
+    type: types.reducer.api.SAVE_GET_NFT_DETAILS,
+    payload: data
+});
+
 
 export const ApiActions = {
     saveCreateFormDetails,
@@ -75,6 +85,8 @@ export const ApiActions = {
     callGetCollection,
     callCreateNft,
     callGetNft,
+    callGetNftDetails,
+    saveNftDetails,
     saveNft,
     callGetCollectionById,
     saveCollectionById

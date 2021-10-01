@@ -10,11 +10,11 @@ function Collectiontopbar(props) {
     return (
         <>
             <div className="cover">
-                <img className="w-100 cover_img" src={cover} />
+                <img className="w-100 cover_img" src={props.items && props.items.data ? props.items.data.banner: cover} />
             </div>
             <div className="coll-profile">
-                <img className="profile-pic" src={displayimg} />
-                <h2>{props.items && props.items.name ? props.items.name.name: "Untitled Collection"} </h2>
+                <img className="profile-pic" src={ props.items && props.items.data ? props.items.data.logo: displayimg} />
+                <h2>{props.items && props.items.data ? props.items.data.name: "Untitled Collection"} </h2>
                 <div className="group-collection">
                     <ButtonGroup aria-label="Basic example">
                         <Button variant="secondary">

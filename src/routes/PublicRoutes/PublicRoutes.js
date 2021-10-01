@@ -40,8 +40,8 @@ class PublicRoutes extends Component {
           <Route path="/Creatednft" component={Creatednft} exact={true} />
          
           <Route path="/Profile" component={Profile} exact={true} />
-          <Route path="/SellItem" component={SellItem} exact={true} />
-          <Route path="/Viewdetail" component={ViewDetails} exact={true} /> */}
+          <Route path="/SellItem" component={SellItem} exact={true} />*/}
+          <Route path="/assets/:id" component={ViewDetails} exact={true} /> 
         </div>
         <Footer />
       </React.Fragment>

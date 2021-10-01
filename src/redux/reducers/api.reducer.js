@@ -4,6 +4,7 @@ const initialState = {
   mintedLogs: [],
   collections: [],
   nft: [],
+  nftDetails: [],
   createItemData: {},
   collectionsById: []
 };
@@ -26,6 +27,9 @@ const api = (state = initialState, {type, payload}) => {
 
     case types.reducer.api.SAVE_GET_COLLECTIONS_BY_ID:
       return { ...state, collectionsById: payload.collectionsById };
+    
+    case types.reducer.api.SAVE_GET_NFT_DETAILS:
+      return { ...state, nftDetails: payload.nftDetails };
     
     default:
       return state;

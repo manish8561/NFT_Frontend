@@ -9,7 +9,10 @@ import StatsIcon from '../../assets/Images/bar_chart_black.svg'
 import Listingicon from '../../assets/Images/listing.svg'
 import abouticon from "../../assets/Images/about.svg";
 import "./Nftleft.scss";
-function Nftleft() {
+
+function Nftleft(props) {
+  let nft = null
+  if(props  && props.nft) nft = props.nft
   return (
     <React.Fragment>
       <div className="nft-profile">
@@ -27,7 +30,7 @@ function Nftleft() {
           </Card.Header>
           <Accordion.Collapse eventKey="0">
             <Card.Body>
-              created by <a href="#">you </a>
+             {nft !== null ? nft.description : null}
             </Card.Body>
           </Accordion.Collapse>
         </Card>
@@ -54,11 +57,11 @@ function Nftleft() {
         <Card>
           <Card.Header>
             <Accordion.Toggle as={Button} variant="link" eventKey="1">
-              <img src={abouticon} /> About Untitled Collection #2728089
+              <img src={abouticon} /> About {nft !== null ? nft.name : 'unnamed'}
             </Accordion.Toggle>
           </Card.Header>
           <Accordion.Collapse eventKey="1">
-            <Card.Body>About Untitled Collection #2728089</Card.Body>
+            <Card.Body>About </Card.Body>
           </Accordion.Collapse>
         </Card>
         <Card>
@@ -69,7 +72,11 @@ function Nftleft() {
           </Card.Header>
           <Accordion.Collapse eventKey="2">
             <Card.Body>
-              created by <a href="#">you </a>
+              <p>creator: {nft !== null ? <a style={{color : '#0c9eda', float: 'right'}} href={nft.creator.walletAddress}>{nft.creator.walletAddress.substring(0,7)}...{nft.creator.walletAddress.substr(-5)}</a> : null}</p>
+              <p>Contract Address :  {nft !== null ? <a style={{color : '#0c9eda', float: 'right'}} href={nft.nftAddress}>{nft.nftAddress.substring(0,7)}...{nft.nftAddress.substr(-5)}</a> : null}</p>
+              <br/>
+              <p>Token Id : {nft !== null ? <p style={{color : '#0c9eda', float: 'right'}}>{nft.tokenId}</p> : null}</p>
+              <p>Network Id: {nft !== null ? <p style={{color : '#0c9eda', float: 'right'}}>{nft.networkId}</p> : null}</p>
             </Card.Body>
           </Accordion.Collapse>
         </Card>

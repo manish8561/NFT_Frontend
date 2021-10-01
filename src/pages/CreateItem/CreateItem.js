@@ -25,29 +25,30 @@ const CreateItem = ({ match: { params: { collectionId }, history } }) => {
     const address = useSelector(state => state.persist.address);
 
 
-    const ContractFunctions = async(file , royality) => {
-        try {
-            window.ethereum.enable();
-            const resp = await contractService.nftTokens(file, address , royality)
-            return resp ;
-        }
-        catch(e) {
-            console.log('error', e)
-        }
-    }
+    // const ContractFunctions = async(file , royality) => {
+    //     try {
+    //          
+    //         const resp = await contractService.nftTokens(file, address , royality)
+    //         return resp ;
+    //     }
+    //     catch(e) {
+    //         console.log('error', e)
+    //     }
+    // }
+
+    // let contractData = await ContractFunctions(data.file, data.royality) ;
+    // data.tokenUri = contractData.tokenUri.path ;
+    // data.fileType = data.file.type ;
+    // data.supply = parseInt(data.supply) ;
+    // data.royality = parseInt(data.royality) ;
+    // data.networkId = contractData.networkId ;
+    // data.collectiondb = data.collection.value ; delete data.collection ;
+    // data.tokenUri = process.env.REACT_APP_NFT_CONTRACT_ADDRESS ;
+    // data.transactionHash = contractData.contractDetails.transactionHash ;
 
     const submitForm = async(data) => {
-        let contractData = await ContractFunctions(data.file, data.royality)
-        data.tokenUri = contractData.tokenUri.path
-        data.fileType = data.file.type
-        data.supply = parseInt(data.supply)
-        data.royality = parseInt(data.royality)
-        data.networkId = contractData.networkId
-        data.collectiondb = collectionId
-        data.tokenUri = process.env.REACT_APP_NFT_CONTRACT_ADDRESS
-        data.transactionHash = contractData.contractDetails.transactionHash
-
-        console.log("DATA", data)
+        const { callCreateNft } = ApiActions;
+        dispatch(callCreateNft(data, history));
     }
 
     useEffect(() => {
@@ -70,11 +71,6 @@ const CreateItem = ({ match: { params: { collectionId }, history } }) => {
     return (
         <React.Fragment>
             <Container fluid >
-                <div className="back">
-                    <Link to={collectionId ? `/marketplace/collection/items/${collectionId}` : `/marketplace/collection`}>
-                        <span style={{ cursor: "pointer" }}><img alt="back btn" src={back} /></span>
-                    </Link> Back
-                </div>
                 <Container className="ContMain custom_content">
                     <CreateItemForm itemIndex={itemIndex} collectionsList={collectionsList} onSubmit={submitForm} />
                 </Container>
@@ -85,7 +81,6 @@ const CreateItem = ({ match: { params: { collectionId }, history } }) => {
                     <div className="item-body">
                         <img src={displayimg} />
                     </div>
-                    {/* <div className="black-text text-uppercase text-center share">Share</div> */}
                 </Modal.Body >
 
                 <Modal.Footer className="social-footer">

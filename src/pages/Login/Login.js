@@ -19,11 +19,10 @@ import { useDispatch } from 'react-redux';
 import { PersistActions } from '../../redux/actions/persist.action';
 import { ApiActions } from '../../redux/actions/api.action';
 import web3Service from '../../services/web3.service';
+import Web3 from 'web3';
 
 const Login = (props) => {
-
     const dispatch = useDispatch();
-    
     const onLogin = () => {
         connectMetamask();
     }
@@ -34,12 +33,34 @@ const Login = (props) => {
         const { getNetworkId } = web3Service;
         const { callSaveWalletAddress } = PersistActions;
         const { callCheckLoginOrRegister } = ApiActions;
-        let address = await ethereum.request({ method: 'eth_requestAccounts' });
-        if(address && address.length > 0) {
-            address = address[0];
-            const networkId = await getNetworkId();
-            dispatch(callCheckLoginOrRegister({wallet: 'METAMASK', walletAddress: address, networkId }, history));
+        // Connecting with metamask extention
+    if (window.ethereum) {
+        new Web3(window.ethereum);
+        try {
+          window.ethereum.enable().then(function () {
+         (async function(){
+                let address = await ethereum.request({ method: 'eth_requestAccounts' });
+                if(address && address.length > 0) {
+                    address = address[0];
+                    const networkId = await getNetworkId();
+                    dispatch(callCheckLoginOrRegister({wallet: 'METAMASK', walletAddress: address, networkId }, history));
+                }
+            })();
+          });
+        } catch (e) {
+        // User has denied account access to DApp...
         }
+        window.ethereum.on("accountsChanged", function (accounts) { window.location.reload(); });
+      }
+      // Legacy DApp Browsers
+      else if (window.web3) {
+        new Web3(window.web3.currentProvider);
+        window.location.reload();
+      }
+      // Non-DApp Browsers
+      else {
+        alert("You have to install MetaMask !");
+      }
     }
 
     return (

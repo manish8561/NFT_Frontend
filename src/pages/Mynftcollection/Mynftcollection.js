@@ -39,7 +39,6 @@ function Mynftcollection({ history, match: { params: { collectionId } } }) {
     if (address && address.trim().length > 0) {
       getNft();
       getCollectionById();   
-
      }
   }, [address]);
 
@@ -55,7 +54,7 @@ function Mynftcollection({ history, match: { params: { collectionId } } }) {
           <Button variant="primary" onClick={() => history.push(`/marketplace/collection/items/create-item/${collectionId}`)}>Add item</Button>
         </div>
       </Container>
-      <Collectiontopbar items={{count : CollectionById.count ?  CollectionById.count : 0 , name : nftCollection[0]}} />
+      <Collectiontopbar items={{count : CollectionById.count ?  CollectionById.count : 0 , data : nftCollection[0]}} />
       <Container fluid className="categorie_sec collection_card">
         <div className="nft-collection categorie_row">
           <Sidebar>
@@ -107,7 +106,7 @@ function Mynftcollection({ history, match: { params: { collectionId } } }) {
             <Col sm={12} lg={12}>
               <p>2 results</p>
             </Col>
-            <Searchresults />
+            <Searchresults CollectionItems={CollectionById.items}/>
           </div>
         </div>
       </Container>

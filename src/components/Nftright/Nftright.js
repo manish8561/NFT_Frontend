@@ -18,13 +18,17 @@ import CheckoutPopup from "../../components/Popup/CheckoutPopup";
 import EthIcon from "../../assets/Images/eth.svg";
 import HeartIcon from '../../assets/Images/heart.svg'
 import "./Nftright.scss";
-function Nftright() {
+
+
+function Nftright(props) {
+  let nft = null
+  if(props  && props.nft) nft = props.nft
   return (
     <React.Fragment>
       <div className="top_head">
         <div>
-          <h2>My NFT</h2>
-          <p>Untitled Collection #2728089</p>
+          <h2>{nft !== null ? nft.name :  'Untitle'}</h2>
+          <p>{nft !== null ? <>{nft.collectiondb.name} #{nft.collectiondb._id} </>: 'Untitled Collection #00000000000'}</p>
         </div>
         <ButtonGroup aria-label="Basic example">
           <Button variant="outline-primary">
@@ -43,7 +47,7 @@ function Nftright() {
       </div>
       <div className="view">
         <p>
-          Owned by you <a href="#">you </a>{" "}
+          Owned by {nft !== null ? <a style={{color : '#0c9eda'}} href={nft.owner.walletAddress}>{nft.owner.name ? nft.owner.name : 'unnamed'} </a> : 'unnamed'}{" "}
           <img className="eye-icon" src={eyeicon} /> 1 view
           <span className="favoriteText"><img className="eye-icon" src={HeartIcon}  /> Favorites</span>
           
@@ -59,8 +63,11 @@ function Nftright() {
               </small>
             </p>
             <div className="popupBtn_div">
-              <CheckoutPopup buttontxt="Buy Now" className="light_btn mr-2" />
-              <CheckoutPopup buttontxt="Make Offer" className="offer_btn" />
+              {props && nft !== null && props.address === nft.owner.walletAddress ?
+                <CheckoutPopup buttontxt="Sell Now" className="light_btn" /> 
+                 :    
+                <CheckoutPopup buttontxt="Buy Now" className="light_btn mr-2" />
+              }
             </div>
           </Card.Body>
         </Card>
@@ -96,7 +103,7 @@ function Nftright() {
             <Card.Body>About Untitled Collection #2728089</Card.Body>
           </Accordion.Collapse>
         </Card>
-        <Card>
+        {/* <Card>
           <Card.Header>
             <Accordion.Toggle as={Button} variant="link" eventKey="2">
               <img src={offers} /> offers
@@ -108,7 +115,7 @@ function Nftright() {
               <p>No offers yet</p>
             </Card.Body>
           </Accordion.Collapse>
-        </Card>
+        </Card> */}
       </Accordion>
     </React.Fragment>
   );

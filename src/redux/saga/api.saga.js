@@ -5,6 +5,7 @@ import types from "../types";
 import getJwt from "./jwt.saga";
 import { reset } from 'redux-form';
 import contractService from "../../services/contract.service";
+import ipfsService from "../../services/ipfs.service";
 
 function* callGetMintedTokens(data) {
   try {
@@ -124,10 +125,10 @@ export function* callCreateCollections(props) {
 export function* callGetNft(props) {
   try {
     const { payload } = props;
-    const { getNft } = ApiService;
+    const { getNftCollection } = ApiService;
     const { saveNft } = ApiActions
     let jwt = yield getJwt();
-    const res = yield call(getNft, payload, jwt, {});
+    const res = yield call(getNftCollection, payload, jwt, {});
     if (res) {
       const { data: { data } } = res;
       yield put(saveNft({ nft: data }));
@@ -159,50 +160,54 @@ export function* callGetCollectionsById(props) {
   }
 }
 
+
+
+// ---------------------------- getNftDetails function -------------------------------------------------------
+
+
+export function* callGetNftDetails(props) {
+  try {
+    const { payload } = props;
+    const { getNft } = ApiService;
+    const { saveNftDetails } = ApiActions
+
+    let jwt = yield getJwt();
+    const res = yield call(getNft, payload, jwt, {});
+    if (res) {
+      const { data: { data } } = res;
+      yield put(saveNftDetails({ nftDetails: data }));
+    }
+  }
+  catch (error) {
+    console.log({ CALL_GET_NFT_DETAILS: error });
+  }
+}
+
 // ------------------------------ createNft function------------------------------------------------------------
 
 export function* createNft(props) {
   try {
     const jwt = yield getJwt();
     const { payload, history } = props;
-    const { createNft , uploadFile } = ApiService;
+    // console.log("PAYLOAD", payload)
+    const { createNft , getIpfsDataWithhash} = ApiService;
 
-    let filrUrl = new FormData();
+    // createNft
 
-    // try {
-    //   window.ethereum.enable();
-    //   const resp = await contractService.nftTokens(file, address , royality)
-    //   return resp ;
-    //   }
-    //   catch(e) {
-    //       console.log('error', e)
-    //   }
+    const { uploadToIpfsAndGenerateHash } = ipfsService
+    const ipsfData = yield put(uploadToIpfsAndGenerateHash , payload.file);
+    const uri = yield put (getIpfsDataWithhash(ipsfData.path))
 
-    // bannerUpload.append('file', payload.banner);
+    console.log("URI", uri)
 
-    // const response = yield call(uploadFile, bannerUpload, jwt, {});
+    // getIpfsDataWithhash
 
 
-    // if (response.data && response.data.status === "200" && response.data.data) {
-    //   payload.banner = response.data.data.file
-    //   payload.logo = logoResponse.data.data.file
-    // }
-    // window.alert("OKOK")
-    // const response = yield call(createNft, payload, jwt, {});
-    // const { data } = response;
-    // if (data && data.status == "200") {
-    //   yield put(reset('CreateItemForm'));
-    //   if (history && history.push) {
-    //     history.push(`/marketplace/collection/items/${payload.id}`);
-    //   }
-    // }
   }
   catch (error) {
     console.log({ CALL_CREATE_NFT: error })
   }
 }
-
-
 
 // ---------------------------- apiSaga function ---------------------------------------------------------
 
