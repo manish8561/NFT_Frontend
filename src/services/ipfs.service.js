@@ -1,4 +1,4 @@
-import { create } from "ipfs-http-client";
+import { create, urlSource } from "ipfs-http-client";
 
 class IpfsService {
     ipfs = {};

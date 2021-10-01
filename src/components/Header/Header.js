@@ -13,23 +13,20 @@ function Header(props) {
     setActive(!isActive);
   };
 
-  const persistData = useSelector((state) => state.persist);
+  const isLoggedIn = useSelector((state) => state.persist.isLoggedIn);
   const dispatch = useDispatch();
 
   const onClick = (path) => {
     const { history } = props;
-    if(persistData && persistData.isLoggedIn) {
-      history.push(path)
-    } else {
-      history.push('/login');
-    }
+    if (isLoggedIn) return history.push(path)
+    history.push('/login');
   }
 
   const onLogout = () => {
     const { history } = props;
     const { resetStore } = PersistActions;
     dispatch(resetStore());
-    history.push('/login');
+    // history.push('/login');
   }
 
   return (
@@ -53,7 +50,7 @@ function Header(props) {
             <Nav.Link onClick={() => onClick('/marketplace/create')}>Create</Nav.Link>    
             <Nav.Link href="#link">About us</Nav.Link>
             <Nav.Link href="#link">Contact</Nav.Link>
-            {persistData && persistData.isLoggedIn && <Nav.Link onClick={() => onLogout()}>Logout</Nav.Link>}
+            {isLoggedIn && <Nav.Link onClick={() => onLogout()}>Logout</Nav.Link>}
 
           </Nav>
         </Navbar.Collapse>

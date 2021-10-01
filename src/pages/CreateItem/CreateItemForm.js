@@ -17,13 +17,6 @@ import { connect } from 'react-redux';
 import { compose } from 'redux';
 
 const CreateItemForm = ({ itemIndex, collectionsList, handleSubmit }) => {
-
-
-    // useEffect(() => {
-    //     setCollectionValue(collectionsList[itemIndex]);
-    // }, [collectionsList, itemIndex]);
-
-
     return (
         <Row>
             <div className="collection-modal item-card">
@@ -60,7 +53,6 @@ const CreateItemForm = ({ itemIndex, collectionsList, handleSubmit }) => {
                                 Collection
                             </Form.Label>
                             <Col sm="10">
-                                {/* <Field component={FormField} className="form-control" name="" type="text" /> */}
                                 <Field
                                     component={FormField}
                                     options={collectionsList}
@@ -133,7 +125,7 @@ const CreateItemForm = ({ itemIndex, collectionsList, handleSubmit }) => {
                                 Supply
                             </Form.Label>
                             <Col sm="10">
-                                <Field component={FormField} className="form-control"  validate={[required()]} name="supply" type="text" placeholder="0" />
+                                <Field component={FormField} className="form-control" name="supply" disabled={true} type="text" placeholder="1" />
                                 <p className="form-textline">The number of copies that can be minted.No gas cost to you!Quantities above one coming soon.</p>
                             </Col>
                         </Form.Group>
@@ -179,7 +171,7 @@ const CreateItemForm = ({ itemIndex, collectionsList, handleSubmit }) => {
                             </Col>
                         </Form.Group>
 
-                        <Form.Group as={Row} controlId="formPlaintextEmail">
+                        {/* <Form.Group as={Row} controlId="formPlaintextEmail">
                             <Form.Label column sm="2" className="meta-label">
                                 Freeze metadata <span><img src={info} /></span>
                             </Form.Label>
@@ -188,7 +180,7 @@ const CreateItemForm = ({ itemIndex, collectionsList, handleSubmit }) => {
 
                                 <p className="form-textline">Freezing your metadata will allow you to permanently lock and store all of this item's content in decentralized file storage.</p>
                             </Col>
-                        </Form.Group>
+                        </Form.Group> */}
 
                         <Button type="submit">Create</Button>
                         {/* --- fix css --- */}

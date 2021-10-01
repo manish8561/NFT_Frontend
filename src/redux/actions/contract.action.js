@@ -1,10 +1,10 @@
 import types from "../types"
 
-const callMintTokens = (data) => ({
+const callMintToken = (data) => ({
     type: types.saga.contract.CALL_MINT_TOKENS,
     payload: data
-})
+});
 
 export const ContractActions = {
-    callMintTokens
+    callMintToken
 }

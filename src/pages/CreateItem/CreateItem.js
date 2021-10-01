@@ -13,42 +13,34 @@ import { ApiActions } from '../../redux/actions/api.action';
 import back from "../../assets/Images/arrow_back_black.svg";
 import { Link } from 'react-router-dom';
 import contractService from '../../services/contract.service';
+import { ContractActions } from '../../redux/actions/contract.action';
+import { reset } from 'redux-form';
+import { withRouter } from 'react-router';
 
 const CreateItem = ({ match: { params: { collectionId }, history } }) => {
     const dispatch = useDispatch();
     const [show, setShow] = useState(false);
     const [collectionsList, setCollectionsList] = useState([]);
     const [itemIndex, setItemIndex] = useState(0);
-    const handleClose = () => setShow(false);
+    const [nft, setNft] = useState({ fileHash: "" });
+
+    const handleClose = () => {
+        setShow(false);
+        reset("CreateItemForm");
+        history.back();
+    };
     const handleShow = () => setShow(true);
     const collections = useSelector(state => state.api.collections);
-    const address = useSelector(state => state.persist.address);
 
-
-    // const ContractFunctions = async(file , royality) => {
-    //     try {
-    //          
-    //         const resp = await contractService.nftTokens(file, address , royality)
-    //         return resp ;
-    //     }
-    //     catch(e) {
-    //         console.log('error', e)
-    //     }
-    // }
-
-    // let contractData = await ContractFunctions(data.file, data.royality) ;
-    // data.tokenUri = contractData.tokenUri.path ;
-    // data.fileType = data.file.type ;
-    // data.supply = parseInt(data.supply) ;
-    // data.royality = parseInt(data.royality) ;
-    // data.networkId = contractData.networkId ;
-    // data.collectiondb = data.collection.value ; delete data.collection ;
-    // data.tokenUri = process.env.REACT_APP_NFT_CONTRACT_ADDRESS ;
-    // data.transactionHash = contractData.contractDetails.transactionHash ;
-
-    const submitForm = async(data) => {
-        const { callCreateNft } = ApiActions;
-        dispatch(callCreateNft(data, history));
+    const submitForm = async (data) => {
+        const { callMintToken } = ContractActions;
+        data.blockChain = data.blockchain.value;
+        data.collectiondb = data.collection.value;
+        data.supply = data.supply || 1;
+        data.showPreview = handleShow;
+        data.setNftDetails = setNft;
+        delete data.collection;
+        dispatch(callMintToken(data));
     }
 
     useEffect(() => {
@@ -79,7 +71,7 @@ const CreateItem = ({ match: { params: { collectionId }, history } }) => {
                 <Modal.Header closeButton> <Modal.Title >You create My NFT!</Modal.Title> </Modal.Header>
                 <Modal.Body>
                     <div className="item-body">
-                        <img src={displayimg} />
+                        <img src={nft.fileHash} alt="nft" />
                     </div>
                 </Modal.Body >
 
@@ -99,4 +91,4 @@ const CreateItem = ({ match: { params: { collectionId }, history } }) => {
 
 }
 
-export default CreateItem;
+export default withRouter(CreateItem);

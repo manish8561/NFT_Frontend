@@ -15,7 +15,7 @@ const getNftCollection = (data, jwt) => fetch("post", `${API_URL}/collection/${d
 const getNft = (id) => fetch("get", `${API_URL}/nft/getNft/${id}`, {});
 
 const getItemsByCollectionId = (data, jwt) => fetch("post", `${API_URL}/collection/getItemsByCollectionId`, data, jwt);
-const createNft = (data, jwt) => fetch("post", `${API_URL}nft/add`, data, jwt);
+const createNft = (data, jwt) => fetch("post", `${API_URL}/nft/add`, data, jwt);
 
 export const ApiService = {
   getCollections,
