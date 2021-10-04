@@ -15,7 +15,7 @@ const Home = (props) => {
   const onCreate = () => {
     const { history } = props;
     if(persistData && persistData.isLoggedIn) {
-      history.push('/marketplace/collections')
+      history.push('/marketplace/create')
     } else {
       history.push('/login');
     }
@@ -38,7 +38,7 @@ const Home = (props) => {
                     <p>Buy, sell, and discover rare digital items</p>
                     <div className="banner_btn">
                       <a className="dark_btn">Explore</a>
-                      <Link onClick={()=>onCreate()} className="light_btn">Create</Link>
+                      <Link to="#" onClick={()=>onCreate()} className="light_btn">Create</Link>
                     </div>
                   </div>
                 </Col>
@@ -54,8 +54,10 @@ const Home = (props) => {
                     <h1>The largest NFT marketplace</h1>
                     <p>Buy, sell, and discover rare digital items</p>
                     <div className="banner_btn">
-                      <button className="dark_btn">Explore</button>
-                      <button className="light_btn">Create</button>
+                      {/* <button className="dark_btn">Explore</button>
+                      <button className="light_btn">Create</button> */}
+                      <a className="dark_btn">Explore</a>
+                      <Link to="#" onClick={()=>onCreate()} className="light_btn">Create</Link>
                     </div>
                   </div>
                 </Col>

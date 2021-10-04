@@ -67,7 +67,7 @@ const Login = (props) => {
         <Container className="signWallet">
             <h1>Sign in to your wallet.</h1>
             <img src={metaicon} width="150" /> <br />
-            <Link className="light_btn" onClick={() => onLogin()}>Sign In</Link>
+            <Link to="#" className="light_btn" onClick={() => onLogin()}>Sign In</Link>
             <Form className="select-wallet">
                 <Form.Control as="select">
                     <option> Use a different wallet</option>

@@ -7,7 +7,7 @@ import storage from "redux-persist/lib/storage";
 import { history } from './history';
 import createSagaMiddleware from 'redux-saga';
 import rootSaga from './saga';
-import logger from 'redux-logger';
+// import logger from 'redux-logger';
 
 const persistConfig = {
   key: "root",
@@ -20,7 +20,8 @@ const persistedReducer = persistReducer(persistConfig, rootReducer);
 
 
 const configureStore = () => {
-  const middlewares = [logger, sagaMiddleware, routerMiddleware(history)];
+  const middlewares = [sagaMiddleware, routerMiddleware(history)];
+  // const middlewares = [logger, sagaMiddleware, routerMiddleware(history)];
   // redux devtools
   const enhancers = process.env.NODE_ENV === "development"
     ? composeWithDevTools(applyMiddleware(...middlewares))

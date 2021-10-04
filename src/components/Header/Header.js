@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Navbar, Nav, Form, NavDropdown } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { withRouter } from "react-router";
@@ -15,6 +15,12 @@ function Header(props) {
 
   const isLoggedIn = useSelector((state) => state.persist.isLoggedIn);
   const dispatch = useDispatch();
+
+  useEffect(()=>{
+    if(isLoggedIn){
+      PersistActions.versionManager();
+    }
+  },[]);
 
   const onClick = (path) => {
     const { history } = props;
@@ -67,7 +73,7 @@ function Header(props) {
           <NavDropdown.Item href="#action/3.4">
             My Account Setting
           </NavDropdown.Item>
-          <NavDropdown.Item href="#action/3.4">Logout</NavDropdown.Item>
+          <NavDropdown.Item href="#action/3.4" onClick={()=>onLogout}>Logout</NavDropdown.Item>
         </NavDropdown>
       </Navbar>
 
